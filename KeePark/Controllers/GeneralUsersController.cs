@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KeePark.Models;
 using KeepPark.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KeePark.Controllers
 {
@@ -21,6 +22,12 @@ namespace KeePark.Controllers
 
         // GET: GeneralUsers
         public async Task<IActionResult> Index()
+        {
+            return View(await _context.GeneralUser.ToListAsync());
+        }
+
+        // GET: UserProfile
+        public async Task<IActionResult> UserProfile()
         {
             return View(await _context.GeneralUser.ToListAsync());
         }

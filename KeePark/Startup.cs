@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using KeePark.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace KeePark
 {
@@ -38,6 +39,8 @@ namespace KeePark
 
             services.AddDbContext<KeeParkContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("KeeParkContext")));
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

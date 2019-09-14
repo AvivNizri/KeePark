@@ -85,3 +85,4 @@
 \\Mac\Home\Documents\Keep_Park\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
 \\Mac\Home\Documents\Keep_Park\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ViewStart.g.cshtml.cs
 \\Mac\Home\Documents\Keep_Park\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LoginPartial.g.cshtml.cs
+\\Mac\Home\Documents\Keep_Park\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\GeneralUsers\UserProfile.g.cshtml.cs

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using KeepPark.Models;
 
+
 namespace KeePark.Models
 {
     public class KeeParkContext : DbContext
@@ -21,5 +22,8 @@ namespace KeePark.Models
         public DbSet<KeepPark.Models.ReserveSpot> ReserveSpot { get; set; }
 
         public DbSet<KeepPark.Models.Site> Site { get; set; }
+       
     }
+
+  
 }
