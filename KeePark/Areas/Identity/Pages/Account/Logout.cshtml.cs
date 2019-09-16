@@ -32,12 +32,11 @@ namespace KeePark.Areas.Identity.Pages.Account
             _logger.LogInformation("User logged out.");
             if (returnUrl != null)
             {
-                return SignOut();
-                    //LocalRedirect(returnUrl);
+                    return LocalRedirect(returnUrl);
             }
             else
             {
-                return SignOut();
+                return RedirectToPage();
             }
         }
     }
