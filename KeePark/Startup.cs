@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using KeePark.Models;
+using KeePark.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace KeePark
 {
@@ -33,11 +35,32 @@ namespace KeePark
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddMvc();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddRazorPagesOptions(options =>
+                {
+                    options.AllowAreas = true;
+                    options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
+                    options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
+                });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = $"/Identity/Account/Login";
+                options.LogoutPath = $"/Identity/Account/Logout";
+                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+            });
 
-            services.AddDbContext<KeeParkContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("KeeParkContext")));
+            
+            services.AddAuthorization();
+
+            services.AddDbContext<IdentityContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("IdentityContext")));
+
+            services.AddIdentity<GeneralUser, IdentityRole>()
+                .AddEntityFrameworkStores<IdentityContext>()
+                .AddDefaultTokenProviders()
+                .AddDefaultUI();    
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

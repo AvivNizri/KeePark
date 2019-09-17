@@ -1,4 +1,5 @@
 ﻿using System;
+using KeePark.Data;
 using KeePark.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -19,8 +20,8 @@ namespace KeePark.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("IdentityContextConnection")));
 
-                services.AddDefaultIdentity<IdentityUser>()
-                    .AddEntityFrameworkStores<IdentityContext>();
+                //services.AddDefaultIdentity<GeneralUser>()
+                //    .AddEntityFrameworkStores<IdentityContext>();
             });
         }
     }

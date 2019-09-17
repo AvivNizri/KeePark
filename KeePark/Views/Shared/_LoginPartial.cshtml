@@ -1,6 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@using KeePark.Data
+@inject SignInManager<GeneralUser> SignInManager
+@inject UserManager<GeneralUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))
 {
