@@ -93,7 +93,7 @@ namespace KeePark.Areas.Identity.Pages.Account.Manage
                 CarNumber = user.CarNumber,
                 CarType = user.CarType,
                 Address = user.Address,
-                Balance = user.Balance,
+                Balance = 0,
                 Email = email,
                 PhoneNumber = phoneNumber
             };
@@ -153,10 +153,10 @@ namespace KeePark.Areas.Identity.Pages.Account.Manage
             {
                 user.Address = Input.Address;
             }
-            if (Input.Balance != user.Balance)
-            {
-                user.Balance = Input.Balance;
-            }
+            //if (Input.Balance != user.Balance)
+            //{
+            //    user.Balance = Input.Balance;
+            //}
 
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
             if (Input.PhoneNumber != phoneNumber)

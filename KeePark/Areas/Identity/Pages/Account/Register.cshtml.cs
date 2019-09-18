@@ -72,12 +72,18 @@ namespace KeePark.Areas.Identity.Pages.Account
             [Required]
             [Display(Name = "Address")]
             public string Address { get; set; }
+
             public double Balance { get; set; }
 
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
+
+            [Required]
+            [Phone]
+            [Display(Name = "Phone Number")]
+            public string PhoneNumber { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -101,8 +107,9 @@ namespace KeePark.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new GeneralUser { UserName = Input.FirstName + Input.LastName,
+                var user = new GeneralUser { UserName = Input.FirstName,
                     Email = Input.Email,
+                    PhoneNumber = Input.PhoneNumber,
                     UID = Input.UID,
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
@@ -110,7 +117,7 @@ namespace KeePark.Areas.Identity.Pages.Account
                     CarNumber = Input.CarNumber,
                     CarType = Input.CarType,
                     Address = Input.Address,
-                    Balance = Input.Balance
+                    Balance = 0
                 };
 
 
