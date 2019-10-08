@@ -107,7 +107,7 @@ namespace KeePark.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new GeneralUser { UserName = Input.FirstName,
+                var user = new GeneralUser { UserName = Input.Email,
                     Email = Input.Email,
                     PhoneNumber = Input.PhoneNumber,
                     UID = Input.UID,
