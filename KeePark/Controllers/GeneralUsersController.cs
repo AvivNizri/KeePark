@@ -6,21 +6,29 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KeePark.Models;
-using KeepPark.Models;
+
+using Microsoft.AspNetCore.Authorization;
+using KeePark.Data;
 
 namespace KeePark.Controllers
 {
     public class GeneralUsersController : Controller
     {
-        private readonly KeeParkContext _context;
+        private readonly IdentityContext _context;
 
-        public GeneralUsersController(KeeParkContext context)
+        public GeneralUsersController(IdentityContext context)
         {
             _context = context;
         }
 
         // GET: GeneralUsers
         public async Task<IActionResult> Index()
+        {
+            return View(await _context.GeneralUser.ToListAsync());
+        }
+
+        // GET: UserProfile
+        public async Task<IActionResult> UserProfile()
         {
             return View(await _context.GeneralUser.ToListAsync());
         }
@@ -34,7 +42,7 @@ namespace KeePark.Controllers
             }
 
             var generalUser = await _context.GeneralUser
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.UID == id);
             if (generalUser == null)
             {
                 return NotFound();
@@ -88,7 +96,7 @@ namespace KeePark.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("ID,FirstName,LastName,Email,Password,CreditCard,CarNumber,CarType,Address,PhoneNumber,Balance")] GeneralUser generalUser)
         {
-            if (id != generalUser.ID)
+            if (id != generalUser.UID)
             {
                 return NotFound();
             }
@@ -102,7 +110,7 @@ namespace KeePark.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GeneralUserExists(generalUser.ID))
+                    if (!GeneralUserExists(generalUser.UID))
                     {
                         return NotFound();
                     }
@@ -125,7 +133,7 @@ namespace KeePark.Controllers
             }
 
             var generalUser = await _context.GeneralUser
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.UID == id);
             if (generalUser == null)
             {
                 return NotFound();
@@ -147,7 +155,7 @@ namespace KeePark.Controllers
 
         private bool GeneralUserExists(string id)
         {
-            return _context.GeneralUser.Any(e => e.ID == id);
+            return _context.GeneralUser.Any(e => e.UID == id);
         }
     }
 }

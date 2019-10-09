@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using KeePark.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -15,14 +16,14 @@ namespace KeePark.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<GeneralUser> _signInManager;
+        private readonly UserManager<GeneralUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<GeneralUser> userManager,
+            SignInManager<GeneralUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
@@ -39,10 +40,50 @@ namespace KeePark.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+            [Key]
+            [Required]
+            [Display(Name = "ID")]
+            public string UID { get; set; }
+
+            [DataType(DataType.Text)]
+            [Required]
+            [Display(Name = "First Name")]
+            public string FirstName { get; set; }
+
+            [DataType(DataType.Text)]
+            [Required]
+            [Display(Name = "Last Name")]
+            public string LastName { get; set; }
+
+            [Required]
+            [Display(Name = "Credit Card")]
+            public string CreditCard { get; set; }
+
+            [DataType(DataType.Text)]
+            [Required]
+            [Display(Name = "Car Number")]
+            public string CarNumber { get; set; }
+
+            [DataType(DataType.Text)]
+            [Display(Name = "Car Brand")]
+            public string CarType { get; set; }
+
+            [DataType(DataType.Text)]
+            [Required]
+            [Display(Name = "Address")]
+            public string Address { get; set; }
+
+            public double Balance { get; set; }
+
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
+
+            [Required]
+            [Phone]
+            [Display(Name = "Phone Number")]
+            public string PhoneNumber { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -54,6 +95,8 @@ namespace KeePark.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+
         }
 
         public void OnGet(string returnUrl = null)
@@ -66,7 +109,20 @@ namespace KeePark.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new GeneralUser { UserName = Input.Email,
+                    Email = Input.Email,
+                    PhoneNumber = Input.PhoneNumber,
+                    UID = Input.UID,
+                    FirstName = Input.FirstName,
+                    LastName = Input.LastName,
+                    CreditCard = Input.CreditCard,
+                    CarNumber = Input.CarNumber,
+                    CarType = Input.CarType,
+                    Address = Input.Address,
+                    Balance = 0
+                };
+
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

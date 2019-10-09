@@ -1,94 +1,239 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how to build ASP.NET apps that can run anywhere.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">KeePark</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#portfolio">Common Site's</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                </li>
+                <partial name="_LoginPartial" />
+            </ul>
         </div>
-        <div class="item">
-            <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    There are powerful new features in Visual Studio for building modern web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
+    </div>
+</nav>
+<!-- Masthead -->
+<header class="masthead">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-10 align-self-end">
+                <canvas>Hi Talia</canvas>
+                <h1 class="text-uppercase text-white font-weight-bold">KeePark</h1>
+                <hr class="divider my-4">
             </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner3.svg" alt="Microsoft Azure" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
+            <div class="col-lg-8 align-self-baseline">
+                <video controls="controls" width="640" height="360">
+                    <source src="~/video/parkingVideo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <br />
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
             </div>
         </div>
     </div>
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+</header>
+<!-- About Section -->
+<section class="page-section bg-primary" id="about">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="text-white mt-0">We've got what you need!</h2>
+                <hr class="divider light my-4">
+                <aside>
+                    <p class="text-white-50 mb-4">With KeePark service, you can easily find parking spots, and also rent your park.</p>
+                </aside>
+                <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Services Section -->
+<section class="page-section" id="services">
+    <div class="container">
+        <h2 class="text-center mt-0">At Your Service</h2>
+        <hr class="divider my-4">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <i class="fas fa-4x fa-chart-pie text-primary mb-4"></i>
+                    <h3 class="h4 mb-2">Manage profits</h3>
+                    <aside>
+                        <p class="text-muted mb-0">Use our charts to manage your parking profits.</p>
+                    </aside>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <i class="fas fa-4x fa-map text-primary mb-4"></i>
+                    <h3 class="h4 mb-2">Use Google Maps</h3>
+                    <aside>
+                        <p class="text-muted mb-0">
+                            When there is so many parking spots in the world,
+                            our google maps service is here for you.
+                        </p>
+                    </aside>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <i class="fas fa-4x fa-car text-primary mb-4"></i>
+                    <h3 class="h4 mb-2">Ready to Park</h3>
+                    <aside>
+                    <p class="text-muted mb-0">
+                        You can rent a parking even a month in advance!
+                        Don't Worry. We'll keep it for you.
+                    </p>
+                    </aside>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <i class="fas fa-4x fa-dollar-sign text-primary mb-4"></i>
+                    <h3 class="h4 mb-2">Rent your parking</h3>
+                    <aside>
+                        <p class="text-muted mb-0">Is it really a revolution if you don't have the chance to make money?</p>
+                        </aside>
 </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Portfolio Section -->
+<section id="portfolio">
+    <div class="container-fluid p-0">
+        <div class="row no-gutters">
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="~/img/portfolio/fullsize/beach.jpg">
+                    <img class="img-fluid" src="~/img/portfolio/thumbnails/beach.jpg" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">
+                            Entertainment
+                        </div>
+                        <div class="project-name">
+                            Rishon Le-Zion Beach
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="~/img/portfolio/fullsize/cinemaCity.png">
+                    <img class="img-fluid" src="img/portfolio/thumbnails/cinemaCity.png" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">
+                            Movies
+                        </div>
+                        <div class="project-name">
+                            Cinema City
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="~/img/portfolio/fullsize/college.jpg">
+                    <img class="img-fluid" src="img/portfolio/thumbnails/college.jpg" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">
+                            Academy
+                        </div>
+                        <div class="project-name">
+                            College of Management Academic Studies
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="~/img/portfolio/fullsize/Soho.jpg">
+                    <img class="img-fluid" src="~/img/portfolio/thumbnails/Soho.jpg" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">
+                            Restaurants
+                        </div>
+                        <div class="project-name">
+                            Soho
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="~/img/portfolio/fullsize/theTeder.jpg">
+                    <img class="img-fluid" src="~/img/portfolio/thumbnails/theTeder.jpg" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">
+                            Entertainment
+                        </div>
+                        <div class="project-name">
+                            The "Teder"
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="~/img/portfolio/fullsize/yesPlanet.jpg">
+                    <img class="img-fluid" src="~/img/portfolio/thumbnails/yesPlanet.jpg" alt="">
+                    <div class="portfolio-box-caption p-3">
+                        <div class="project-category text-white-50">
+                            Movies
+                        </div>
+                        <div class="project-name">
+                            Yes Planet
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
-<div class="row">
-    <div class="col-md-3">
-        <h2>Application uses</h2>
-        <ul>
-            <li>Sample pages using ASP.NET Core MVC</li>
-            <li>Theming using <a href="https://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>How to</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398600">Add a Controller and View</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699315">Manage User Secrets using Secret Manager.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699316">Use logging to log a message.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699317">Add packages using NuGet.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699319">Target development, staging or production environment.</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Overview</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET Core</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET Core such as Startup and middleware.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398602">Working with Data</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398603">Security</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699321">Client side development</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699322">Develop on different platforms</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Run &amp; Deploy</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517851">Run your app</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517853">Run tools such as EF migrations and more</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
-        </ul>
-    </div>
+<!-- Contact Section -->
+<section class="page-section" id="contact">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="mt-0">Let's Get In Touch!</h2>
+                <hr class="divider my-4">
+                <aside>
+                    <p class="text-muted mb-5">While we're can save you a park in our building, there are simpler ways for us to get in touch and answer your questions.</p>
+                    </aside>
 </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+                <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
+                <div>054-3974920</div>
+            </div>
+            <div class="col-lg-4 mr-auto text-center">
+                <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+                <p>contact@KeePark.com</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer -->
+<footer class="bg-light py-5">
+    <div class="container">
+        <div class="small text-center text-muted">Copyright &copy; 2019 - KeePark</div>
+    </div>
+</footer>
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<!-- Custom scripts for this template -->
+<script src="js/creative.min.js"></script>

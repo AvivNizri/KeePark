@@ -1,0 +1,76 @@
+﻿@model IEnumerable<KeePark.Data.GeneralUser>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "UserProfile";
+    //var email= from Email in IdentityContext select Email;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="~/css/userstyle.css" type="text/css" media="screen" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    <div class="jumbotron text-center">
+        <div class="section-title">
+            <h1>ACCOUNT</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <h5 class="name">@Html.DisplayNameFor(model => model.FirstName)</h5>
+                <p class="email">@User.Identity.Name</p>
+                <p class="phone"> 0524893207</p>
+                <a id="reserve_parking" href="/ReserveSpots/Create">Reserve your Parking</a>
+                <br />
+                <a id="future_orders">My Future Orders</a>
+                <br />
+                <a id="rent_site" href="/Sites/Create">Rent Your Site</a>
+                <br />
+                <a id="edit_details" href="/Identity/Account/Manage">Edit Details</a>
+
+
+            </div>
+            <div class="col-sm-8">
+                <h5>Order History</h5>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="order_number">Order</th>
+                            <th class="date">Date</th>
+                            <th class="site">Site</th>
+                            <th class="total">Total</th>
+                        </tr>
+                    </thead>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+
+    <footer>
+        <section class="footer-email-signup max-1350">
+            <div class="jumbotron text-center" style="background-color:#ffffff">
+                <div class="warpper">
+                    <h4>DON'T MISS OUT!</h4>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+</body>
+</html>
