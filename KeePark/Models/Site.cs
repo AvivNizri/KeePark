@@ -17,6 +17,6 @@ namespace KeePark.Models
         public string SiteDescription { get; set; }
         public string SitePhoneNumber { get; set; }
         public double PricePerHour { get; set; }
-        public Enum Label { get; set; }//Optional ToDo OptionSet - raz todo
+        //public Enum Label { get; set; }//Optional ToDo OptionSet - raz todo
     }
 }
