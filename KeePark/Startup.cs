@@ -51,8 +51,11 @@ namespace KeePark
                 options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
             });
 
-            
+
             services.AddAuthorization();
+
+            services.AddDbContext<KeeParkContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("KeeParkContext")));
 
             services.AddDbContext<IdentityContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("IdentityContext")));
@@ -60,7 +63,7 @@ namespace KeePark
             services.AddIdentity<GeneralUser, IdentityRole>()
                 .AddEntityFrameworkStores<IdentityContext>()
                 .AddDefaultTokenProviders()
-                .AddDefaultUI();    
+                .AddDefaultUI();
 
         }
 

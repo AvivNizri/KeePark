@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +17,8 @@ namespace KeePark.Models
         }
         public DbSet<KeePark.Data.GeneralUser> GeneralUser { get; set; }
 
-        public DbSet<KeePark.Models.ParkingSpot> ParkingSpot { get; set; }
-
         public DbSet<KeePark.Models.ReserveSpot> ReserveSpot { get; set; }
 
-        public DbSet<KeePark.Models.Site> Site { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
