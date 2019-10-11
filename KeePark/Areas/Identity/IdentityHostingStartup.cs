@@ -20,8 +20,8 @@ namespace KeePark.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("IdentityContextConnection")));
 
-                //services.AddDefaultIdentity<GeneralUser>()
-                //    .AddEntityFrameworkStores<IdentityContext>();
+                services.AddDefaultIdentity<GeneralUser>()
+                    .AddEntityFrameworkStores<IdentityContext>();
             });
         }
     }

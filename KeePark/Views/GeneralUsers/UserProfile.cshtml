@@ -24,14 +24,26 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
-                <h5 class="name">@Html.DisplayNameFor(model => model.FirstName)</h5>
-                <p class="email">@User.Identity.Name</p>
-                <p class="phone"> 0524893207</p>
+                @foreach (var item in Model)
+                {
+                    if (item.UserName == User.Identity.Name)
+                    {
+                        <h5 class="name">
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </h5>
+
+
+                        <p class="email">@User.Identity.Name</p>
+
+                        <p class="phone"> @Html.DisplayFor(modelItem => item.PhoneNumber)</p>
+                    }
+                }
                 <a id="reserve_parking" href="/ReserveSpots/Create">Reserve your Parking</a>
                 <br />
                 <a id="future_orders">My Future Orders</a>
                 <br />
-                <a id="rent_site" href="/Sites/Create">Rent Your Site</a>
+                <a id="rent_site" href="/ParkingSpots/Create">Rent Your Site</a>
                 <br />
                 <a id="edit_details" href="/Identity/Account/Manage">Edit Details</a>
 

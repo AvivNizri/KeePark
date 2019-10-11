@@ -35,35 +35,15 @@ namespace KeePark
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddMvc();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-                .AddRazorPagesOptions(options =>
-                {
-                    options.AllowAreas = true;
-                    options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
-                    options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
-                });
 
-            services.ConfigureApplicationCookie(options =>
-            {
-                options.LoginPath = $"/Identity/Account/Login";
-                options.LogoutPath = $"/Identity/Account/Logout";
-                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
-            });
-
-
-            services.AddAuthorization();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<KeeParkContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("KeeParkContext")));
 
-            services.AddDbContext<IdentityContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("IdentityContext")));
+            services.AddDbContext<KeeParkContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("KeeParkContext")));
 
-            services.AddIdentity<GeneralUser, IdentityRole>()
-                .AddEntityFrameworkStores<IdentityContext>()
-                .AddDefaultTokenProviders()
-                .AddDefaultUI();
 
         }
 
