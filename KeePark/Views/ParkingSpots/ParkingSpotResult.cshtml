@@ -1,0 +1,78 @@
+﻿@model IEnumerable<KeePark.Models.ParkingSpot>
+
+@{
+    ViewData["Title"] = "ParkingSpotResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ParkingSpotResult</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SpotName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OwnerID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NunOfOrders)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.filePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpotDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SiteType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpotName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OwnerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NunOfOrders)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.filePath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpotDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SiteType)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ParkingSpotID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ParkingSpotID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ParkingSpotID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

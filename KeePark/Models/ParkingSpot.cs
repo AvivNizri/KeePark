@@ -16,7 +16,6 @@ namespace KeePark.Models
         [Display(Name = "Parking Name")]
         public string SpotName { get; set; }
         public string OwnerID { get; set; }
-        // ?needed? public GeneralUser User { get; set; }
         [Required]
         [Display(Name = "Parking Address")]
         public string Address { get; set; }
@@ -27,6 +26,6 @@ namespace KeePark.Models
         public string filePath { get; set; }
         [Display(Name = "Describe Your Parking")]
         public string SpotDescription { get; set; }
-        //public Enum Label { get; set; }//Optional ToDo OptionSet - raz todo
+        public int SiteType { get; set; }
     }
 }

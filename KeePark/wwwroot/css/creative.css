@@ -74,6 +74,7 @@ body {
   outline: 0 !important;
 }
 
+
 hr {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -2033,10 +2034,10 @@ pre code {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .form-control {
-    -webkit-transition: none;
-    transition: none;
-  }
+    .form-control {
+        -webkit-transition: none;
+        transition: none;
+    }
 }
 
 .form-control::-ms-expand {
@@ -10758,3 +10759,47 @@ header.masthead h1 {
 #portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption {
   opacity: 1;
 }
+
+/*Search bar properties - Start*/
+.active-pink-2 input[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #f48fb1;
+    box-shadow: 0 1px 0 0 #f48fb1;
+}
+
+.active-pink input[type=text] {
+    border-bottom: 1px solid #f48fb1;
+    box-shadow: 0 1px 0 0 #f48fb1;
+}
+
+.active-purple-2 input[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #ce93d8;
+    box-shadow: 0 1px 0 0 #ce93d8;
+}
+
+.active-purple input[type=text] {
+    border-bottom: 1px solid #ce93d8;
+    box-shadow: 0 1px 0 0 #ce93d8;
+}
+
+.active-cyan-2 input[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #4dd0e1;
+    box-shadow: 0 1px 0 0 #4dd0e1;
+}
+
+.active-cyan input[type=text] {
+    border-bottom: 1px solid #4dd0e1;
+    box-shadow: 0 1px 0 0 #4dd0e1;
+}
+
+.active-cyan .fa, .active-cyan-2 .fa {
+    color: #4dd0e1;
+}
+
+.active-purple .fa, .active-purple-2 .fa {
+    color: #ce93d8;
+}
+
+.active-pink .fa, .active-pink-2 .fa {
+    color: #f48fb1;
+}
+/*Search bar properties - Finish*/

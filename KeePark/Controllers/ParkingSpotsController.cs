@@ -10,6 +10,7 @@ using KeePark.ViewModels;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using System.Security.Claims;
+using KeePark.Data.Enums;
 
 namespace KeePark.Controllers
 {
@@ -47,6 +48,25 @@ namespace KeePark.Controllers
 
             return View(parkingSpot);
         }
+        [HttpPost]
+        // GET: ParkingSpots/ParkingSpotResult
+        public async Task<IActionResult> ParkingSpotResult(string searchingParameter)
+        {
+            if (String.IsNullOrEmpty(searchingParameter)) { return NotFound(); }
+
+            var parkingSpotList = (from parkingSpot in _context.ParkingSpot
+                                   where parkingSpot.Address.Contains(searchingParameter) ||
+                                   parkingSpot.SpotName.Contains(searchingParameter) ||
+                                   ParkingSpotEnums.SiteType.Cinema.ToString().Contains(searchingParameter) ||
+                                   ParkingSpotEnums.SiteType.PrivateParking.ToString().Contains(searchingParameter) ||
+                                   ParkingSpotEnums.SiteType.Resturant.ToString().Contains(searchingParameter) ||
+                                   ParkingSpotEnums.SiteType.Theater.ToString().Contains(searchingParameter)
+                                   select parkingSpot).ToList();
+
+            if (parkingSpotList == null || parkingSpotList.Count == 0) { return NotFound(); }
+
+            return View(parkingSpotList);
+        }
 
         // GET: ParkingSpots/Create
         public IActionResult Create()
@@ -59,7 +79,7 @@ namespace KeePark.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ParkingSpotID,SpotName,OwnerID,Address,Price,NunOfOrders,filePath,SpotDescription")] ParkingSpotCreate parkingSpot)
+        public async Task<IActionResult> Create([Bind("ParkingSpotID,SpotName,OwnerID,Address,Price,NunOfOrders,filePath,SpotDescription,SiteType")] ParkingSpotCreate parkingSpot)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +100,8 @@ namespace KeePark.Controllers
                     Price = parkingSpot.Price,
                     NunOfOrders = 0,
                     SpotDescription = parkingSpot.SpotDescription,
-                    filePath = FileName
+                    filePath = FileName,
+                    SiteType = parkingSpot.SiteType
                 };
                 _context.Add(newSpot);
                 await _context.SaveChangesAsync();

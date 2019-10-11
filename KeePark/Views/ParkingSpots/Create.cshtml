@@ -33,6 +33,17 @@
                 <input asp-for="SpotDescription" class="form-control" />
                 <span asp-validation-for="SpotDescription" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="SiteType" class="control-label"></label><br>
+                @Html.DropDownListFor(m => m.SiteType, new List<SelectListItem>
+    {
+       new SelectListItem{ Text="Resturant", Value = "0" },
+       new SelectListItem{ Text="Theater", Value = "1" },
+       new SelectListItem{ Text="Cinema", Value = "2" },
+       new SelectListItem{ Text="Private Parking", Value = "3" },
+       new SelectListItem{ Text="Other", Value = "4" },
+    }, "-Select-")
+            </div>
 
             <div class="form-group row">
                 <label asp-for="parkingPhoto" class="col-sm-2 col-form-label"></label>
@@ -52,12 +63,12 @@
 
             @section Scripts {
                 <script>
-            $(document).ready(function () {
-                $('.custom-file-input').on("change", function () {
-                    var fileName = $(this).val().split("\\").pop();
-                    $(this).next('.custom-file-label').html(fileName);
-                });
-            });
+                    $(document).ready(function () {
+                        $('.custom-file-input').on("change", function () {
+                            var fileName = $(this).val().split("\\").pop();
+                            $(this).next('.custom-file-label').html(fileName);
+                        });
+                    });
                 </script>
             }
 
