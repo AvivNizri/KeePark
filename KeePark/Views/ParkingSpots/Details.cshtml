@@ -4,84 +4,62 @@
 
 @{
     ViewBag.Title = "Spot Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
     var photoPath = "~/SpotImages/" + (Model.filePath ?? "noimage.jpg");
 }
 
-<!--
-<h2>Details</h2>
+<style>
+    #map {
+            height: 400px; /* The height is 400 pixels */
+            width: 500px; /* The width is the width of the web page */
+        }
+    .mycard {
+        size: 20rem;
+    }
 
-<div>
-    <h4>ParkingSpot</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.SpotName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SpotName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.OwnerID)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.OwnerID)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.NunOfOrders)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NunOfOrders)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.filePath)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.filePath)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SpotDescription)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SpotDescription)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.ParkingSpotID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
-    -->
-
-<div class="row justify-content-center m-3">
-    <div class="col-sm-8">
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-gap: 200px;
+        align-items: stretch;
+    }
+</style>
+<div class="grid">
+    <div class="mycard">
         <div class="card">
             <div class="card-header">
-                <h1>@Model.ParkingSpotID</h1>
             </div>
 
             <div class="card-body text-center">
-                <img class="card-img-top" src="@photoPath" asp-append-version="true" />
+                <img class="card-img-top" src="@photoPath" asp-append-version="true" height="400" width="500" />
 
-                <h4>Spot Name : @Html.DisplayFor(model => model.SpotName)</h4>
-                <h4>Owner ID: @Html.DisplayFor(model => model.OwnerID)</h4>
-                <h4>Addr : @Html.DisplayFor(model => model.Address)</h4>
-                <h4>Num0fOrders : @Html.DisplayFor(model => model.NunOfOrders)</h4>
-                <h4>Path : @Html.DisplayFor(model => model.filePath)</h4>
-                <h4>Spot ID : @Model.ParkingSpotID</h4>
-                <h4>Price : @Model.Price</h4>
-                <h4>test : @Model.OwnerID</h4>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SpotName): @Html.DisplayFor(model => model.SpotName)
+                </dt>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OwnerID): @Html.DisplayFor(model => model.OwnerID)
+                </dt>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Address): @Html.DisplayFor(model => model.Address)
+                </dt>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.NunOfOrders): @Html.DisplayFor(model => model.NunOfOrders)
+                </dt>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.filePath):  @Html.DisplayFor(model => model.filePath)
+                </dt>
+
+                <dt>
+                    Spot ID: @Model.ParkingSpotID
+                </dt>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price): @Html.DisplayFor(model => model.Price)
+                </dt>
 
 
             </div>
@@ -92,4 +70,60 @@
             </div>
         </div>
     </div>
+    <div class="card">
+
+        <!--The div element for the map -->
+        <div id="map"></div>
+        <script>
+            // Initialize and add the map
+            var geocoder;
+            var map;
+            var address = "Mexico";
+
+        function initMap() {
+            geocoder = new google.maps.Geocoder();
+            var uluru = {lat: 31.771959, lng: 35.217018};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 8,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+            codeAddress(address);
+        }
+            
+        function codeAddress(geocoder, map) {
+            geocoder.geocode({ 'address': address }, function (results, status) {
+            console.log(results);
+            var latLng = {lat: results[0].geometry.location.lat (), lng: results[0].geometry.location.lng ()};
+            console.log (latLng);
+            if (status == 'OK') {
+                var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map
+                });
+                console.log (map);
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+         });
+
+        }
+        
+            
+        </script>
+        <!--Load the API from the specified URL
+        * The async attribute allows the browser to render the page while the API loads
+        * The key parameter will contain your own API key (which is not needed for this tutorial)
+        * The callback parameter executes the initMap() function
+        -->
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAd7kFmlWP30-21x9qH1wnWd1joYxGxW7U&callback=initMap">
+        </script>
+    </div>
+
+    <!---<iframe class="mycard" width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=@Model.Address" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>-->
 </div>
+

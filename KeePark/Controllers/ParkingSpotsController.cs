@@ -16,11 +16,13 @@ namespace KeePark.Controllers
     public class ParkingSpotsController : Controller
     {
         private readonly KeeParkContext _context;
+        private readonly IdentityContext _identity;
         private readonly IHostingEnvironment hostingEnvironment;
 
-        public ParkingSpotsController(IHostingEnvironment hostingEnviroment, KeeParkContext context)
+        public ParkingSpotsController(IHostingEnvironment hostingEnviroment, KeeParkContext context, IdentityContext identity)
         {
-            this.hostingEnvironment = hostingEnvironment;
+            this.hostingEnvironment = hostingEnviroment;
+            this._identity = identity;
             _context = context;
         }
 
@@ -59,8 +61,12 @@ namespace KeePark.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ParkingSpotID,SpotName,OwnerID,Address,Price,NunOfOrders,filePath,SpotDescription")] ParkingSpotCreate parkingSpot)
+        public async Task<IActionResult> Create([Bind("ParkingSpotID,SpotName,OwnerID,Address,Price,NunOfOrders,filePath,SpotDescription,parkingPhoto")] ParkingSpotCreate parkingSpot)
         {
+            var currentUser = (from userID in _identity.GeneralUser
+                               where userID.Id == User.FindFirstValue(ClaimTypes.NameIdentifier)
+                               select userID.UID).FirstOrDefault();
+            
             if (ModelState.IsValid)
             {
                 string FileName = null;
@@ -68,14 +74,20 @@ namespace KeePark.Controllers
                 {
                     string UploadFolder = Path.Combine(hostingEnvironment.WebRootPath, "SpotImages");
                     FileName = Guid.NewGuid().ToString() + "_" + parkingSpot.parkingPhoto.FileName;
+                    
                     string filePath = Path.Combine(UploadFolder, FileName);
-                    parkingSpot.parkingPhoto.CopyTo(new FileStream(filePath, FileMode.Create));
+                    //string filePath = Path.GetDirectoryName(Path.Combine(UploadFolder,FileName));
+                    //parkingSpot.parkingPhoto.CopyTo(new FileStream(filePath, FileMode.Create));
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await parkingSpot.parkingPhoto.CopyToAsync(fileStream);
+                    }
                 }
                 ParkingSpot newSpot = new ParkingSpot
                 {
                     ParkingSpotID = Guid.NewGuid(),
                     SpotName = parkingSpot.SpotName,
-                    OwnerID = User.FindFirstValue(ClaimTypes.NameIdentifier),
+                    OwnerID = currentUser,
                     Address = parkingSpot.Address,
                     Price = parkingSpot.Price,
                     NunOfOrders = 0,
