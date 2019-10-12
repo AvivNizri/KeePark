@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using KeePark.Models;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -27,5 +28,7 @@ namespace KeePark.Data
         public string Address { get; set; }
 
         public double Balance { get; set; }
+
+        public ICollection<ReserveSpot> Reservations { get; set; }
     }
 }

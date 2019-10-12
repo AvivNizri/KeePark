@@ -28,5 +28,6 @@ namespace KeePark.Models
         [Display(Name = "Describe Your Parking")]
         public string SpotDescription { get; set; }
         //public Enum Label { get; set; }//Optional ToDo OptionSet - raz todo
+       // public ICollection<ReserveSpot> SpotReservations { get; set; }
     }
 }

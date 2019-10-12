@@ -14,6 +14,16 @@ namespace KeePark.Models
         {
         }
 
+      /*  protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Data.GeneralUser>()
+              .HasMany(p => p.Reservations)
+              .WithOne()
+              .HasForeignKey(pc => pc.UserID);
+        }*/
+
         public DbSet<KeePark.Models.ParkingSpot> ParkingSpot { get; set; }
 
         public DbSet<KeePark.Models.ReserveSpot> ReserveSpot { get; set; }

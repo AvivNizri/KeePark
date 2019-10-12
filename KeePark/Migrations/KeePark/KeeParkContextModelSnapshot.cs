@@ -130,12 +130,12 @@ namespace KeePark.Migrations.KeePark
             modelBuilder.Entity("KeePark.Models.ReserveSpot", b =>
                 {
                     b.HasOne("KeePark.Models.ParkingSpot", "Spot")
-                        .WithMany()
+                        .WithMany("SpotReservations")
                         .HasForeignKey("SpotID")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("KeePark.Data.GeneralUser", "User")
-                        .WithMany()
+                        .WithMany("Reservations")
                         .HasForeignKey("UserID");
                 });
 #pragma warning restore 612, 618
