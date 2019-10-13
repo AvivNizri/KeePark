@@ -10,6 +10,7 @@ using KeePark.ViewModels;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
 
 namespace KeePark.Controllers
 {
@@ -101,6 +102,8 @@ namespace KeePark.Controllers
             return View(parkingSpot);
         }
 
+
+
         // GET: ParkingSpots/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
         {
@@ -122,8 +125,10 @@ namespace KeePark.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("ParkingSpotID,SpotName,OwnerID,Address,Price,NunOfOrders,filePath,SpotDescription")] ParkingSpot parkingSpot)
+        public async Task<IActionResult> Edit(Guid id, [Bind("ParkingSpotID,SpotName,OwnerID,Address,Price,NunOfOrders,filePath,SpotDescription")] ParkingSpot parkingSpot,
+            IFormFile file)
         {
+            var prevPath = parkingSpot.filePath;
             if (id != parkingSpot.ParkingSpotID)
             {
                 return NotFound();
@@ -133,6 +138,22 @@ namespace KeePark.Controllers
             {
                 try
                 {
+                    if (file != null)
+                    {
+                        string UploadFolder = Path.Combine(hostingEnvironment.WebRootPath, "SpotImages");
+                        var FileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+
+                        string filePath = Path.Combine(UploadFolder, FileName);
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await file.CopyToAsync(fileStream);
+                        }
+                        parkingSpot.filePath = FileName;
+                    }
+                    else {
+                        parkingSpot.filePath = prevPath;
+                    }
+
                     _context.Update(parkingSpot);
                     await _context.SaveChangesAsync();
                 }

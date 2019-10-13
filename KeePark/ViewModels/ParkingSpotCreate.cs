@@ -9,6 +9,8 @@ namespace KeePark.ViewModels
 {
     public class ParkingSpotCreate
     {
+        [Key]
+        public Guid ParkingSpotID { get; set; }
         [Required]
         [Display(Name = "Parking Name")]
         public string SpotName { get; set; }

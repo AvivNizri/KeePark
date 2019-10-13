@@ -10,9 +10,10 @@
 
 <style>
     #map {
-            height: 400px; /* The height is 400 pixels */
-            width: 500px; /* The width is the width of the web page */
-        }
+        height: 400px; /* The height is 400 pixels */
+        width: 500px; /* The width is the width of the web page */
+    }
+
     .mycard {
         size: 20rem;
     }
@@ -65,7 +66,8 @@
             </div>
             <div class="card-footer text-center">
                 <a asp-controller="home" asp-action="index" class="btn btn-primary">Back</a>
-                <a href="#" class="btn btn-primary">Edit</a>
+                <a asp-controller="ParkingSpots"asp-action="Edit" asp-route-id="@Model.ParkingSpotID" class="btn btn-primary">Edit</a>
+                
                 <a href="#" class="btn btn-danger">Delete</a>
             </div>
         </div>
@@ -75,44 +77,28 @@
         <!--The div element for the map -->
         <div id="map"></div>
         <script>
-            // Initialize and add the map
-            var geocoder;
-            var map;
-            var address = "Mexico";
+            // Initialize and add the map       
+            var address = '@Html.DisplayFor(model => model.Address)';
 
-        function initMap() {
-            geocoder = new google.maps.Geocoder();
-            var uluru = {lat: 31.771959, lng: 35.217018};
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 8,
-                center: uluru
-            });
-            var marker = new google.maps.Marker({
-                position: uluru,
-                map: map
-            });
-            codeAddress(address);
-        }
-            
-        function codeAddress(geocoder, map) {
-            geocoder.geocode({ 'address': address }, function (results, status) {
-            console.log(results);
-            var latLng = {lat: results[0].geometry.location.lat (), lng: results[0].geometry.location.lng ()};
-            console.log (latLng);
-            if (status == 'OK') {
-                var marker = new google.maps.Marker({
-                    position: latLng,
-                    map: map
+            function initMap() {             
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({'address': address}, function(results, status) {
+                    if (status === 'OK') {
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 14,
+                            position: results[0].geometry.location
+                        });
+                        map.setCenter(results[0].geometry.location);
+                        var marker = new google.maps.Marker({
+                            map: map,
+                            position: results[0].geometry.location
+                    });
+                    } else {
+                        alert('Geocode was not successful for the following reason: ' + status);
+                    }
                 });
-                console.log (map);
-            } else {
-                alert('Geocode was not successful for the following reason: ' + status);
             }
-         });
 
-        }
-        
-            
         </script>
         <!--Load the API from the specified URL
         * The async attribute allows the browser to render the page while the API loads
@@ -120,10 +106,9 @@
         * The callback parameter executes the initMap() function
         -->
         <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAd7kFmlWP30-21x9qH1wnWd1joYxGxW7U&callback=initMap">
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALOX8Te8ZntEt5CCkJMymKEZzTcnfsznk&callback=initMap">
         </script>
     </div>
 
     <!---<iframe class="mycard" width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=@Model.Address" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>-->
 </div>
-
