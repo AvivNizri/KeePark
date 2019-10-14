@@ -155,9 +155,5 @@ C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeeP
 \\Mac\Home\Documents\MyProject\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 \\Mac\Home\Documents\MyProject\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.cshtml.g.cs
 \\Mac\Home\Documents\MyProject\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.cshtml.g.cs
-\\Mac\Home\Documents\MyProject\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ReserveSpots1\Create.cshtml.g.cs
-\\Mac\Home\Documents\MyProject\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ReserveSpots1\Delete.cshtml.g.cs
-\\Mac\Home\Documents\MyProject\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ReserveSpots1\Details.cshtml.g.cs
-\\Mac\Home\Documents\MyProject\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ReserveSpots1\Edit.cshtml.g.cs
-\\Mac\Home\Documents\MyProject\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ReserveSpots1\Index.cshtml.g.cs
 \\Mac\Home\Documents\MyProject\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ReserveSpots\SorrySpotIsTaken.cshtml.g.cs
+\\Mac\Home\Documents\MyProject\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ReserveSpots\SorryChooseDurationForTheDayYouSelected.cshtml.g.cs

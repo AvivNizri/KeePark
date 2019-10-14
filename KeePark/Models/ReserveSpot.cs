@@ -27,7 +27,7 @@ namespace KeePark.Models
         public DateTime ReservationDate { get; set; } //date only
         [Range(0, 23, ErrorMessage = "The value must be greater than 0 and lower then 24")]
         public int ReservationHour { get; set; } //between 0-23
-        [Range(1, 2,  ErrorMessage = "The value must be greater than 1 an lower than 2")]
+        [Range(1, 3,  ErrorMessage = "The value must be greater than 1 an lower than 3")]
         public int Duration { get; set; } //1/2
         public string carNumber { get; set; }
     }

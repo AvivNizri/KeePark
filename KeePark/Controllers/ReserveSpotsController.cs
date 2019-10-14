@@ -85,8 +85,9 @@ namespace KeePark.Controllers
 
                     if ((reserveSpot.ReservationHour <= System.DateTime.Now.Hour)&&((reserveSpot.ReservationDate.Date == DateTime.Today)))
                         return RedirectToAction(nameof(InvalidHour));
-                
 
+                    
+                  
 
                     var user = (from bla in _identitycontext.GeneralUser
                                         where bla.UserName == User.Identity.Name
@@ -135,12 +136,38 @@ namespace KeePark.Controllers
                                    {
                                          return RedirectToAction(nameof(SorrySpotIsTaken));
                         }
+
                                      }
 
-                           
+                    var reserves = from res in _context.ReserveSpot
+                                   where res.ReservationDate == reserveSpot.ReservationDate && res.SpotID == er
+                                       select res;
+                    foreach(var r in reserves){
+
+                        if ((reserveSpot.ReservationHour < r.ReservationHour + r.Duration && reserveSpot.ReservationHour >= r.ReservationHour))
+                        {
+                            return RedirectToAction(nameof(SorrySpotIsTaken));
+                        }
+                        if ((reserveSpot.ReservationHour + reserveSpot.Duration <= r.ReservationHour + r.Duration)&&(reserveSpot.ReservationHour+reserveSpot.Duration>r.ReservationHour))
+                        {
+                            return RedirectToAction(nameof(SorrySpotIsTaken));
+                        }
+                        if((reserveSpot.ReservationHour<=r.ReservationHour) && (reserveSpot.ReservationHour + reserveSpot.Duration >= r.ReservationHour + r.Duration))
+                        {
+                            return RedirectToAction(nameof(SorrySpotIsTaken));
+                        }
+
+                    }
+                    if (reserveSpot.ReservationHour + reserveSpot.Duration > 24)
+                    {
+                        return RedirectToAction(nameof(SorryChooseDurationForTheDayYouSelected));
+                    }
 
 
-                            _context.Add(reserveSpot);
+
+
+
+                    _context.Add(reserveSpot);
                       
 
 
@@ -176,6 +203,11 @@ namespace KeePark.Controllers
         }
 
         public IActionResult SorrySpotIsTaken()
+        {
+            return View();
+        }
+
+        public IActionResult SorryChooseDurationForTheDayYouSelected()
         {
             return View();
         }
@@ -242,7 +274,30 @@ namespace KeePark.Controllers
                                 return RedirectToAction(nameof(SorrySpotIsTaken));
                             }
                         }
-                       
+
+                        
+                        foreach (var r in spots)
+                        {
+
+                            if ((reserveSpot.ReservationHour < r.ReservationHour + r.Duration && reserveSpot.ReservationHour >= r.ReservationHour))
+                            {
+                                return RedirectToAction(nameof(SorrySpotIsTaken));
+                            }
+                            if ((reserveSpot.ReservationHour + reserveSpot.Duration <= r.ReservationHour + r.Duration) && (reserveSpot.ReservationHour + reserveSpot.Duration > r.ReservationHour))
+                            {
+                                return RedirectToAction(nameof(SorrySpotIsTaken));
+                            }
+                            if ((reserveSpot.ReservationHour <= r.ReservationHour) && (reserveSpot.ReservationHour + reserveSpot.Duration >= r.ReservationHour + r.Duration))
+                            {
+                                return RedirectToAction(nameof(SorrySpotIsTaken));
+                            }
+
+                        }
+                        if (reserveSpot.ReservationHour + reserveSpot.Duration > 24)
+                        {
+                            return RedirectToAction(nameof(SorryChooseDurationForTheDayYouSelected));
+                        }
+
                         _context.Update(reserveSpot);
                         await _context.SaveChangesAsync();
 
