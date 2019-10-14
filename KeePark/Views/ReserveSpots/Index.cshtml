@@ -40,7 +40,9 @@
     <tbody>
         @foreach (var item in Model)
         {
-            if (item.User.Email == User.Identity.Name)
+          
+
+            if (item.User.UserName==User.Identity.Name)
             {
                 <tr>
 

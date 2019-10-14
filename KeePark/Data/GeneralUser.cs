@@ -29,6 +29,6 @@ namespace KeePark.Data
 
         public double Balance { get; set; }
 
-        public ICollection<ReserveSpot> Reservations { get; set; }
+        public virtual ICollection<ReserveSpot> Reservations { get; set; }
     }
 }

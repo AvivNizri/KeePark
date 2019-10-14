@@ -231,7 +231,7 @@ using KeePark.Models;
             WriteLiteral("</h1>\n            </div>\n\n            <div class=\"card-body text-center\">\n                ");
             EndContext();
             BeginContext(1841, 71, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "d9ffdcf8591c453a826588af7b99842e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "8115fe7da79f4f16838f242a2174a1f4", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_ImageTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ImageTagHelper>();
@@ -344,7 +344,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ImageTagHelper.AppendVersion = true;
             WriteLiteral("</h4>\n\n\n            </div>\n            <div class=\"card-footer text-center\">\n                ");
             EndContext();
             BeginContext(2536, 76, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c80805e6aeb74bd1a4972dd189be72ed", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c0d54c4bb7554cf5a7922efb20fa268b", async() => {
                 BeginContext(2604, 4, true);
                 WriteLiteral("Back");
                 EndContext();

@@ -52,16 +52,18 @@ namespace KeePark.Controllers
         public IActionResult Create()
         {
             var carN = (from mycar in _identitycontext.GeneralUser
-                          where mycar.Email == User.Identity.Name
+                        where mycar.Email == User.Identity.Name
                           select mycar.CarNumber).FirstOrDefault();
+            var userid = (from myid in _identitycontext.GeneralUser
+                          where myid.Email == User.Identity.Name
+                          select myid.UID).FirstOrDefault();
 
-         //   ViewData["carNumber"] = new SelectList(_identitycontext.GeneralUser, "carNumber", "carNumber", carN);
             var viewModel = new ReserveSpot
             {
 
                 carNumber = carN,
                 ReservationDate= System.DateTime.Now,
-                CreatedOn= System.DateTime.Now
+                CreatedOn= System.DateTime.Now,
 
             };
 
@@ -77,72 +79,76 @@ namespace KeePark.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                if ((!(reserveSpot.ReservationDate < System.DateTime.Now))||(reserveSpot.ReservationDate.Date == DateTime.Today))
+                {
+
+                    if ((reserveSpot.ReservationHour <= System.DateTime.Now.Hour)&&((reserveSpot.ReservationDate.Date == DateTime.Today)))
+                        return RedirectToAction(nameof(InvalidHour));
                 
 
-                if (!(reserveSpot.ReservationDate.Year<System.DateTime.Today.Year))
-                {
-                   if(!(reserveSpot.ReservationDate.Month < System.DateTime.Today.Month))
-                    {
-                        if(!(reserveSpot.ReservationDate.Day < System.DateTime.Today.Day))
-                        {
-                            if ((reserveSpot.ReservationDate.Day== System.DateTime.Today.Day))
-                            {
-                                if((reserveSpot.ReservationHour <= System.DateTime.Now.Hour))
-                                    return RedirectToAction(nameof(InvalidHour));
-                            }
 
-                            var userid = (from myid in _identitycontext.GeneralUser
-                                          where myid.Email == User.Identity.Name
-                                          select myid.UID).FirstOrDefault();
-                           /* var user = (from myid in _identitycontext.GeneralUser
-                                          where myid.Email == User.Identity.Name
-                                          select myid).FirstOrDefault();*/
+                    var user = (from bla in _identitycontext.GeneralUser
+                                        where bla.UserName == User.Identity.Name
+                                        select bla).FirstOrDefault();
+                            var userid = (from bla in _identitycontext.GeneralUser
+                                        where bla.UserName == User.Identity.Name
+                                        select bla.UID).FirstOrDefault();
+     
+                            Guid er = new Guid("1366325e-b707-4aab-bb6c-fe22b55411d4"); //delete
+                            reserveSpot.ReserveSpotID = Guid.NewGuid();
+                            reserveSpot.CreatedOn = System.DateTime.Now;
+                            reserveSpot.Spot = _context.ParkingSpot.FirstOrDefault(u => u.ParkingSpotID ==er);
 
-                            Guid er = new Guid("8bf6c17c-3c2d-4cce-a0f3-24af9d7b17c6"); //delete
+                             int count = 0;
+                             foreach (var t in _context.ReserveSpot)
+                             {
+                                 if (userid == t.UserID)
+                                 {
+                                     count++;
+                                 }
+
+                             }
+
+                             if (count==0 && !(_context.GeneralUser.Contains(user)))
+                             {
+                                 reserveSpot.User = _identitycontext.GeneralUser.FirstOrDefault(u => u.UserName == User.Identity.Name);
+                                 reserveSpot.UserID = reserveSpot.User.UID;
+
+                             }
+                             else
+                             {
+
+                                 reserveSpot.UserID = userid;
+                             }
+
+
+                              var myreservations = (from reservations in _context.ReserveSpot
+                                                     where reservations.Spot.ParkingSpotID == er   //replace
+                                                     select reservations);
+                               var m = (from t in myreservations
+                                        where t.ReservationDate == reserveSpot.ReservationDate
+                                        select t);
+
+                               foreach (var t in m) {
+                                   if ((t.ReservationHour <= reserveSpot.ReservationHour) && (reserveSpot.ReservationHour < t.ReservationHour + t.Duration))
+                                   {
+                                         return RedirectToAction(nameof(SorrySpotIsTaken));
+                        }
+                                     }
 
                            
 
-                            var myreservations = (from reservations in _context.ReserveSpot
-                                                 where reservations.SpotID ==er
-                                                 select reservations);
-                            var m = (from t in myreservations
-                                     where t.ReservationDate == reserveSpot.ReservationDate
-                                                  select t);
 
-                        foreach(var t in m) { 
-                            if ((t.ReservationHour <= reserveSpot.ReservationHour) && (reserveSpot.ReservationHour < t.ReservationHour + t.Duration))
-                            {
-                                return NotFound();
-                            }
-                        }
+                            _context.Add(reserveSpot);
+                      
 
-                            ReserveSpot newReservation = new ReserveSpot
-                            {
-                                ReserveSpotID = Guid.NewGuid(),
-                               // User = user,
-                                UserID = userid,
-                                Spot=reserveSpot.Spot,
-                                SpotID = er, //get from constructor
-                                CreatedOn = System.DateTime.Now,
-                                ReservationDate = reserveSpot.ReservationDate,
-                                ReservationHour = reserveSpot.ReservationHour,
-                                Duration = reserveSpot.Duration,
-                                carNumber = reserveSpot.carNumber
 
-                            };
-
-                        //    reserveSpot.SpotID = newReservation.SpotID;
-                       //     reserveSpot.UserID = newReservation.UserID;
-
-                            _context.Add(newReservation);
-
-                            await _context.SaveChangesAsync();
+                       
+                           await _context.SaveChangesAsync();
+                            
                             return RedirectToAction(nameof(Index));
 
-
-                        }
-
-                    }
                 }
 
                 else
@@ -154,6 +160,7 @@ namespace KeePark.Controllers
 
             }
 
+           // ViewData["UserID"] = new SelectList(_identitycontext.GeneralUser, "UID", "UID", reserveSpot.UserID);
             return View(reserveSpot);
         }
 
@@ -164,6 +171,11 @@ namespace KeePark.Controllers
         }
 
         public IActionResult InvalidDate()
+        {
+            return View();
+        }
+
+        public IActionResult SorrySpotIsTaken()
         {
             return View();
         }
@@ -200,31 +212,63 @@ namespace KeePark.Controllers
 
             if (ModelState.IsValid)
             {
-                try
+                if ((!(reserveSpot.ReservationDate < System.DateTime.Now)) || (reserveSpot.ReservationDate.Date == DateTime.Today))
                 {
-                    var spotid = (from myid in _context.ReserveSpot
-                                  where myid.ReserveSpotID == id
-                                  select myid.SpotID).FirstOrDefault();
-                    reserveSpot.User=_identitycontext.GeneralUser.FirstOrDefault(u => u.UserName == User.Identity.Name);
-                    reserveSpot.UserID = reserveSpot.User.UID;
-                    reserveSpot.Spot = _context.ParkingSpot.FirstOrDefault(u => u.ParkingSpotID == spotid);
-                    reserveSpot.SpotID = reserveSpot.Spot.ParkingSpotID;
-                    // _context.ReserveSpot.Update(reserveSpot);
-                    _context.Update(reserveSpot);
-                    await _context.SaveChangesAsync();
+                    if ((reserveSpot.ReservationHour <= System.DateTime.Now.Hour) && ((reserveSpot.ReservationDate.Date == DateTime.Today)))
+                        return RedirectToAction(nameof(InvalidHour));
+
+                    try
+                    {
+                        var spotid = (from myid in _context.ReserveSpot
+                                      where myid.ReserveSpotID == id
+                                      select myid.SpotID).FirstOrDefault();
+                        reserveSpot.User = _identitycontext.GeneralUser.FirstOrDefault(u => u.UserName == User.Identity.Name);
+                        reserveSpot.UserID = reserveSpot.User.UID;
+                        reserveSpot.Spot = _context.ParkingSpot.FirstOrDefault(u => u.ParkingSpotID == spotid);
+                        reserveSpot.SpotID = reserveSpot.Spot.ParkingSpotID;
+                        reserveSpot.CreatedOn = System.DateTime.Now;
+
+                        var res = from reserve in _context.ReserveSpot
+                                  where reserve.ReserveSpotID != id
+                                  select reserve;
+                        var spots = from sp in res
+                                    where sp.Spot.ParkingSpotID == reserveSpot.SpotID && sp.ReservationDate== reserveSpot.ReservationDate
+                                    select sp;
+
+                        foreach (var t in spots)
+                        {
+                            if ((t.ReservationHour <= reserveSpot.ReservationHour) && (reserveSpot.ReservationHour < t.ReservationHour + t.Duration))
+                            {
+                                return RedirectToAction(nameof(SorrySpotIsTaken));
+                            }
+                        }
+                       
+                        _context.Update(reserveSpot);
+                        await _context.SaveChangesAsync();
+
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        if (!ReserveSpotExists(reserveSpot.ReserveSpotID))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+
+
+                    return RedirectToAction(nameof(Index));
                 }
-                catch (DbUpdateConcurrencyException)
+
+                else
                 {
-                    if (!ReserveSpotExists(reserveSpot.ReserveSpotID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    return RedirectToAction(nameof(InvalidDate));
+
                 }
-                return RedirectToAction(nameof(Index));
+
             }
             ViewData["SpotID"] = new SelectList(_context.ReserveSpot, "SpotID", "SpotID", reserveSpot.SpotID);
             ViewData["UserID"] = new SelectList(_context.ReserveSpot, "UserID", "UserID", reserveSpot.UserID);
@@ -239,6 +283,7 @@ namespace KeePark.Controllers
                 return NotFound();
             }
 
+         
             var reserveSpot = await _context.ReserveSpot
                 .Include(r => r.Spot)
                 .Include(r => r.User)
@@ -247,6 +292,7 @@ namespace KeePark.Controllers
             {
                 return NotFound();
             }
+
 
             return View(reserveSpot);
         }
