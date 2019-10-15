@@ -102,8 +102,6 @@ namespace KeePark.Controllers
             return View(parkingSpot);
         }
 
-
-
         // GET: ParkingSpots/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
         {
@@ -128,7 +126,8 @@ namespace KeePark.Controllers
         public async Task<IActionResult> Edit(Guid id, [Bind("ParkingSpotID,SpotName,OwnerID,Address,Price,NunOfOrders,filePath,SpotDescription")] ParkingSpot parkingSpot,
             IFormFile file)
         {
-            var prevPath = parkingSpot.filePath;
+            
+
             if (id != parkingSpot.ParkingSpotID)
             {
                 return NotFound();
@@ -151,9 +150,10 @@ namespace KeePark.Controllers
                         parkingSpot.filePath = FileName;
                     }
                     else {
-                        parkingSpot.filePath = prevPath;
+                        parkingSpot.filePath = (from spotID in _context.ParkingSpot
+                                                where spotID.ParkingSpotID.ToString() == parkingSpot.ParkingSpotID.ToString()
+                                                select spotID.filePath).FirstOrDefault();
                     }
-
                     _context.Update(parkingSpot);
                     await _context.SaveChangesAsync();
                 }
