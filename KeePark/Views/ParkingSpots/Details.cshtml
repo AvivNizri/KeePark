@@ -73,7 +73,7 @@
             * The callback parameter executes the initMap() function
             -->
             <script async defer
-                    src="https://maps.googleapis.com/maps/api/js?key=[api]&callback=initMap">
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALOX8Te8ZntEt5CCkJMymKEZzTcnfsznk&callback=initMap">
             </script>
         </div>
     </div>
@@ -110,5 +110,11 @@
             <a asp-controller="home" asp-action="index" class="btn btn-primary">Back</a>
             <a asp-controller="ParkingSpots" asp-action="Edit" asp-route-id="@Model.ParkingSpotID" class="btn btn-primary">Edit</a>
             <a asp-controller="ParkingSpots" asp-action="Delete" asp-route-id="@Model.ParkingSpotID" class="btn btn-danger">Delete</a>
+            <div class="btn btn-primary" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small">
+                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
+            </div>
         </div>
+
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=778267219277553&autoLogAppEvents=1"></script>
     </div>
