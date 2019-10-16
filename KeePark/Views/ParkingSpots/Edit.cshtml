@@ -59,12 +59,6 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
-
-                <div class="fb-share-button"
-                     data-href="https://keepark.co"
-                     data-layout="button_count"
-                     data-size="large">
-                </div>
             </div>
             <!-- Your share button code -->
 
@@ -91,44 +85,6 @@
         </script>
     }
 
-
-<script>
-
-    window.fbAsyncInit = function () {
-        FB.init({
-            appId: '778267219277553',
-            autoLogAppEvents: true,
-            xfbml: true,
-            version: 'v4.0'
-        });
-
-    }
-
-    
-
-    function post() {
-        FB.ui(
-          {
-            method: 'share',
-            href: 'http://keepark.co',
-            message: "KeePark.co Reserve Parking In Advance",
-            quote:'I have Just Shared My Own Parking - Check It Out'
-          },
-          // callback
-          function(response) {
-            if (response && !response.error_message) {
-              alert('Posting completed.');
-            } else {
-              alert('Error while posting.');
-            }
-          }
-        );
-    }
-</script>
-
-    <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
-
-    <button onclick="post()" class="btn btn-default">Post</button>
 </div>
 
 

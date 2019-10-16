@@ -30,20 +30,20 @@
     }
 </style>
 
-    <hr />
+<hr />
 
-    <div class="grid">
+<div class="grid">
+    <div class="mycard">
         <div class="mycard">
-            <div class="mycard">
-                <img class="card-img-top" src="@photoPath" asp-append-version="true" height="400" width="500" />
-            </div>
+            <img class="card-img-top" src="@photoPath" asp-append-version="true" height="400" width="500" />
         </div>
+    </div>
 
-        <div class="card">
+    <div class="card">
 
-            <!--The div element for the map -->
-            <div id="map"></div>
-            <script>
+        <!--The div element for the map -->
+        <div id="map"></div>
+        <script>
             // Initialize and add the map
             var address = '@Html.DisplayFor(model => model.Address)';
 
@@ -66,55 +66,88 @@
                 });
             }
 
-            </script>
-            <!--Load the API from the specified URL
-            * The async attribute allows the browser to render the page while the API loads
-            * The key parameter will contain your own API key (which is not needed for this tutorial)
-            * The callback parameter executes the initMap() function
-            -->
-            <script async defer
-                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALOX8Te8ZntEt5CCkJMymKEZzTcnfsznk&callback=initMap">
-            </script>
-        </div>
+        </script>
+        <!--Load the API from the specified URL
+        * The async attribute allows the browser to render the page while the API loads
+        * The key parameter will contain your own API key (which is not needed for this tutorial)
+        * The callback parameter executes the initMap() function
+        -->
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=[key]&callback=initMap">
+        </script>
     </div>
-    <div class="center">
+</div>
+<div class="center">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SpotName): @Html.DisplayFor(model => model.SpotName)
-        </dt>
+    <dt>
+        @Html.DisplayNameFor(model => model.SpotName): @Html.DisplayFor(model => model.SpotName)
+    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OwnerID): @Html.DisplayFor(model => model.OwnerID)
-        </dt>
+    <dt>
+        @Html.DisplayNameFor(model => model.OwnerID): @Html.DisplayFor(model => model.OwnerID)
+    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Address): @Html.DisplayFor(model => model.Address)
-        </dt>
+    <dt>
+        @Html.DisplayNameFor(model => model.Address): @Html.DisplayFor(model => model.Address)
+    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NunOfOrders): @Html.DisplayFor(model => model.NunOfOrders)
-        </dt>
+    <dt>
+        @Html.DisplayNameFor(model => model.NunOfOrders): @Html.DisplayFor(model => model.NunOfOrders)
+    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.filePath):  @Html.DisplayFor(model => model.filePath)
-        </dt>
+    <dt>
+        @Html.DisplayNameFor(model => model.filePath):  @Html.DisplayFor(model => model.filePath)
+    </dt>
 
-        <dt>
-            Spot ID: @Model.ParkingSpotID
-        </dt>
+    <dt>
+        Spot ID: @Model.ParkingSpotID
+    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price): @Html.DisplayFor(model => model.Price)
-        </dt>
-        <div class="card-footer text-center">
-            <a asp-controller="home" asp-action="index" class="btn btn-primary">Back</a>
-            <a asp-controller="ParkingSpots" asp-action="Edit" asp-route-id="@Model.ParkingSpotID" class="btn btn-primary">Edit</a>
-            <a asp-controller="ParkingSpots" asp-action="Delete" asp-route-id="@Model.ParkingSpotID" class="btn btn-danger">Delete</a>
-            <div class="btn btn-primary" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small">
-                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
-            </div>
-        </div>
-
-        <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=778267219277553&autoLogAppEvents=1"></script>
+    <dt>
+        @Html.DisplayNameFor(model => model.Price): @Html.DisplayFor(model => model.Price)
+    </dt>
+    <div class="card-footer text-center">
+        <a asp-controller="home" asp-action="index" class="btn btn-primary">Back</a>
+        <a asp-controller="ParkingSpots" asp-action="Edit" asp-route-id="@Model.ParkingSpotID" class="btn btn-primary">Edit</a>
+        <a asp-controller="ParkingSpots" asp-action="Delete" asp-route-id="@Model.ParkingSpotID" class="btn btn-danger">Delete</a>
+        <button onclick="post()" class="btn btn-primary">Share On Facbook</button>
     </div>
+
+</div>
+
+<script>
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '778267219277553',
+            autoLogAppEvents: true,
+            xfbml: true,
+            version: 'v4.0'
+        });
+
+    }
+
+
+
+    function post() {
+        FB.ui(
+            {
+                method: 'share',
+                href: 'http://keepark.co',
+                message: "KeePark.co Reserve Parking In Advance",
+                quote: 'I have Just Shared My Own Parking - Check It Out'
+            },
+            // callback
+            function (response) {
+                if (response && !response.error_message) {
+                    alert('Posting completed.');
+                } else {
+                    alert('Error while posting.');
+                }
+            }
+        );
+    }
+</script>
+
+<script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+
