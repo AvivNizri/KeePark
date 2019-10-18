@@ -3,7 +3,20 @@
 @{
     ViewData["Title"] = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var photoPath = "~/SpotImages/" + (Model.filePath ?? "noimage.jpg");
 }
+<style>
+    .mycard {
+        size: 20rem;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-gap: 150px;
+        align-items: stretch;
+    }
+</style>
 
 <h2>Delete</h2>
 
@@ -11,54 +24,43 @@
 <div>
     <h4>ParkingSpot</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.SpotName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SpotName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.OwnerID)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.OwnerID)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.NunOfOrders)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NunOfOrders)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.filePath)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.filePath)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SpotDescription)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SpotDescription)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="ParkingSpotID" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+    <div class="grid">
+        <div class="mycard">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.SpotName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SpotName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SpotDescription)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SpotDescription)
+                </dd>
+            </dl>
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="ParkingSpotID" />
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                <a asp-action="Index">Back to List</a>
+            </form>
+        </div>
+
+        <div class="card">
+            <img class="card-img-top" src="@photoPath" asp-append-version="true" height="140" width="190" />
+        </div>
+    </div>
 </div>

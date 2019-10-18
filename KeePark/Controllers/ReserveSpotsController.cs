@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KeePark.Models;
 using KeePark.Data;
+using System.Net;
+using System.IO;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace KeePark.Controllers
 {
@@ -366,5 +370,15 @@ namespace KeePark.Controllers
         {
             return _context.ReserveSpot.Any(e => e.ReserveSpotID == id);
         }
+
+
+        public IActionResult Weather()
+        {
+            return View();
+        }
+
+
+
+
     }
 }
