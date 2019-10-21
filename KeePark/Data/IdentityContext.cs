@@ -11,6 +11,10 @@ namespace KeePark.Models
 {
     public class IdentityContext : IdentityDbContext<GeneralUser>
     {
+        public IdentityContext()
+        {
+        }
+
         public IdentityContext(DbContextOptions<IdentityContext> options)
             : base(options)
         {

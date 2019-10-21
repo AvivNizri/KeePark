@@ -9,9 +9,13 @@
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
             <li class="nav-item">
-                @if (User.Identity.IsAuthenticated)
+                @if (User.IsInRole("Administrator"))
                 {
-                    <a class="nav-link js-scroll-trigger" asp-area="" asp-controller="GeneralUsers"  asp-action="UserProfile">Hello @UserManager.GetUserName(User)</a>
+                    <a class="nav-link js-scroll-trigger" asp-area="" asp-controller="GeneralUsers" asp-action="AdminDashboard">Hello @UserManager.GetUserName(User)</a>
+                }
+                @if (User.Identity.IsAuthenticated && !User.IsInRole("Administrator"))
+                {
+                    <a class="nav-link js-scroll-trigger" asp-area="" asp-controller="GeneralUsers" asp-action="UserProfile">Hello @UserManager.GetUserName(User)</a>
                 }
             </li>
             <li class="nav-item">

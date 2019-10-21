@@ -1,6 +1,57 @@
 ﻿
 ﻿<!DOCTYPE html>
 <html>
+<style>
+
+    /* Navbar container */
+.navbar-collapse collapse {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial;
+}
+
+.navbar-collapse collapse a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+</style>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -32,6 +83,16 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+
+                    @if (User.IsInRole("Administrator"))
+                    {
+                      
+                        <li><a asp-area="" asp-controller="Statistics" asp-action="UserStat">Active Users</a></li>
+                        <li><a asp-area="" asp-controller="Statistics" asp-action="PopularSpot">Popular Spot</a></li>
+
+                    }
+
+
                 </ul>
                 <partial name="_LoginPartial" />
             </div>

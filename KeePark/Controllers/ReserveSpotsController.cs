@@ -100,7 +100,7 @@ namespace KeePark.Controllers
                                         where bla.UserName == User.Identity.Name
                                         select bla.UID).FirstOrDefault();
      
-                            Guid er = new Guid("e24395ff-129d-43eb-a8af-8caff826a4c5"); //delete
+                            Guid er = new Guid("c6788e87-b95a-4af9-af8e-5de7c3bff701"); //delete
                             reserveSpot.ReserveSpotID = Guid.NewGuid();
                             reserveSpot.CreatedOn = System.DateTime.Now;
                             reserveSpot.Spot = _context.ParkingSpot.FirstOrDefault(u => u.ParkingSpotID ==er);

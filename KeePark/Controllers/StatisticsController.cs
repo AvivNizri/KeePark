@@ -6,9 +6,11 @@ using KeePark.Models;
 using Microsoft.AspNetCore.Mvc;
 using KeePark.Data;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KeePark.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class StatisticsController : Controller
     {
         private readonly KeeParkContext _context;

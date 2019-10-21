@@ -5,13 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\Identity\**" />
-    <Content Remove="Migrations\Identity\**" />
-    <EmbeddedResource Remove="Migrations\Identity\**" />
-    <None Remove="Migrations\Identity\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="Views\GeneralUsers\UserAccount.cs" />
   </ItemGroup>
 

@@ -21,8 +21,17 @@ namespace KeePark.Controllers
             _context = context;
         }
 
+
+        [Authorize(Roles = "Administrator")]
         // GET: GeneralUsers
         public async Task<IActionResult> Index()
+        {
+            return View(await _context.GeneralUser.ToListAsync());
+        }
+
+        [Authorize(Roles = "Administrator")]
+        // GET: GeneralUsers
+        public async Task<IActionResult> AdminDashboard()
         {
             return View(await _context.GeneralUser.ToListAsync());
         }

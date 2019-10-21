@@ -10,6 +10,8 @@ namespace KeePark.Data
 {
     public class GeneralUser : IdentityUser
     {
+        
+
         //Must added the key cause its the primary key which conect the IdentityUser to this General user
         [Key]
         [PersonalData]
