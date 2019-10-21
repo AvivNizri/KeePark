@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KeePark.Models.ParkingSpot>
+@model IEnumerable<KeePark.Models.ParkingSpot>
 
 @{
     ViewData["Title"] = "Index";
@@ -18,7 +18,7 @@
             </div>
 
             <img class="card-img-top imageThumbnail" src="@photoPath"
-                 asp-append-version="true" height="400" width="500" />
+                 asp-append-version="true" height="400" width="500"/>
 
             <div class="card-footer text-center position-static">
                 <a asp-controller="ParkingSpots" asp-action="Details" asp-route-id="@spot.ParkingSpotID" class="btn btn-primary m-1">View</a>
@@ -28,3 +28,4 @@
         </div>
     }
 </div>
+

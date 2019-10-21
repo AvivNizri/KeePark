@@ -67,7 +67,7 @@ namespace KeePark.Controllers
             var currentUser = (from userID in _identity.GeneralUser
                                where userID.Id == User.FindFirstValue(ClaimTypes.NameIdentifier)
                                select userID.UID).FirstOrDefault();
-
+            
             if (ModelState.IsValid)
             {
                 string FileName = null;
@@ -75,7 +75,7 @@ namespace KeePark.Controllers
                 {
                     string UploadFolder = Path.Combine(hostingEnvironment.WebRootPath, "SpotImages");
                     FileName = Guid.NewGuid().ToString() + "_" + parkingSpot.parkingPhoto.FileName;
-
+                    
                     string filePath = Path.Combine(UploadFolder, FileName);
                     //string filePath = Path.GetDirectoryName(Path.Combine(UploadFolder,FileName));
                     //parkingSpot.parkingPhoto.CopyTo(new FileStream(filePath, FileMode.Create));
@@ -126,7 +126,7 @@ namespace KeePark.Controllers
         public async Task<IActionResult> Edit(Guid id, [Bind("ParkingSpotID,SpotName,OwnerID,Address,Price,NunOfOrders,filePath,SpotDescription")] ParkingSpot parkingSpot,
             IFormFile file)
         {
-
+            
 
             if (id != parkingSpot.ParkingSpotID)
             {
@@ -149,8 +149,7 @@ namespace KeePark.Controllers
                         }
                         parkingSpot.filePath = FileName;
                     }
-                    else
-                    {
+                    else {
                         parkingSpot.filePath = (from spotID in _context.ParkingSpot
                                                 where spotID.ParkingSpotID.ToString() == parkingSpot.ParkingSpotID.ToString()
                                                 select spotID.filePath).FirstOrDefault();

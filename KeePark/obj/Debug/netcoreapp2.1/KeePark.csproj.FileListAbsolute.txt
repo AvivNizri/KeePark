@@ -161,3 +161,16 @@ C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeeP
 \\Mac\Home\Documents\MyProject\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\Statistics\UserStat.cshtml.g.cs
 \\Mac\Home\Documents\MyProject\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\GeneralUsers\AdminDashboard.cshtml.g.cs
 \\Mac\Home\Documents\MyProject\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\GeneralUsers\Index.cshtml.g.cs
+C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\GeneralUsers\AdminDashboard.g.cshtml.cs
+C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\GeneralUsers\Index.g.cshtml.cs
+C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ReserveSpots\Create.g.cshtml.cs
+C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ReserveSpots\Delete.g.cshtml.cs
+C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ReserveSpots\Details.g.cshtml.cs
+C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ReserveSpots\Edit.g.cshtml.cs
+C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ReserveSpots\Index.g.cshtml.cs
+C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ReserveSpots\InvalidDate.g.cshtml.cs
+C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ReserveSpots\InvalidHour.g.cshtml.cs
+C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ReserveSpots\SorryChooseDurationForTheDayYouSelected.g.cshtml.cs
+C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ReserveSpots\SorrySpotIsTaken.g.cshtml.cs
+C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\Statistics\popularSpot.g.cshtml.cs
+C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\Statistics\UserStat.g.cshtml.cs

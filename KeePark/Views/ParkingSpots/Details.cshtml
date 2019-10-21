@@ -1,4 +1,4 @@
-﻿@model KeePark.Models.ParkingSpot
+@model KeePark.Models.ParkingSpot
 
 @{
     ViewBag.Title = "Spot Details";
@@ -46,6 +46,7 @@
         <script>
             // Initialize and add the map
             var address = '@Html.DisplayFor(model => model.Address)';
+
             function initMap() {
                 var geocoder = new google.maps.Geocoder();
                 geocoder.geocode({'address': address}, function(results, status) {
@@ -64,6 +65,7 @@
                     }
                 });
             }
+
         </script>
         <!--Load the API from the specified URL
         * The async attribute allows the browser to render the page while the API loads
@@ -71,7 +73,7 @@
         * The callback parameter executes the initMap() function
         -->
         <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=[key]&callback=initMap">
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALOX8Te8ZntEt5CCkJMymKEZzTcnfsznk&callback=initMap">
         </script>
     </div>
 </div>
@@ -114,6 +116,7 @@
 </div>
 
 <script>
+
     window.fbAsyncInit = function () {
         FB.init({
             appId: '778267219277553',
@@ -121,7 +124,11 @@
             xfbml: true,
             version: 'v4.0'
         });
+
     }
+
+
+
     function post() {
         FB.ui(
             {
@@ -143,3 +150,4 @@
 </script>
 
 <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+
