@@ -37,6 +37,7 @@ namespace KeePark
             });
 
 
+
             services.AddMvc();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddRazorPagesOptions(options =>
@@ -53,8 +54,7 @@ namespace KeePark
                 options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
             });
 
-
-            services.AddAuthorization();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<KeeParkContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("KeeParkContext")));

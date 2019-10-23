@@ -19,9 +19,6 @@ namespace KeePark.Areas.Identity
                 services.AddDbContext<IdentityContext>(options =>
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("IdentityContextConnection")));
-
-                //services.AddDefaultIdentity<GeneralUser>()
-                 //   .AddEntityFrameworkStores<IdentityContext>();
             });
         }
     }

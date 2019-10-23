@@ -52,8 +52,8 @@ namespace KeePark.Controllers
             return View(reserveSpot);
         }
 
-        // GET: ReserveSpots/Create
-        public IActionResult Create()
+      //  [Route("ReserveSpots/Create/{parkingSpotID}")]
+        public IActionResult Create([FromRoute]Guid parkingSpotID)
         {
             var carN = (from mycar in _identitycontext.GeneralUser
                         where mycar.Email == User.Identity.Name
@@ -68,6 +68,7 @@ namespace KeePark.Controllers
                 carNumber = carN,
                 ReservationDate= System.DateTime.Now,
                 CreatedOn= System.DateTime.Now,
+                SpotID=parkingSpotID
 
             };
 
@@ -77,9 +78,10 @@ namespace KeePark.Controllers
         // POST: ReserveSpots/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Route("ReserveSpots/Create/{parkingSpotID}")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ReserveSpotID,UserID,SpotID,CreatedOn,ReservationDate,ReservationHour,Duration,carNumber")] ReserveSpot reserveSpot, Guid parkingSpotID)
+        public async Task<IActionResult> Create([Bind("ReserveSpotID,UserID,SpotID,CreatedOn,ReservationDate,ReservationHour,Duration,carNumber")] ReserveSpot reserveSpot, [FromRoute]Guid parkingSpotID)
         {
             if (ModelState.IsValid)
             {
@@ -100,10 +102,9 @@ namespace KeePark.Controllers
                                         where bla.UserName == User.Identity.Name
                                         select bla.UID).FirstOrDefault();
      
-                            Guid er = new Guid("c6788e87-b95a-4af9-af8e-5de7c3bff701"); //delete
                             reserveSpot.ReserveSpotID = Guid.NewGuid();
                             reserveSpot.CreatedOn = System.DateTime.Now;
-                            reserveSpot.Spot = _context.ParkingSpot.FirstOrDefault(u => u.ParkingSpotID ==er);
+                            reserveSpot.Spot = _context.ParkingSpot.FirstOrDefault(u => u.ParkingSpotID == parkingSpotID);
 
                              int count = 0;
                              foreach (var t in _context.ReserveSpot)
@@ -129,8 +130,8 @@ namespace KeePark.Controllers
 
 
                               var myreservations = (from reservations in _context.ReserveSpot
-                                                     where reservations.Spot.ParkingSpotID == er   //replace
-                                                     select reservations);
+                                                     where reservations.Spot.ParkingSpotID == parkingSpotID  //replace
+                                                    select reservations);
                                var m = (from t in myreservations
                                         where t.ReservationDate == reserveSpot.ReservationDate
                                         select t);
@@ -144,8 +145,8 @@ namespace KeePark.Controllers
                                      }
 
                     var reserves = from res in _context.ReserveSpot
-                                   where res.ReservationDate == reserveSpot.ReservationDate && res.SpotID == er
-                                       select res;
+                                   where res.ReservationDate == reserveSpot.ReservationDate && res.SpotID == parkingSpotID
+                                   select res;
                     foreach(var r in reserves){
 
                         if ((reserveSpot.ReservationHour < r.ReservationHour + r.Duration && reserveSpot.ReservationHour >= r.ReservationHour))

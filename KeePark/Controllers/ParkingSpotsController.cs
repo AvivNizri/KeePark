@@ -11,6 +11,9 @@ using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
+using KeePark.Data.Enums;
+using Microsoft.AspNetCore.Identity;
+using KeePark.Data;
 
 namespace KeePark.Controllers
 {
@@ -18,19 +21,26 @@ namespace KeePark.Controllers
     {
         private readonly KeeParkContext _context;
         private readonly IdentityContext _identity;
+        private readonly UserManager<GeneralUser> UserManager;
         private readonly IHostingEnvironment hostingEnvironment;
 
-        public ParkingSpotsController(IHostingEnvironment hostingEnviroment, KeeParkContext context, IdentityContext identity)
+        public ParkingSpotsController(IHostingEnvironment hostingEnviroment, KeeParkContext context, IdentityContext identity,UserManager<GeneralUser> userManager)
         {
             this.hostingEnvironment = hostingEnviroment;
             this._identity = identity;
             _context = context;
+            UserManager = userManager;
         }
 
         // GET: ParkingSpots
         public async Task<IActionResult> Index()
         {
-            return View(await _context.ParkingSpot.ToListAsync());
+            var userid = UserManager.GetUserId(HttpContext.User);
+            GeneralUser user = UserManager.FindByIdAsync(userid).Result;
+            var spots = (from spot in _context.ParkingSpot
+                           where spot.OwnerID == user.UID
+                           select spot);
+            return View(await spots.ToListAsync());
         }
 
         // GET: ParkingSpots/Details/5
@@ -51,6 +61,52 @@ namespace KeePark.Controllers
             return View(parkingSpot);
         }
 
+        public ActionResult ParkingSpotResult(string spotsName, string spotsAddress, string spotsType)
+        {
+            var spots = from spot in _context.ParkingSpot select spot;
+
+            // Smart Search
+            if (!String.IsNullOrEmpty(spotsName))
+            {
+                spots = spots.Where(a => a.SpotName.Contains(spotsName));
+            }
+
+            if (!String.IsNullOrEmpty(spotsAddress))
+            {
+                spots = spots.Where(a => a.Address.Contains(spotsAddress));
+            }
+
+
+            //Search by the optionSet 
+
+            //if (desc != null)
+            //{
+            //    movies = movies.Where(a => a.Description.Contains(desc));
+            //}
+
+            return View(spots.ToList());
+        }
+
+
+        /*
+                        if (String.IsNullOrEmpty(searchingParameter)) { return NotFound(); }
+
+                        var parkingSpotList = (from parkingSpot in _context.ParkingSpot
+                                               where parkingSpot.Address.Contains(searchingParameter) ||
+                                               parkingSpot.SpotName.Contains(searchingParameter) ||
+                                               ParkingSpotEnums.SiteType.Cinema.ToString().Contains(searchingParameter) ||
+                                               ParkingSpotEnums.SiteType.PrivateParking.ToString().Contains(searchingParameter) ||
+                                               ParkingSpotEnums.SiteType.Resturant.ToString().Contains(searchingParameter) ||
+                                               ParkingSpotEnums.SiteType.Theater.ToString().Contains(searchingParameter)
+                                               orderby parkingSpot.SpotName
+                                               select parkingSpot).ToList();
+
+                        if (parkingSpotList == null || parkingSpotList.Count == 0) { return NotFound(); }
+
+                        return View(parkingSpotList);*/
+
+
+
         // GET: ParkingSpots/Create
         public IActionResult Create()
         {
@@ -62,7 +118,8 @@ namespace KeePark.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ParkingSpotID,SpotName,OwnerID,Address,Price,NunOfOrders,filePath,SpotDescription,parkingPhoto")] ParkingSpotCreate parkingSpot)
+        public async Task<IActionResult> Create([Bind("ParkingSpotID,SpotName,OwnerID,Address,Price,NunOfOrders,filePath,SpotDescription,parkingPhoto,SiteType")] ParkingSpotCreate parkingSpot)
+
         {
             var currentUser = (from userID in _identity.GeneralUser
                                where userID.Id == User.FindFirstValue(ClaimTypes.NameIdentifier)
@@ -93,7 +150,8 @@ namespace KeePark.Controllers
                     Price = parkingSpot.Price,
                     NunOfOrders = 0,
                     SpotDescription = parkingSpot.SpotDescription,
-                    filePath = FileName
+                    filePath = FileName,
+                    SiteType = parkingSpot.SiteType
                 };
                 _context.Add(newSpot);
                 await _context.SaveChangesAsync();
