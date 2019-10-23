@@ -174,3 +174,4 @@ C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeeP
 C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ReserveSpots\SorrySpotIsTaken.g.cshtml.cs
 C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\Statistics\popularSpot.g.cshtml.cs
 C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\Statistics\UserStat.g.cshtml.cs
+C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\bin\Debug\netcoreapp2.1\Accord.dll.config
