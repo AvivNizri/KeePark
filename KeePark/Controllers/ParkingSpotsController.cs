@@ -34,7 +34,7 @@ namespace KeePark.Controllers
         }
 
         // GET: ParkingSpots/Details/5
-        public async Task<IActionResult> Details(Guid? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -67,7 +67,9 @@ namespace KeePark.Controllers
             var currentUser = (from userID in _identity.GeneralUser
                                where userID.Id == User.FindFirstValue(ClaimTypes.NameIdentifier)
                                select userID.UID).FirstOrDefault();
-            
+
+            var numOfSpots = _context.ParkingSpot.Count();
+                              
             if (ModelState.IsValid)
             {
                 string FileName = null;
@@ -86,7 +88,7 @@ namespace KeePark.Controllers
                 }
                 ParkingSpot newSpot = new ParkingSpot
                 {
-                    ParkingSpotID = Guid.NewGuid(),
+                    ParkingSpotID = numOfSpots+1,
                     SpotName = parkingSpot.SpotName,
                     OwnerID = currentUser,
                     Address = parkingSpot.Address,
@@ -103,7 +105,7 @@ namespace KeePark.Controllers
         }
 
         // GET: ParkingSpots/Edit/5
-        public async Task<IActionResult> Edit(Guid? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -123,7 +125,7 @@ namespace KeePark.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("ParkingSpotID,SpotName,OwnerID,Address,Price,NunOfOrders,filePath,SpotDescription")] ParkingSpot parkingSpot,
+        public async Task<IActionResult> Edit(int id, [Bind("ParkingSpotID,SpotName,OwnerID,Address,Price,NunOfOrders,filePath,SpotDescription")] ParkingSpot parkingSpot,
             IFormFile file)
         {
             
@@ -150,9 +152,14 @@ namespace KeePark.Controllers
                         parkingSpot.filePath = FileName;
                     }
                     else {
+                        // without doing those linq calls we saw that the edit causing disapearnce of data!
                         parkingSpot.filePath = (from spotID in _context.ParkingSpot
                                                 where spotID.ParkingSpotID.ToString() == parkingSpot.ParkingSpotID.ToString()
                                                 select spotID.filePath).FirstOrDefault();
+
+                        parkingSpot.OwnerID = (from owner in _context.ParkingSpot
+                                               where owner.ParkingSpotID.ToString() == parkingSpot.ParkingSpotID.ToString()
+                                               select owner.OwnerID).FirstOrDefault();
                     }
                     _context.Update(parkingSpot);
                     await _context.SaveChangesAsync();
@@ -174,7 +181,7 @@ namespace KeePark.Controllers
         }
 
         // GET: ParkingSpots/Delete/5
-        public async Task<IActionResult> Delete(Guid? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -202,7 +209,7 @@ namespace KeePark.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ParkingSpotExists(Guid id)
+        private bool ParkingSpotExists(int id)
         {
             return _context.ParkingSpot.Any(e => e.ParkingSpotID == id);
         }

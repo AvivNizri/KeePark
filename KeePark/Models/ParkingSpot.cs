@@ -11,7 +11,7 @@ namespace KeePark.Models
     public class ParkingSpot
     {
         [Key]
-        public Guid ParkingSpotID { get; set; }
+        public int ParkingSpotID { get; set; }
         [Required]
         [Display(Name = "Parking Name")]
         public string SpotName { get; set; }
