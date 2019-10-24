@@ -17,7 +17,7 @@ namespace KeePark.Models
         public string UserID { get; set; }
         public virtual GeneralUser User { get; set; }  //object of type private user
         [ForeignKey("SpotID")]
-        public Guid SpotID { get; set; }
+        public int SpotID { get; set; }
         public virtual ParkingSpot Spot { get; set; } //object of type Parking Spot
         [HiddenInput]    //we dont want the user to edit this property
         [DataType(DataType.Date)]

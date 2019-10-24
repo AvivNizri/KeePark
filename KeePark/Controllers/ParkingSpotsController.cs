@@ -88,7 +88,7 @@ namespace KeePark.Controllers
                 }
                 ParkingSpot newSpot = new ParkingSpot
                 {
-                    ParkingSpotID = numOfSpots+1,
+                    ParkingSpotID = numOfSpots + 1,
                     SpotName = parkingSpot.SpotName,
                     OwnerID = currentUser,
                     Address = parkingSpot.Address,

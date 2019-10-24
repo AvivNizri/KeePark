@@ -53,10 +53,10 @@ namespace KeePark.Services
             // First I bring the entire transactions/Reservations from the DB
             List<ReserveSpot> allReservations = _context.ReserveSpot.ToList();
             // Second I am listing whole spots shown in the entire reservations
-            List<Guid> allSpots = new List<Guid>();
+            List<int> allSpots = new List<int>();
             allReservations.ForEach(reserve =>
             {
-                if (reserve.SpotID != Guid.Empty){
+                if (reserve.SpotID.ToString() != string.Empty){
                     allSpots.Add(reserve.SpotID);
                 }
             });
@@ -67,11 +67,11 @@ namespace KeePark.Services
             Apriori apriori = new Apriori(_threshold, _minConfidence);
 
             // And now we will create the learning on the array we prepared before
-            classifier = apriori.Learn(allSpots);
+            //classifier = apriori.Learn(allSpots);
 
         }
 
-
+        /*
         public List<ParkingSpot> GetRecommendedProducts(int id)
         {
             if (classifier == null)
@@ -91,7 +91,7 @@ namespace KeePark.Services
             return test.ToList();
 
         }
-
+        */
         private SortedSet<int>[] ToSortedSet(List<int>[] orders)
         {
             List<SortedSet<int>> retVal = new List<SortedSet<int>>();
