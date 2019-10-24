@@ -64,7 +64,7 @@ using KeePark.Models;
 #line default
 #line hidden
             BeginContext(127, 51, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "068fdf0496934df0861092ca6fe0e748", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e9cd2c07f6a440d5a50467643c0427fc", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -294,7 +294,7 @@ using KeePark.Models;
             WriteLiteral("\r\n            </dd>\r\n        </dl>\r\n\r\n\r\n        <div>\r\n            ");
             EndContext();
             BeginContext(3575, 65, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b8c8817bcf3b4f7e9e3358495b669dd5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0193dc1b09684e8e95d092d78095b411", async() => {
                 BeginContext(3632, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -329,7 +329,7 @@ using KeePark.Models;
             WriteLiteral(" |\r\n            ");
             EndContext();
             BeginContext(3656, 38, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c6f67c5afb8d4447bb3346ba1972d222", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d45646183553494698452799338c9a43", async() => {
                 BeginContext(3678, 12, true);
                 WriteLiteral("Back to List");
                 EndContext();

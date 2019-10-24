@@ -48,21 +48,7 @@
                 <a id="edit_details" href="/Identity/Account/Manage">Edit Details</a>
 
 
-                <canvas id="myCanvas" width="1100" height="20"></canvas>
-
-                <script>
-        var c = document.getElementById("myCanvas");
-        var ctx = c.getContext("2d");
-
-        // Create gradient
-        var grd = ctx.createLinearGradient(0, 0, 900, 0);
-        grd.addColorStop(0, "#c2d6d6");
-        grd.addColorStop(1, "white");
-
-        // Fill with gradient
-        ctx.fillStyle = grd;
-        ctx.fillRect(10, 10, 950, 80);
-                </script><br />
+            
 
 
 
@@ -71,33 +57,28 @@
             <div class="col-sm-8">
                 <h5>Order History</h5>
 
+                <canvas id="myCanvas" width="1100" height="70"></canvas>
 
-                <div>
-                    <h5>Order History</h5>
-                </div>
+                <script>
+                    var c = document.getElementById("myCanvas");
+                    var ctx = c.getContext("2d");
+
+                    // Create gradient
+                    var grd = ctx.createLinearGradient(0, 0, 900, 0);
+                    grd.addColorStop(0, "#000000");
+                    grd.addColorStop(1, "white");
+
+                    // Fill with gradient
+                    ctx.fillStyle = grd;
+                    ctx.fillRect(10, 10, 950, 80);
+                </script><br />
 
 
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="order_number">UserID</th>
-                            <th class="date">Spot</th>
-                            <th class="site">CreatedOn</th>
-                            <th class="total">Reservation Date</th>
-                            <th class="total">Reservation Hour</th>
-                            <th class="total">Duration</th>
-                            <th class="total">carNumber</th>
-                        </tr>
-                    </thead>
-                </table>
-
-                <div id="tab2" class="tab-pane">
-                
-                </div>
+            </div>
             </div>
         </div>
-    </div>
+
 
   
 
