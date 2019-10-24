@@ -64,10 +64,11 @@ namespace KeePark.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ParkingSpotID,SpotName,OwnerID,Address,Price,NunOfOrders,filePath,SpotDescription,parkingPhoto")] ParkingSpotCreate parkingSpot)
         {
+            // get the current user personal id
             var currentUser = (from userID in _identity.GeneralUser
                                where userID.Id == User.FindFirstValue(ClaimTypes.NameIdentifier)
                                select userID.UID).FirstOrDefault();
-
+            // with that I am generating the spotID 
             var numOfSpots = _context.ParkingSpot.Count();
                               
             if (ModelState.IsValid)
@@ -79,8 +80,7 @@ namespace KeePark.Controllers
                     FileName = Guid.NewGuid().ToString() + "_" + parkingSpot.parkingPhoto.FileName;
                     
                     string filePath = Path.Combine(UploadFolder, FileName);
-                    //string filePath = Path.GetDirectoryName(Path.Combine(UploadFolder,FileName));
-                    //parkingSpot.parkingPhoto.CopyTo(new FileStream(filePath, FileMode.Create));
+
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
                         await parkingSpot.parkingPhoto.CopyToAsync(fileStream);
@@ -139,12 +139,16 @@ namespace KeePark.Controllers
             {
                 try
                 {
+                    // if the file did changed than ..
                     if (file != null)
                     {
+                        // creating the entire path to the project using the hostingENV
                         string UploadFolder = Path.Combine(hostingEnvironment.WebRootPath, "SpotImages");
+                        // generating unique filename per file 
                         var FileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-
+                        // so the whole path to the file also will be unique using the combine method
                         string filePath = Path.Combine(UploadFolder, FileName);
+                        // handeling the saving of a picture using fileStream format
                         using (var fileStream = new FileStream(filePath, FileMode.Create))
                         {
                             await file.CopyToAsync(fileStream);

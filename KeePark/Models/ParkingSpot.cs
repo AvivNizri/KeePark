@@ -12,6 +12,8 @@ namespace KeePark.Models
     public class ParkingSpot
     {
         [Key]
+        // the following line is so important to enable the option to add value manualy
+        // which is also a key by the creation !!!
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ParkingSpotID { get; set; }
         [Required]
