@@ -38,32 +38,68 @@
                         <p class="phone"> @Html.DisplayFor(modelItem => item.PhoneNumber)</p>
                     }
                 }
-                <a id="reserve_parking" href="/ReserveSpots/Create">Reserve your Parking</a>
+
+                <a id="my_reservations" href="/ReserveSpots/Index">Reservation History</a>
                 <br />
-                <a id="future_orders">My Future Orders</a>
+                <a id="future_orders" href="/ReserveSpots/FutureOrders">My Future Orders</a>
                 <br />
                 <a id="rent_site" href="/ParkingSpots/Create">Rent Your Site</a>
                 <br />
                 <a id="edit_details" href="/Identity/Account/Manage">Edit Details</a>
 
 
+                <canvas id="myCanvas" width="1100" height="20"></canvas>
+
+                <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+
+        // Create gradient
+        var grd = ctx.createLinearGradient(0, 0, 900, 0);
+        grd.addColorStop(0, "#c2d6d6");
+        grd.addColorStop(1, "white");
+
+        // Fill with gradient
+        ctx.fillStyle = grd;
+        ctx.fillRect(10, 10, 950, 80);
+                </script><br />
+
+
+
+
             </div>
             <div class="col-sm-8">
                 <h5>Order History</h5>
+
+
+                <div>
+                    <h5>Order History</h5>
+                </div>
+
+
+
                 <table>
                     <thead>
                         <tr>
-                            <th class="order_number">Order</th>
-                            <th class="date">Date</th>
-                            <th class="site">Site</th>
-                            <th class="total">Total</th>
+                            <th class="order_number">UserID</th>
+                            <th class="date">Spot</th>
+                            <th class="site">CreatedOn</th>
+                            <th class="total">Reservation Date</th>
+                            <th class="total">Reservation Hour</th>
+                            <th class="total">Duration</th>
+                            <th class="total">carNumber</th>
                         </tr>
                     </thead>
                 </table>
 
+                <div id="tab2" class="tab-pane">
+                
+                </div>
             </div>
         </div>
     </div>
+
+  
 
     </br>
     </br>

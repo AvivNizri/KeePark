@@ -26,15 +26,15 @@ namespace KeePark.Controllers
         public IActionResult UserStat()
         {
             var t = from u in _context.ReserveSpot
-                    where u.CreatedOn.Month == System.DateTime.Today.Month
+                    where u.CreatedOn.Year == System.DateTime.Today.Year
                     select u;
 
-             var groupJoinQuery =
-             from orders in t
-             join users in _identitycontext.GeneralUser on orders.UserID equals users.UID into uorderGroup
-             from uorder in uorderGroup
-             group uorder by uorder.UID into g
-             select new { Name = g.Key, Count = g.Count() };
+            var groupJoinQuery =
+            from orders in t
+            join users in _context.ReserveSpot on orders.UserID equals users.UserID into uorderGroup
+           from uorder in uorderGroup
+           group uorder by uorder.UserID into g
+             select new { Name =g.Key, Count = g.Count() };
 
 
                      var list = (from mygroup in groupJoinQuery

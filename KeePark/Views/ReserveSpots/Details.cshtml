@@ -15,7 +15,7 @@
         <p id="humidity"></p>
 
         <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=[key]&callback=initMap">
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVcfCRAnKSNw2eYs2Gev0ZMS4sHmG30hE&callback=initMap">
         </script>
 
         <script>
@@ -40,7 +40,7 @@
 
            function weather(lt, lg) {
                 $(document).ready(function () {
-                    $.get("https://api.openweathermap.org/data/2.5/weather?lat=" + lt + "&lon=" + lg + "&APPID=[key]&units=metric", function (response) {
+                    $.get("https://api.openweathermap.org/data/2.5/weather?lat=" + lt + "&lon=" + lg + "&APPID=010276a0143f95cc47608eb8666c4365&units=metric", function (response) {
                         //response
                         console.log(response);
                       $("#name").text("City: "+response.name);
@@ -63,11 +63,12 @@
         <h2>Details Of Your Reservation</h2>
 
         <dl class="dl-horizontal">
+
             <dt>
-                @Html.DisplayNameFor(model => model.User)
+                @Html.DisplayNameFor(model => model.UserID)
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.User.UID)
+                @Html.DisplayFor(model => model.UserID)
             </dd>
             <dt>
                 @Html.DisplayNameFor(model => model.Spot)

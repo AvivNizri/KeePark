@@ -13,9 +13,8 @@ namespace KeePark.Models
     {   [Key]
         [HiddenInput]
         public Guid ReserveSpotID { get; set; }
-        [ForeignKey("UserID")]
         public string UserID { get; set; }
-        public virtual GeneralUser User { get; set; }  //object of type private user
+      //  public virtual GeneralUser User { get; set; }  //object of type private user
         [ForeignKey("SpotID")]
         public Guid SpotID { get; set; }
         public virtual ParkingSpot Spot { get; set; } //object of type Parking Spot

@@ -19,60 +19,6 @@ namespace KeePark.Migrations.KeePark
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("KeePark.Data.GeneralUser", b =>
-                {
-                    b.Property<string>("UID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AccessFailedCount");
-
-                    b.Property<string>("Address");
-
-                    b.Property<double>("Balance");
-
-                    b.Property<string>("CarNumber");
-
-                    b.Property<string>("CarType");
-
-                    b.Property<string>("ConcurrencyStamp");
-
-                    b.Property<string>("CreditCard");
-
-                    b.Property<string>("Email");
-
-                    b.Property<bool>("EmailConfirmed");
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<string>("Id");
-
-                    b.Property<string>("LastName");
-
-                    b.Property<bool>("LockoutEnabled");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd");
-
-                    b.Property<string>("NormalizedEmail");
-
-                    b.Property<string>("NormalizedUserName");
-
-                    b.Property<string>("PasswordHash");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<bool>("PhoneNumberConfirmed");
-
-                    b.Property<string>("SecurityStamp");
-
-                    b.Property<bool>("TwoFactorEnabled");
-
-                    b.Property<string>("UserName");
-
-                    b.HasKey("UID");
-
-                    b.ToTable("GeneralUser");
-                });
-
             modelBuilder.Entity("KeePark.Models.ParkingSpot", b =>
                 {
                     b.Property<Guid>("ParkingSpotID")
@@ -122,8 +68,6 @@ namespace KeePark.Migrations.KeePark
 
                     b.HasIndex("SpotID");
 
-                    b.HasIndex("UserID");
-
                     b.ToTable("ReserveSpot");
                 });
 
@@ -133,10 +77,6 @@ namespace KeePark.Migrations.KeePark
                         .WithMany("SpotReservations")
                         .HasForeignKey("SpotID")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("KeePark.Data.GeneralUser", "User")
-                        .WithMany("Reservations")
-                        .HasForeignKey("UserID");
                 });
 #pragma warning restore 612, 618
         }
