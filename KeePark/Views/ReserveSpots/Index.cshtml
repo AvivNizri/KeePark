@@ -5,16 +5,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Order History</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<form method="get" action="/ReserveSpots/Index">
+    Spot's Name: <input type="text" name="spotsName" />
+    Reservations's Date: <input type="datetime" name="reservationsDate" />
+    Car Number: <input type="text" name="carNumber" />
+    <input type="submit" value="search" />
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.User)
+                @Html.DisplayNameFor(model => model.UserID)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Spot)
@@ -42,12 +46,11 @@
         {
           
 
-            if (item.User.UserName==User.Identity.Name)
-            {
+
                 <tr>
 
                     <td>
-                        @Html.DisplayFor(modelItem => item.User.UID)
+                        @Html.DisplayFor(modelItem => item.UserID)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Spot.SpotName)
@@ -68,13 +71,13 @@
                         @Html.DisplayFor(modelItem => item.carNumber)
                     </td>
                     <td>
-                        
+
                         <a asp-action="Edit" asp-route-id="@item.ReserveSpotID">Edit</a> |
                         <a asp-action="Details" asp-route-id="@item.ReserveSpotID">Details</a> |
                         <a asp-action="Delete" asp-route-id="@item.ReserveSpotID">Delete</a>
                     </td>
                 </tr>
             }
-        }
-        </tbody>
-    </table>
+        
+    </tbody>
+</table>

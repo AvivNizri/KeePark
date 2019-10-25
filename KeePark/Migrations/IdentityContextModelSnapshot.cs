@@ -126,6 +126,8 @@ namespace KeePark.Migrations
 
                     b.Property<int>("Duration");
 
+                    b.Property<string>("GeneralUserId");
+
                     b.Property<DateTime>("ReservationDate");
 
                     b.Property<int>("ReservationHour");
@@ -138,9 +140,9 @@ namespace KeePark.Migrations
 
                     b.HasKey("ReserveSpotID");
 
-                    b.HasIndex("SpotID");
+                    b.HasIndex("GeneralUserId");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("SpotID");
 
                     b.ToTable("ReserveSpot");
                 });
@@ -257,14 +259,14 @@ namespace KeePark.Migrations
 
             modelBuilder.Entity("KeePark.Models.ReserveSpot", b =>
                 {
+                    b.HasOne("KeePark.Data.GeneralUser")
+                        .WithMany("Reservations")
+                        .HasForeignKey("GeneralUserId");
+
                     b.HasOne("KeePark.Models.ParkingSpot", "Spot")
                         .WithMany("SpotReservations")
                         .HasForeignKey("SpotID")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("KeePark.Data.GeneralUser", "User")
-                        .WithMany("Reservations")
-                        .HasForeignKey("UserID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
