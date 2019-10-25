@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace KeePark.Migrations
+namespace KeePark.Migrations.KeePark
 {
-    public partial class newUpdatedSystem : Migration
+    public partial class newModelsCreated : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -33,7 +33,8 @@ namespace KeePark.Migrations
                     CarNumber = table.Column<string>(nullable: true),
                     CarType = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
-                    Balance = table.Column<double>(nullable: false)
+                    Balance = table.Column<double>(nullable: false),
+                    History = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

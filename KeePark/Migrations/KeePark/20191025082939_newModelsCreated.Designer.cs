@@ -4,14 +4,16 @@ using KeePark.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace KeePark.Migrations
+namespace KeePark.Migrations.KeePark
 {
     [DbContext(typeof(KeeParkContext))]
-    partial class KeeParkContextModelSnapshot : ModelSnapshot
+    [Migration("20191025082939_newModelsCreated")]
+    partial class newModelsCreated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,6 +45,8 @@ namespace KeePark.Migrations
                     b.Property<bool>("EmailConfirmed");
 
                     b.Property<string>("FirstName");
+
+                    b.Property<string>("History");
 
                     b.Property<string>("Id");
 
@@ -134,7 +138,7 @@ namespace KeePark.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("KeePark.Data.GeneralUser", "User")
-                        .WithMany("Reservations")
+                        .WithMany()
                         .HasForeignKey("UserID");
                 });
 #pragma warning restore 612, 618

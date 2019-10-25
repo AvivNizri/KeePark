@@ -20,7 +20,9 @@ namespace KeePark.Services
     public class MLApriori
     {
         private readonly KeeParkContext _context;
+        // _threshold is equivelent to the support - basiclly its the amount of times an item is found in different baskets/sub-list in the matrix from the dataset
         private readonly int _threshold;
+        // _confidense is an indication of how often the rule has been found true
         private readonly double _minConfidence;
         AssociationRuleMatcher<Guid> classifier = null;
 
@@ -32,28 +34,30 @@ namespace KeePark.Services
             _threshold = 2;
             _minConfidence = .1;
         }
+        /*
+                public async Task UpdateRecommendedProductsAsync()
+                {
+                    await Task.Run(() =>
+                    {
+                        UpdateRecommendedProducts();
+                    });
+                }
 
-        public async Task UpdateRecommendedProductsAsync()
-        {
-            await Task.Run(() =>
-            {
-                UpdateRecommendedProducts();
-            });
-        }
-/*
-        internal AssociationRule<int>[] GetRules()
-        {
-            if (classifier == null)
-                UpdateRecommendedProducts();
-            return classifier.Rules;
-        }
-*/
-        public void UpdateRecommendedProducts()
+                internal AssociationRule<int>[] GetRules()
+                {
+                    if (classifier == null)
+                        UpdateRecommendedProducts();
+                    return classifier.Rules;
+                }
+        */
+        public void RecommendedSpots()
         {
             // First I bring the entire transactions/Reservations from the DB
             List<ReserveSpot> allReservations = _context.ReserveSpot.ToList();
             // Second I am listing whole spots shown in the entire reservations
-            List<int> allSpots = new List<int>();
+            List<int> allUsers = new List<int>();
+            List<int[]> allSpots = new List<int[]>();
+            /*
             allReservations.ForEach(reserve =>
             {
                 if (reserve.SpotID.ToString() != string.Empty){
@@ -61,7 +65,7 @@ namespace KeePark.Services
                 }
             });
             allSpots.ToArray();
-            
+            */
             // Apriori Algorithm is used to determine the frequent spot in the entire transactions found in the DB.
             // Create a new a-priori learning algorithm with the properties we set at the C-TOR 
             Apriori apriori = new Apriori(_threshold, _minConfidence);

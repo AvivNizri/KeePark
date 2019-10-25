@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace KeePark.Migrations.Identity
+namespace KeePark.Migrations
 {
-    public partial class newUpdatedIdentity : Migration
+    public partial class GeneralUserUpdate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,30 +48,13 @@ namespace KeePark.Migrations.Identity
                     CarNumber = table.Column<string>(nullable: true),
                     CarType = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
-                    Balance = table.Column<double>(nullable: false)
+                    Balance = table.Column<double>(nullable: false),
+                    History = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                     table.UniqueConstraint("AK_AspNetUsers_UID", x => x.UID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ParkingSpot",
-                columns: table => new
-                {
-                    ParkingSpotID = table.Column<int>(nullable: false),
-                    SpotName = table.Column<string>(nullable: false),
-                    OwnerID = table.Column<string>(nullable: true),
-                    Address = table.Column<string>(nullable: false),
-                    Price = table.Column<int>(nullable: false),
-                    NunOfOrders = table.Column<int>(nullable: false),
-                    filePath = table.Column<string>(nullable: true),
-                    SpotDescription = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ParkingSpot", x => x.ParkingSpotID);
                 });
 
             migrationBuilder.CreateTable(
@@ -180,36 +163,6 @@ namespace KeePark.Migrations.Identity
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "ReserveSpot",
-                columns: table => new
-                {
-                    ReserveSpotID = table.Column<Guid>(nullable: false),
-                    UserID = table.Column<string>(nullable: true),
-                    SpotID = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    ReservationDate = table.Column<DateTime>(nullable: false),
-                    ReservationHour = table.Column<int>(nullable: false),
-                    Duration = table.Column<int>(nullable: false),
-                    carNumber = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ReserveSpot", x => x.ReserveSpotID);
-                    table.ForeignKey(
-                        name: "FK_ReserveSpot_ParkingSpot_SpotID",
-                        column: x => x.SpotID,
-                        principalTable: "ParkingSpot",
-                        principalColumn: "ParkingSpotID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ReserveSpot_AspNetUsers_UserID",
-                        column: x => x.UserID,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -248,16 +201,6 @@ namespace KeePark.Migrations.Identity
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ReserveSpot_SpotID",
-                table: "ReserveSpot",
-                column: "SpotID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ReserveSpot_UserID",
-                table: "ReserveSpot",
-                column: "UserID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -278,13 +221,7 @@ namespace KeePark.Migrations.Identity
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "ReserveSpot");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "ParkingSpot");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
