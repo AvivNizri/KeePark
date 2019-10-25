@@ -204,27 +204,26 @@ namespace KeePark.Controllers
                     _context.Add(reserveSpot);
                     await _context.SaveChangesAsync();
 
-                    //GeneralUser thisUser = new GeneralUser();
-                    var username = User.Identity.Name;
-                    var user = await _identitycontext.GeneralUser.FirstOrDefaultAsync(u => u.UserName.Equals(username));
-                    //thisUser = (from cuser in _identitycontext.GeneralUser
-                    //              where cuser.Id == reserveSpot.UserID
-                    //             select cuser).FirstOrDefault();
-                    if (user == null)
+                    // finding current user by name
+                    var uName = User.Identity.Name;
+                    var thisUser = await _identitycontext.GeneralUser.FirstOrDefaultAsync(u => u.UserName.Equals(uName));
+
+                    // validation thisUser really exists
+                    if (thisUser == null)
                         return NotFound();
 
                     // this section is to save the history of spots reserved to serve the ML algo
-                    string uHistory = user.History;
+                    string uHistory = thisUser.History;
                     if (!string.IsNullOrEmpty(uHistory))
                     {
                         uHistory += ",";
                     }
                     uHistory += reserveSpot.SpotID.ToString();
-                    user.History = uHistory;
+                    thisUser.History = uHistory;
 
                     try
                     {
-                        _identitycontext.Update(user);
+                        _identitycontext.Update(thisUser);
                         await _identitycontext.SaveChangesAsync();
                     }
                     catch (DbUpdateConcurrencyException)

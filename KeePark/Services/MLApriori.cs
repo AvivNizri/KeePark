@@ -26,30 +26,29 @@ namespace KeePark.Services
         private readonly double _minConfidence;
         AssociationRuleMatcher<Guid> classifier = null;
 
-
-
         public MLApriori(KeeParkContext db)
         {
             _context = db;
             _threshold = 2;
             _minConfidence = .1;
         }
-        /*
-                public async Task UpdateRecommendedProductsAsync()
-                {
-                    await Task.Run(() =>
-                    {
-                        UpdateRecommendedProducts();
-                    });
-                }
 
-                internal AssociationRule<int>[] GetRules()
-                {
-                    if (classifier == null)
-                        UpdateRecommendedProducts();
-                    return classifier.Rules;
-                }
-        */
+        public async Task UpdateRecommendedProductsAsync()
+        {
+            await Task.Run(() =>
+            {
+                RecommendedSpots();
+            });
+        }
+
+        internal AssociationRule<int>[] GetRules()
+        {
+            if (classifier == null)
+                RecommendedSpots();
+            return classifier.Rules();
+        }
+
+
         public void RecommendedSpots()
         {
             // First I bring the entire transactions/Reservations from the DB
@@ -57,7 +56,7 @@ namespace KeePark.Services
             // Second I am listing whole spots shown in the entire reservations
             List<int> allUsers = new List<int>();
             List<int[]> allSpots = new List<int[]>();
-            /*
+            
             allReservations.ForEach(reserve =>
             {
                 if (reserve.SpotID.ToString() != string.Empty){
@@ -65,7 +64,7 @@ namespace KeePark.Services
                 }
             });
             allSpots.ToArray();
-            */
+            
             // Apriori Algorithm is used to determine the frequent spot in the entire transactions found in the DB.
             // Create a new a-priori learning algorithm with the properties we set at the C-TOR 
             Apriori apriori = new Apriori(_threshold, _minConfidence);
@@ -75,11 +74,11 @@ namespace KeePark.Services
 
         }
 
-        /*
+        
         public List<ParkingSpot> GetRecommendedProducts(int id)
         {
             if (classifier == null)
-                UpdateRecommendedProducts();
+                RecommendedSpots();
             int[][] matches = classifier.Decide(new[] { _context.Product.FirstOrDefault(x => x.ProductID == id).ProductID });
 
             List<int> similarItems = new List<int>();
@@ -94,29 +93,6 @@ namespace KeePark.Services
             var test = _context.Product.Where(x => similarIds.Contains(x.ProductID));
             return test.ToList();
 
-        }
-        */
-        private SortedSet<int>[] ToSortedSet(List<int>[] orders)
-        {
-            List<SortedSet<int>> retVal = new List<SortedSet<int>>();
-            int index = 0;
-
-            foreach (List<int> order in orders)
-            {
-
-                retVal.Add(new SortedSet<int>());
-                foreach (int item in order)
-                {
-                    if (!retVal[index].Add(item)) // if wasnt able to add to the set then it means that the item is already existing in this transaction so we will open a new transactoin
-                    {
-                        index++;
-                        retVal.Add(new SortedSet<int>());
-                        retVal[index].Add(item);
-                    }
-                }
-                index++;
-            }
-            return retVal.ToArray();
         }
     }
 }
