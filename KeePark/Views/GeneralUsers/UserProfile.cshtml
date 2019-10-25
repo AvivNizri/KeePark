@@ -5,8 +5,33 @@
     ViewData["Title"] = "UserProfile";
 }
 
+    <style>
+        .fontuse {
+            text-shadow: 1px 1px #808080;
+            
+        }
+
+        .multiple-columns {
+            padding: 30px;
+            column-count: 4;
+            column-gap: 20px;
+            column-rule-style: solid;
+            font-size: small;
+        }
+
+        #border-radius {
+            border-radius: 15px 15px 50px 50px;
+            background: #EEEEEE;
+            padding: 500px, 300px;
+            width: 730px;
+            height: 200px;
+        }
+    </style>
 <!DOCTYPE html>
 <html lang="en">
+
+
+
 <head>
     <link rel="stylesheet" href="~/css/userstyle.css" type="text/css" media="screen" />
     <meta charset="utf-8">
@@ -48,7 +73,7 @@
                 <a id="edit_details" href="/Identity/Account/Manage">Edit Details</a>
 
 
-            
+
 
 
 
@@ -57,7 +82,7 @@
             <div class="col-sm-8">
                 <h5>Order History</h5>
 
-                <canvas id="myCanvas" width="1100" height="70"></canvas>
+                <canvas id="myCanvas" width="730" height="70"></canvas>
 
                 <script>
                     var c = document.getElementById("myCanvas");
@@ -65,8 +90,7 @@
 
                     // Create gradient
                     var grd = ctx.createLinearGradient(0, 0, 900, 0);
-                    grd.addColorStop(0, "#000000");
-                    grd.addColorStop(1, "white");
+                    grd.addColorStop(0, "#EEEEEE");
 
                     // Fill with gradient
                     ctx.fillStyle = grd;
@@ -74,13 +98,27 @@
                 </script><br />
 
 
+                <section>
+                    <div class="multiple-columns" id="border-radius">
+                        <h1 class="fontuse">MY ORDER HISTORY</h1>
+                        <p>look which spots you already visited!<br /><br /><br /></p>
 
-            </div>
+                        <h1 class="fontuse">MY FUTURE ORDERS</h1>
+                        <p>Have a reservation? vie the details of your order</p>
+
+                        <h1 class="fontuse">RENT MY SPOT</h1>
+                        <p>Have an available parking spot? Rent it and make some money!</p>
+                    </div>
+                </section>
+
+
+
             </div>
         </div>
+    </div>
 
 
-  
+
 
     </br>
     </br>

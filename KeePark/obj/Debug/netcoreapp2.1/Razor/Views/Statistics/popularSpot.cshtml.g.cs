@@ -64,7 +64,7 @@ using KeePark.Models;
             WriteLiteral("\r\n<h2>Most Popular Spot</h2>\r\n\r\n\r\n<meta charset=\"utf-8\">\r\n<style>\r\n\r\n    .bar {\r\n        fill: orange;\r\n    }\r\n</style>\r\n\r\n    <div id=\"barChart\"></div>\r\n    <script src=\"//d3js.org/d3.v4.min.js\"></script>\r\n    ");
             EndContext();
             BeginContext(307, 57, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b414ae3c59da4a3293f073506453be0a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c428c00a1479477aaa72a309acb1f036", async() => {
                 BeginContext(341, 14, true);
                 WriteLiteral("\r\n      \r\n    ");
                 EndContext();

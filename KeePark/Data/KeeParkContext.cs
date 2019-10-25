@@ -15,7 +15,6 @@ namespace KeePark.Models
         }
 
 
-       // public DbSet<KeePark.Data.GeneralUser> GeneralUser { get; set; }
 
         public DbSet<KeePark.Models.ParkingSpot> ParkingSpot { get; set; }
 
