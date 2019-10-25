@@ -6,14 +6,40 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using KeePark.Models;
 using Microsoft.AspNetCore.Authorization;
+using KeePark.Services;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 
 namespace KeePark.Controllers
 {
     public class HomeController : Controller
     {
-        
-        public IActionResult Index()
+        private readonly KeeParkContext _KeeParkContext;
+        private readonly IdentityContext _IdentityContext;
+        private readonly MLApriori _mlApriori;
+        private readonly IHostingEnvironment _hostingEnvironment;
+
+        public HomeController(IdentityContext db, KeeParkContext kpb, MLApriori mlalgo, IHostingEnvironment hostingEnvironment)
         {
+            _IdentityContext = db;
+            _KeeParkContext = kpb;
+            _hostingEnvironment = hostingEnvironment;
+            // init the MLApriori
+            _mlApriori = mlalgo;
+        }
+            public async Task<IActionResult> IndexAsync()
+        {
+            if (User.Identity.IsAuthenticated) {
+                // finding current user by name
+                var uName = User.Identity.Name;
+                var thisUser = await _IdentityContext.GeneralUser.FirstOrDefaultAsync(u => u.UserName.Equals(uName));
+
+                // validation thisUser really exists
+                if (thisUser == null)
+                    return NotFound();
+
+                ViewBag.recomended = _mlApriori.GetRecommendedSpots(User.Identity.)
+            }
             return View();
         }
 

@@ -19,7 +19,7 @@ namespace KeePark.Services
 {
     public class MLApriori
     {
-        private readonly KeeParkContext _KeeParkcontext;
+        private readonly KeeParkContext _KeeParkContext;
         private readonly IdentityContext _context;
         // _threshold is equivelent to the support - basiclly its the amount of times an item is found in different baskets/sub-list in the matrix from the dataset
         private readonly int _threshold;
@@ -29,9 +29,10 @@ namespace KeePark.Services
         // evident and unambiguous relationship between the specific items in these both sets
         AssociationRuleMatcher<int> classifier = null;
 
-        public MLApriori(IdentityContext db)
+        public MLApriori(IdentityContext db, KeeParkContext kpb)
         {
             _context = db;
+            _KeeParkContext = kpb;
             _threshold = 2;
             _minConfidence = .1;
         }
@@ -43,14 +44,6 @@ namespace KeePark.Services
                 RecommendedSpots();
             });
         }
-        /*
-        internal AssociationRule<int>[] GetRules()
-        {
-            if (classifier == null)
-                RecommendedSpots();
-            return classifier.Rules();
-        }
-        */
 
         public void RecommendedSpots()
         {
@@ -92,8 +85,8 @@ namespace KeePark.Services
                     similarItems.Add(item);
                 }
             }
-            var similarIds = similarItems.ToHashSet().Take(3); // 3 most recommended items
-            var test = _KeeParkcontext.ParkingSpot.Where(x => similarIds.Contains(x.ParkingSpotID));
+            var similarIds = similarItems.ToHashSet().Take(1); // 1 most recommended items
+            var test = _KeeParkContext.ParkingSpot.Where(x => similarIds.Contains(x.ParkingSpotID));
             return test.ToList();
 
         }
