@@ -29,7 +29,6 @@
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
     <Folder Include="AccordPackage\" />
-    <Folder Include="Migrations\" />
     <Folder Include="wwwroot\SpotImages\" />
   </ItemGroup>
 

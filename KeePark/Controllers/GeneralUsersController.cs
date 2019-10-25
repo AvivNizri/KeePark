@@ -18,15 +18,23 @@ namespace KeePark.Controllers
 
         public GeneralUsersController(IdentityContext context)
         {
+
             _context = context;
         }
 
 
         [Authorize(Roles = "Administrator")]
         // GET: GeneralUsers
-        public async Task<IActionResult> Index()
+        public IActionResult Index(string usersID)
         {
-            return View(await _context.GeneralUser.ToListAsync());
+            var users = from u in _context.GeneralUser select u;
+
+            // Smart Search
+            if (!String.IsNullOrEmpty(usersID))
+            {
+                users = users.Where(a => a.UID.Contains(usersID));
+            }
+            return View(users.ToList());
         }
 
         [Authorize(Roles = "Administrator")]
@@ -42,6 +50,7 @@ namespace KeePark.Controllers
             return View(await _context.GeneralUser.ToListAsync());
         }
 
+        [Authorize(Roles = "Administrator")]
         // GET: GeneralUsers/Details/5
         public async Task<IActionResult> Details(string id)
         {
@@ -134,7 +143,9 @@ namespace KeePark.Controllers
             return View(generalUser);
         }
 
+
         // GET: GeneralUsers/Delete/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -153,11 +164,12 @@ namespace KeePark.Controllers
         }
 
         // POST: GeneralUsers/Delete/5
+        [Authorize(Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var generalUser = await _context.GeneralUser.FindAsync(id);
+            var generalUser = await _context.GeneralUser.FirstOrDefaultAsync(m => m.UID == id);
             _context.GeneralUser.Remove(generalUser);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<KeePark.Models.ParkingSpot>
+
+@{
+    ViewData["Title"] = "ParkingSpotResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="get" action="/ParkingSpots/ParkingSpotResult">
+    Spot's Name: <input type="text" name="spotsName" />
+    Spot's Address: <input type="text" name="spotsAddress" />
+    Spot's Type: <input type="text" name="spotsType" />
+    <input type="submit" value="search" />
+</form>
+
+<div class="card-deck">
+
+    @foreach (var spot in Model)
+    {
+        var photoPath = "~/SpotImages/" + (spot.filePath ?? "noimage.jpg");
+        <div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
+            <div class="card-header">
+
+                <!--<h3>@spot.ParkingSpotID</h3>-->
+                <h3>Parking Name: @spot.SpotName</h3>
+            </div>
+
+            <img class="card-img-top imageThumbnail" src="@photoPath"
+                 asp-append-version="true" height="400" width="500" />
+
+            <div class="card-footer text-center position-static">
+                <a asp-controller="ReserveSpots" asp-action="Create" asp-route-id="@spot.ParkingSpotID" class="btn btn-primary m-1">Create Reservation</a>
+            </div>
+        </div>
+    }
+</div>

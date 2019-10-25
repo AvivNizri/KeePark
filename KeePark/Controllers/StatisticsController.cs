@@ -26,23 +26,23 @@ namespace KeePark.Controllers
         public IActionResult UserStat()
         {
             var t = from u in _context.ReserveSpot
-                    where u.CreatedOn.Month == System.DateTime.Today.Month
+                    where u.CreatedOn.Year == System.DateTime.Today.Year
                     select u;
 
-             var groupJoinQuery =
-             from orders in t
-             join users in _identitycontext.GeneralUser on orders.UserID equals users.UID into uorderGroup
-             from uorder in uorderGroup
-             group uorder by uorder.UID into g
-             select new { Name = g.Key, Count = g.Count() };
+            var groupJoinQuery =
+            from orders in t
+            join users in _context.ReserveSpot on orders.UserID equals users.UserID into uorderGroup
+            from uorder in uorderGroup
+            group uorder by uorder.UserID into g
+            select new { Name = g.Key, Count = g.Count() };
 
 
-                     var list = (from mygroup in groupJoinQuery
-                                 orderby mygroup.Count descending
-                                 select mygroup).Take(5);
+            var list = (from mygroup in groupJoinQuery
+                        orderby mygroup.Count descending
+                        select mygroup).Take(5);
 
             Dictionary<string, int> map;
-        
+
 
             map = list.ToList().ToDictionary(a => a.Name, a => a.Count);
             ViewBag.Map = map;
@@ -51,7 +51,7 @@ namespace KeePark.Controllers
 
         public IActionResult PopularSpot()
         {
-            
+
 
             return View();
         }
@@ -62,13 +62,13 @@ namespace KeePark.Controllers
                          orderby s.NunOfOrders descending
                          select s).Take(5);
 
-       
+
             StringBuilder output = new StringBuilder();
             output.Append("name,value\n");
 
             foreach (var item in spots)
             {
-                output.Append(item.SpotName+","+item.NunOfOrders + "\n");
+                output.Append(item.SpotName + "," + item.NunOfOrders + "\n");
             }
 
             return output.ToString();

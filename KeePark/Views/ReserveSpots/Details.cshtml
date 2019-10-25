@@ -15,7 +15,7 @@
         <p id="humidity"></p>
 
         <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=[key]&callback=initMap">
+                src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
         </script>
 
         <script>
@@ -24,35 +24,27 @@
             var lng;
               function initMap() {
                   var geocoder = new google.maps.Geocoder();
-
                 geocoder.geocode({'address': address}, function(results, status) {
                     if (status === 'OK') {
                         lat = results[0].geometry.location.lat();
                         lng = results[0].geometry.location.lng();
                         weather(lat, lng);
-
                     } else {
                         alert('Geocode was not successful for the following reason: ' + status);
                     }
                 });
             }
-
-
            function weather(lt, lg) {
                 $(document).ready(function () {
-                    $.get("https://api.openweathermap.org/data/2.5/weather?lat=" + lt + "&lon=" + lg + "&APPID=[key]&units=metric", function (response) {
+                    $.get("https://api.openweathermap.org/data/2.5/weather?lat=" + lt + "&lon=" + lg + "&APPID=&units=metric", function (response) {
                         //response
                         console.log(response);
                       $("#name").text("City: "+response.name);
                        $("#temp").text("💨 Temperature: "+response.main.temp);
                         $("#humidity").text("💧 % Humidity:"+response.main.humidity);
-
                     });
-
-
                 });
             }
-
         </script>
 
     </li>
@@ -63,11 +55,12 @@
         <h2>Details Of Your Reservation</h2>
 
         <dl class="dl-horizontal">
+
             <dt>
-                @Html.DisplayNameFor(model => model.User)
+                @Html.DisplayNameFor(model => model.UserID)
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.User.UID)
+                @Html.DisplayFor(model => model.UserID)
             </dd>
             <dt>
                 @Html.DisplayNameFor(model => model.Spot)
@@ -115,4 +108,3 @@
     </li>
 
 </ul>
-
