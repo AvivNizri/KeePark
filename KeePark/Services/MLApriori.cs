@@ -19,14 +19,17 @@ namespace KeePark.Services
 {
     public class MLApriori
     {
-        private readonly KeeParkContext _context;
+        private readonly KeeParkContext _KeeParkcontext;
+        private readonly IdentityContext _context;
         // _threshold is equivelent to the support - basiclly its the amount of times an item is found in different baskets/sub-list in the matrix from the dataset
         private readonly int _threshold;
         // _confidense is an indication of how often the rule has been found true
         private readonly double _minConfidence;
-        AssociationRuleMatcher<Guid> classifier = null;
+        // An “Association Rule” (defined) – an implication of two itemsets, for which there’s a direct,
+        // evident and unambiguous relationship between the specific items in these both sets
+        AssociationRuleMatcher<int> classifier = null;
 
-        public MLApriori(KeeParkContext db)
+        public MLApriori(IdentityContext db)
         {
             _context = db;
             _threshold = 2;
@@ -40,46 +43,46 @@ namespace KeePark.Services
                 RecommendedSpots();
             });
         }
-
+        /*
         internal AssociationRule<int>[] GetRules()
         {
             if (classifier == null)
                 RecommendedSpots();
             return classifier.Rules();
         }
-
+        */
 
         public void RecommendedSpots()
         {
-            // First I bring the entire transactions/Reservations from the DB
-            List<ReserveSpot> allReservations = _context.ReserveSpot.ToList();
-            // Second I am listing whole spots shown in the entire reservations
-            List<int> allUsers = new List<int>();
-            List<int[]> allSpots = new List<int[]>();
-            
-            allReservations.ForEach(reserve =>
+            // First I bring the entire usrs from the DB
+            List<GeneralUser> allUsers = _context.Users.ToList();
+            // Second I am listing whole spots shown in the entire system users history
+            List<int[]> allHistorySpots = new List<int[]>();
+
+            allUsers.ForEach(user =>
             {
-                if (reserve.SpotID.ToString() != string.Empty){
-                    allSpots.Add(reserve.SpotID);
-                }
+                if (!string.IsNullOrEmpty(user.History))
+                    // we are inserting to the allHistory list chunks of the user history -- [ [spotID ,spotID ,spotID ,spotID ] , [spotID ,spotID ,spotID ,spotID ] , [spotID, spotID] ]
+                    allHistorySpots.Add(user.History.Split(",").Select(int.Parse).ToArray());
             });
-            allSpots.ToArray();
-            
+            //allHistorySpots.ToArray();
+
+            int[][] dataSet = allHistorySpots.ToArray();
             // Apriori Algorithm is used to determine the frequent spot in the entire transactions found in the DB.
             // Create a new a-priori learning algorithm with the properties we set at the C-TOR 
             Apriori apriori = new Apriori(_threshold, _minConfidence);
 
             // And now we will create the learning on the array we prepared before
-            //classifier = apriori.Learn(allSpots);
-
+            classifier = apriori.Learn(dataSet);
         }
 
-        
-        public List<ParkingSpot> GetRecommendedProducts(int id)
+        // getting the identity id of the user!
+        public List<ParkingSpot> GetRecommendedSpots(int[] uid)
         {
             if (classifier == null)
                 RecommendedSpots();
-            int[][] matches = classifier.Decide(new[] { _context.Product.FirstOrDefault(x => x.ProductID == id).ProductID });
+
+            int[][] matches = classifier.Decide(uid);
 
             List<int> similarItems = new List<int>();
             foreach (int[] match in matches)
@@ -90,7 +93,7 @@ namespace KeePark.Services
                 }
             }
             var similarIds = similarItems.ToHashSet().Take(3); // 3 most recommended items
-            var test = _context.Product.Where(x => similarIds.Contains(x.ProductID));
+            var test = _KeeParkcontext.ParkingSpot.Where(x => similarIds.Contains(x.ParkingSpotID));
             return test.ToList();
 
         }
