@@ -5,7 +5,6 @@ C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeeP
 C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\bin\Debug\netcoreapp2.1\KeePark.pdb
 C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\bin\Debug\netcoreapp2.1\KeePark.Views.dll
 C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\bin\Debug\netcoreapp2.1\KeePark.Views.pdb
-C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\KeePark.csproj.CoreCompileInputs.cache
 C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\KeePark.RazorAssemblyInfo.cache
 C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\KeePark.RazorAssemblyInfo.cs
 C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\KeePark.AssemblyInfoInputs.cache
