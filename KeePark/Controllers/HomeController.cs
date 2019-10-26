@@ -16,32 +16,38 @@ namespace KeePark.Controllers
     {
         private readonly KeeParkContext _KeeParkContext;
         private readonly IdentityContext _IdentityContext;
-        private readonly MLApriori _mlApriori;
+    //    private readonly MLApriori _mlApriori;
         private readonly IHostingEnvironment _hostingEnvironment;
 
-        public HomeController(IdentityContext db, KeeParkContext kpb, MLApriori mlalgo, IHostingEnvironment hostingEnvironment)
+        public HomeController(IdentityContext db, KeeParkContext kpb,  IHostingEnvironment hostingEnvironment)
         {
             _IdentityContext = db;
             _KeeParkContext = kpb;
             _hostingEnvironment = hostingEnvironment;
             // init the MLApriori
-            _mlApriori = mlalgo;
+           // _mlApriori = mlalgo;
         }
-            public async Task<IActionResult> IndexAsync()
+              public async Task<IActionResult> Index()
+           {
+               if (User.Identity.IsAuthenticated) {
+                   // finding current user by name
+                   var uName = User.Identity.Name;
+                   var thisUser = await _IdentityContext.GeneralUser.FirstOrDefaultAsync(u => u.UserName.Equals(uName));
+
+                   // validation thisUser really exists
+                   if (thisUser == null)
+                       return NotFound();
+
+                 //  ViewBag.recomended = _mlApriori.GetRecommendedSpots(thisUser.History.Split(",").Select(int.Parse).ToArray());
+               }
+               return View();
+           }
+
+       /* public IActionResult Index()
         {
-            if (User.Identity.IsAuthenticated) {
-                // finding current user by name
-                var uName = User.Identity.Name;
-                var thisUser = await _IdentityContext.GeneralUser.FirstOrDefaultAsync(u => u.UserName.Equals(uName));
-
-                // validation thisUser really exists
-                if (thisUser == null)
-                    return NotFound();
-
-                ViewBag.recomended = _mlApriori.GetRecommendedSpots(User.Identity.)
-            }
             return View();
-        }
+        }*/
+
 
         public IActionResult UserProfile() ///////added
         {

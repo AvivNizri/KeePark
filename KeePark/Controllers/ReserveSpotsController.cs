@@ -30,20 +30,7 @@ namespace KeePark.Controllers
         }
 
 
-        public ActionResult Orders(string datepicker, string employee, string visitor)
-        {
-            var userid = _userManager.GetUserId(HttpContext.User);
-            GeneralUser user = _userManager.FindByIdAsync(userid).Result;
-            var res = (from reservations in _context.ReserveSpot
-                       where reservations.UserID == user.UID
-                       select reservations).Include(r => r.Spot);
-
-
-
-            //filter data to get an filtered list
-
-            return PartialView("_ResultTable", res);
-        }
+    
 
 
         // GET: ReserveSpots
@@ -67,12 +54,12 @@ namespace KeePark.Controllers
 
             if (resDate != DateTime.MinValue)
             {
-                reserves = reserves.Where(a => a.ReservationDate == resDate);
+                reserves = reserves.Where(a => a.ReservationDate.Date.Equals(resDate.Date));
             }
 
             if (!String.IsNullOrEmpty(carNumber))
             {
-                reserves = reserves.Where(a => a.carNumber.Contains(carNumber));
+                reserves = reserves.Where(a => a.carNumber.Equals(carNumber));
             }
 
             return View(reserves.ToList());
