@@ -32,6 +32,8 @@
 
             <div class="card-footer text-center position-static">
                 <a asp-controller="ReserveSpots" asp-action="Create" asp-route-id="@spot.ParkingSpotID" class="btn btn-primary m-1">Create Reservation</a>
+                <a asp-controller="ParkingSpots" asp-action="DetailsFromSearching" asp-route-id="@spot.ParkingSpotID" class="btn btn-primary m-1">Details</a>
+
             </div>
         </div>
     }

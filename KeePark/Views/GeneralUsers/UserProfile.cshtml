@@ -133,11 +133,9 @@
 
     <footer>
         <section class="footer-email-signup max-1350">
-            <div class="jumbotron text-center" style="background-color:#ffffff">
                 <div class="warpper">
                     <canvas id="myCanvas" width="700" height="150"></canvas>
                 </div>
-            </div>
         </section>
     </footer>
 
@@ -148,8 +146,9 @@
         var canvas = document.getElementById("myCanvas");
         var canvasContext = canvas.getContext("2d");
         var y = 100;
+        var x = 80;
         canvasContext.font = 'bold 58pt UniversBoldCondensed';//sets font style, size and type
         canvasContext.fillStyle = 'Black';//sets font color
-        canvasContext.fillText("DON'T MISS OUT!", 0, y);//sets text to be rendered
+        canvasContext.fillText("Parking For All!", x, y);//sets text to be rendered
     }
 </script>

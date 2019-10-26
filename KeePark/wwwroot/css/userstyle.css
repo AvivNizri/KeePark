@@ -1,46 +1,4 @@
-/*------------------------------
-=BASIC SETUP
-------------------------------*/
 
-/* Makeshift CSS Reset */
-
-* {
-    margin: 0;
-}
-
-
-/* Tell the browser to render HTML 5 elements as block */
-header, footer, section, aside, nav, article {
-	display: block;
-}
-
-@font-face {
-    font-family: 'HussarBoldWeb';
-    src: url('/fonts/HussarBoldWeb.woff') format('woff');
-}
-
-.wrapper{
-    background-color: #ffffff;
-    
-}
-
-.section-title h1 {
-    display: inline-block;
-    border: 1px solid #000000;
-    line-height: initial;
-    importent;
-    margin-bottom: 0;
-    color: #000000;
-    font-family: "HussarBoldWeb", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-size: 22px;
-    padding: 12px 20px 6px !important;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-}
 
 h5 {
     font-size: 14px;
@@ -67,6 +25,7 @@ a#edit_details, #user_logout {
     -moz-transition: color 0.3s ease-in;
     -o-transition: color 0.3s ease-in;
     transition: color 0.3s ease-in;
+    font-weight: bold;
 }
 
 a:visited {

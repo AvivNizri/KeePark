@@ -3,6 +3,8 @@
 @{
     ViewData["Title"] = "Two-factor authentication";
 }
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 
 <h2>@ViewData["Title"]</h2>
 <hr />
@@ -32,7 +34,7 @@
     </div>
 </div>
 <p>
-    Don't have access to your authenticator device? You can 
+    Don't have access to your authenticator device? You can
     <a asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl">log in with a recovery code</a>.
 </p>
 

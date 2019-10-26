@@ -15,6 +15,7 @@ using KeePark.Data.Enums;
 using Microsoft.AspNetCore.Identity;
 using KeePark.Data;
 
+
 namespace KeePark.Controllers
 {
     public class ParkingSpotsController : Controller
@@ -46,6 +47,24 @@ namespace KeePark.Controllers
         // GET: ParkingSpots/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var parkingSpot = await _context.ParkingSpot
+                .FirstOrDefaultAsync(m => m.ParkingSpotID == id);
+            if (parkingSpot == null)
+            {
+                return NotFound();
+            }
+
+            return View(parkingSpot);
+        }
+
+        public async Task<IActionResult> DetailsFromSearching(Guid? id)
+        {
+
             if (id == null)
             {
                 return NotFound();
