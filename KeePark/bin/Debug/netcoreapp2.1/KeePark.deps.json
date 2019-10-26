@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "741b0a7e9587ec895ac5b24231c883f53b7273c4"
+    "signature": "4ef299a31f680306cd8a696edd8f2ebe00a0763b"
   },
   "compilationOptions": {
     "defines": [
@@ -24,8 +24,10 @@
     ".NETCoreApp,Version=v2.1": {
       "KeePark/1.0.0": {
         "dependencies": {
-          "Accord": "3.8.2-alpha",
+          "Accord": "3.8.0",
           "Accord.MachineLearning": "3.8.0",
+          "Accord.Math": "3.8.0",
+          "Accord.Statistics": "3.8.0",
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.AspNetCore.Razor.Design": "2.1.2",
           "Microsoft.NETCore.App": "2.1.0",
@@ -41,11 +43,11 @@
           "KeePark.dll": {}
         }
       },
-      "Accord/3.8.2-alpha": {
+      "Accord/3.8.0": {
         "runtime": {
           "lib/netstandard2.0/Accord.dll": {
-            "assemblyVersion": "3.8.2.0",
-            "fileVersion": "3.8.2.6153"
+            "assemblyVersion": "3.8.0.0",
+            "fileVersion": "3.8.0.6134"
           }
         },
         "compile": {
@@ -54,7 +56,7 @@
       },
       "Accord.MachineLearning/3.8.0": {
         "dependencies": {
-          "Accord": "3.8.2-alpha",
+          "Accord": "3.8.0",
           "Accord.Math": "3.8.0",
           "Accord.Statistics": "3.8.0"
         },
@@ -70,7 +72,7 @@
       },
       "Accord.Math/3.8.0": {
         "dependencies": {
-          "Accord": "3.8.2-alpha"
+          "Accord": "3.8.0"
         },
         "runtime": {
           "lib/netstandard2.0/Accord.Math.Core.dll": {
@@ -89,7 +91,7 @@
       },
       "Accord.Statistics/3.8.0": {
         "dependencies": {
-          "Accord": "3.8.2-alpha",
+          "Accord": "3.8.0",
           "Accord.Math": "3.8.0"
         },
         "runtime": {
@@ -3535,12 +3537,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Accord/3.8.2-alpha": {
+    "Accord/3.8.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-g/EKYGdeMKTMJt7XtB65f+RyVW5ALfU1f1T1dpIGXOqzBtaaNK+OGB6pFY9RFrjKPQNUlnKUWF2jwH5knM+X7A==",
-      "path": "accord/3.8.2-alpha",
-      "hashPath": "accord.3.8.2-alpha.nupkg.sha512"
+      "sha512": "sha512-7kJrB570dO5ELim+2KWQNozuvWO9/BuZfZspdFy36fcWPNF2CEccblLuILeUlI8QJYd2DlBy0bfK8BlCx/uayA==",
+      "path": "accord/3.8.0",
+      "hashPath": "accord.3.8.0.nupkg.sha512"
     },
     "Accord.MachineLearning/3.8.0": {
       "type": "package",

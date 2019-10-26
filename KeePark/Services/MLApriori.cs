@@ -12,7 +12,12 @@ using Newtonsoft.Json;
 // Important : In Order to use the Accord package you should download it
 // through the nugget package manager and run the following commands:
 // pm> Install-Package Accord -Version 3.8.2-alpha
+// pm> Install-Package Accord -Version 3.8.2
 // pm> Install-Package Accord.MachineLearning
+// pm> Install-Package Accord.Math -Version 3.8.0
+// pm> Install-Package Accord.Statistics -Version 3.8.0
+
+// all packages can be found at the path C:\Users\<userName>\.nuget\packages
 
 
 namespace KeePark.Services
@@ -36,8 +41,8 @@ namespace KeePark.Services
             _threshold = 2;
             _minConfidence = .1;
         }
-
-        public async Task UpdateRecommendedProductsAsync()
+        // thats will be excecuted to update the classifier 
+        public async Task UpdateRecommendedSpotsAsync()
         {
             await Task.Run(() =>
             {
@@ -58,7 +63,6 @@ namespace KeePark.Services
                     // we are inserting to the allHistory list chunks of the user history -- [ [spotID ,spotID ,spotID ,spotID ] , [spotID ,spotID ,spotID ,spotID ] , [spotID, spotID] ]
                     allHistorySpots.Add(user.History.Split(",").Select(int.Parse).ToArray());
             });
-            //allHistorySpots.ToArray();
 
             int[][] dataSet = allHistorySpots.ToArray();
             // Apriori Algorithm is used to determine the frequent spot in the entire transactions found in the DB.
@@ -78,6 +82,8 @@ namespace KeePark.Services
             int[][] matches = classifier.Decide(uid);
 
             List<int> similarItems = new List<int>();
+
+            // that nested forEach loop is to convert the matrix into list of the recomended spotsID's
             foreach (int[] match in matches)
             {
                 foreach (int item in match)
@@ -85,10 +91,13 @@ namespace KeePark.Services
                     similarItems.Add(item);
                 }
             }
-            var similarIds = similarItems.ToHashSet().Take(1); // 1 most recommended items
-            var test = _KeeParkContext.ParkingSpot.Where(x => similarIds.Contains(x.ParkingSpotID));
-            return test.ToList();
 
+            // 1 most recommended items - using the hash-set
+            var similarIds = similarItems.ToHashSet().Take(1); 
+            // getting the spot from the DB
+            var getSpot = _KeeParkContext.ParkingSpot.Where(x => similarIds.Contains(x.ParkingSpotID));
+
+            return getSpot.ToList();
         }
     }
 }

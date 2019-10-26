@@ -16,18 +16,19 @@ namespace KeePark.Controllers
     {
         private readonly KeeParkContext _KeeParkContext;
         private readonly IdentityContext _IdentityContext;
-        private readonly MLApriori _mlApriori;
         private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly MLApriori _mlApriori;
+        
 
-        public HomeController(IdentityContext db, KeeParkContext kpb, MLApriori mlalgo, IHostingEnvironment hostingEnvironment)
+        public HomeController(IdentityContext db, KeeParkContext kpb, IHostingEnvironment hostingEnvironment)
         {
             _IdentityContext = db;
             _KeeParkContext = kpb;
             _hostingEnvironment = hostingEnvironment;
             // init the MLApriori
-            _mlApriori = mlalgo;
+            _mlApriori = new MLApriori(_IdentityContext, _KeeParkContext);
         }
-            public async Task<IActionResult> IndexAsync()
+            public async Task<IActionResult> Index()
         {
             if (User.Identity.IsAuthenticated) {
                 // finding current user by name
@@ -38,7 +39,17 @@ namespace KeePark.Controllers
                 if (thisUser == null)
                     return NotFound();
 
-                ViewBag.recomended = _mlApriori.GetRecommendedSpots(User.Identity.)
+                // check if the user has reservations in history
+                var thisUserHistory = thisUser.History.Split(",").Select(int.Parse).ToArray();
+                if (thisUserHistory != null){
+                    var recommended = _mlApriori.GetRecommendedSpots(thisUser.History.Split(",").Select(int.Parse).ToArray());
+                    ViewBag.recomended = recommended[0];
+                }
+                else {
+                    ViewBag.recomended = "You Don't Have Reservations";
+                }
+
+
             }
             return View();
         }

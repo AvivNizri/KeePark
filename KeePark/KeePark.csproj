@@ -13,8 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Accord" Version="3.8.2-alpha" />
+    <PackageReference Include="Accord" Version="3.8.0" />
     <PackageReference Include="Accord.MachineLearning" Version="3.8.0" />
+    <PackageReference Include="Accord.Math" Version="3.8.0" />
+    <PackageReference Include="Accord.Statistics" Version="3.8.0" />
     <PackageReference Include="jQuery" Version="3.4.1" />
     <PackageReference Include="jQuery.UI.Combined" Version="1.12.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />

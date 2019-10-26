@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.1": {
-      "Accord/3.8.2-alpha": {
+      "Accord/3.8.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Accord.dll": {}
@@ -4687,14 +4687,14 @@
     }
   },
   "libraries": {
-    "Accord/3.8.2-alpha": {
-      "sha512": "g/EKYGdeMKTMJt7XtB65f+RyVW5ALfU1f1T1dpIGXOqzBtaaNK+OGB6pFY9RFrjKPQNUlnKUWF2jwH5knM+X7A==",
+    "Accord/3.8.0": {
+      "sha512": "7kJrB570dO5ELim+2KWQNozuvWO9/BuZfZspdFy36fcWPNF2CEccblLuILeUlI8QJYd2DlBy0bfK8BlCx/uayA==",
       "type": "package",
-      "path": "accord/3.8.2-alpha",
+      "path": "accord/3.8.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "accord.3.8.2-alpha.nupkg.sha512",
+        "accord.3.8.0.nupkg.sha512",
         "accord.nuspec",
         "build/Accord.dll.config",
         "build/Accord.targets",
@@ -12893,8 +12893,10 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
-      "Accord >= 3.8.2-alpha",
+      "Accord >= 3.8.0",
       "Accord.MachineLearning >= 3.8.0",
+      "Accord.Math >= 3.8.0",
+      "Accord.Statistics >= 3.8.0",
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.AspNetCore.Razor.Design >= 2.1.2",
       "Microsoft.NETCore.App >= 2.1.0",
@@ -12947,9 +12949,17 @@
         "dependencies": {
           "Accord": {
             "target": "Package",
-            "version": "[3.8.2-alpha, )"
+            "version": "[3.8.0, )"
           },
           "Accord.MachineLearning": {
+            "target": "Package",
+            "version": "[3.8.0, )"
+          },
+          "Accord.Math": {
+            "target": "Package",
+            "version": "[3.8.0, )"
+          },
+          "Accord.Statistics": {
             "target": "Package",
             "version": "[3.8.0, )"
           },

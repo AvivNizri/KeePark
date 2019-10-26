@@ -43,9 +43,17 @@
           "dependencies": {
             "Accord": {
               "target": "Package",
-              "version": "[3.8.2-alpha, )"
+              "version": "[3.8.0, )"
             },
             "Accord.MachineLearning": {
+              "target": "Package",
+              "version": "[3.8.0, )"
+            },
+            "Accord.Math": {
+              "target": "Package",
+              "version": "[3.8.0, )"
+            },
+            "Accord.Statistics": {
               "target": "Package",
               "version": "[3.8.0, )"
             },

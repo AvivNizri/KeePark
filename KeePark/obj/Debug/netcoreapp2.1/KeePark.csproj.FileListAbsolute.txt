@@ -51,7 +51,6 @@ C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeeP
 C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\GeneralUsers\AdminDashboard.g.cshtml.cs
 C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\GeneralUsers\Index.g.cshtml.cs
 C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\GeneralUsers\UserProfile.g.cshtml.cs
-C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
 C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ParkingSpots\Create.g.cshtml.cs
 C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ParkingSpots\Delete.g.cshtml.cs
 C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ParkingSpots\Details.g.cshtml.cs
@@ -87,3 +86,4 @@ C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeeP
 C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ParkingSpots\ParkingSpotResult.g.cshtml.cs
 C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ReserveSpots\CanNotDelete.g.cshtml.cs
 C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\ReserveSpots\FutureOrders.g.cshtml.cs
+C:\Users\avivn\Documents\Computer-Science\שנה ב\סימסטר ג\KeePark\KeePark\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
