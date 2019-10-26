@@ -104,7 +104,7 @@ using KeePark.Models;
             WriteLiteral("</h3>\r\n            </div>\r\n\r\n            ");
             EndContext();
             BeginContext(543, 129, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "93e1764d0d7d4e2786e600870c490cdb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "04f4713071264aafb09441d74c2f59d9", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_ImageTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ImageTagHelper>();
@@ -139,7 +139,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ImageTagHelper.AppendVersion = true;
             WriteLiteral("\r\n\r\n            <div class=\"card-footer text-center position-static\">\r\n                ");
             EndContext();
             BeginContext(759, 125, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2035aed531bb4f658b198a634666694e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9e84ad6de0964fb7bd6a364c80b0f795", async() => {
                 BeginContext(876, 4, true);
                 WriteLiteral("View");
                 EndContext();
@@ -177,7 +177,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ImageTagHelper.AppendVersion = true;
             WriteLiteral("\r\n                ");
             EndContext();
             BeginContext(902, 118, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d5f8f3f680524a9c9404e4679a9d61b6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e71421ffe5a7435789044dda99bd3fd1", async() => {
                 BeginContext(1012, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -215,7 +215,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ImageTagHelper.AppendVersion = true;
             WriteLiteral("\r\n                ");
             EndContext();
             BeginContext(1038, 121, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "47bbf347386048aeb0c0c54df805ef0b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f3cbbd47f2ea4eef981ccdad0d54590c", async() => {
                 BeginContext(1149, 6, true);
                 WriteLiteral("Delete");
                 EndContext();

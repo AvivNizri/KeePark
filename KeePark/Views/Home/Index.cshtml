@@ -288,14 +288,13 @@
         margin: auto;
         padding: 0;
         border: 1px solid #888;
-        width: 60%;
+        width: 40%;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
         -webkit-animation-name: animatetop;
         -webkit-animation-duration: 0.4s;
         animation-name: animatetop;
         animation-duration: 0.4s
     }
-
 
 
     /* The Close Button */
@@ -306,12 +305,12 @@
         font-weight: bold;
     }
 
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
 
     .modal-header {
         padding: 2px 16px;
@@ -320,11 +319,11 @@
     }
 
     .modal-body {
-        padding: 2px 16px;
+        padding: 1px 1px;
     }
 
     .modal-footer {
-        padding: 2px 16px;
+        padding: 1px 1px;
         background-color: #5cb85c;
         color: white;
     }
@@ -337,25 +336,27 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h2>Here Is A Recommendation For You</h2>
+                <h4 class="heading-third section-title text-center">Here Is A Recommendation For You</h4>
                 <span id="recoClose" class="close">&times;</span>
             </div>
+            @{
+    ParkingSpot spots = ViewBag.recomended;
+                <div class="modal-body">
 
-            <div class="modal-body">
-                <p>Some text in the Modal Body</p>
-                @ViewBag.recomended
-                @ViewBag.recomended
-                @ViewBag.recomended
-                @ViewBag.recomended
-                <p>Some other text...</p>
-                <p>Some other text...</p>
+
+                    <img class="card-img-top" src="~/SpotImages/@spots.filePath" asp-append-version="true" height="200" width="50" />
+
+                    <p>Address: @spots.Address</p>
+                    <p>@spots.SpotDescription</p>
+                    <p>Price: @spots.Price</p>
+                </div>
+
+                <div class="modal-footer">
+                    <a asp-controller="ReserveSpots" asp-action="Create" asp-route-id="@spots.ParkingSpotID" class="btn btn-primary m-1">Create Reservation</a>
+                    <a asp-controller="ParkingSpots" asp-action="Details" asp-route-id="@spots.ParkingSpotID" class="btn btn-primary m-1">View</a>
+                </div>
+    }
             </div>
-
-            <div class="modal-footer">
-                <h3>Modal Footer</h3>
-            </div>
-
-        </div>
     </div>
 
     @if (User.Identity.IsAuthenticated)

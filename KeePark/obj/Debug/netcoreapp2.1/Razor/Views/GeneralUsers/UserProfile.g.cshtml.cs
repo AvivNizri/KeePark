@@ -96,12 +96,12 @@ using KeePark.Models;
 ");
             EndContext();
             BeginContext(602, 208, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3e9485cb49664bbf9ddb43c0f26677ca", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "638ae0682ddc4957a6418960385dd3c0", async() => {
                 BeginContext(608, 6, true);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(614, 83, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "55bbb492f0094939a4d9ec8633d7d8c5", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "c8e35ce6a87e4cc7bf89074493ab568d", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -137,7 +137,7 @@ using KeePark.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(812, 3005, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "22b51f88ee054081a57f484d8786a3af", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b23a5932f78c4a5099915bfc5a48394f", async() => {
                 BeginContext(818, 232, true);
                 WriteLiteral("\r\n    <div class=\"jumbotron text-center\">\r\n        <div class=\"section-title\">\r\n            <h1>ACCOUNT</h1>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col-sm-4\">\r\n");
                 EndContext();

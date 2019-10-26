@@ -55,7 +55,7 @@ using KeePark.Models;
             WriteLiteral("<!DOCTYPE html>\r\n\r\n<html>\r\n");
             EndContext();
             BeginContext(27, 703, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5efc09d5ded645b99a5fbb8c1abe9852", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c005265b97944cac9b25f8e756ecc65c", async() => {
                 BeginContext(33, 690, true);
                 WriteLiteral(@"
     <meta name=""viewport"" content=""width=device-width"" />
@@ -87,7 +87,7 @@ using KeePark.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(732, 110, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "358c0d2dba52442d8af3883d9584467a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "66bbcef73e644b66a250241f6ef9d180", async() => {
                 BeginContext(752, 13, true);
                 WriteLiteral("\r\n\r\n    <div>");
                 EndContext();

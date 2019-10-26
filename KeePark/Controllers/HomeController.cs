@@ -40,13 +40,16 @@ namespace KeePark.Controllers
                     return NotFound();
 
                 // check if the user has reservations in history
-                var thisUserHistory = thisUser.History.Split(",").Select(int.Parse).ToArray();
+                var thisUserHistory = thisUser.History;
                 if (thisUserHistory != null){
                     var recommended = _mlApriori.GetRecommendedSpots(thisUser.History.Split(",").Select(int.Parse).ToArray());
-                    ViewBag.recomended = recommended[0];
+                    if(recommended.Count !=0)
+                        ViewBag.recomended = recommended[0];
+                    else
+                        ViewBag.recomended = GetMostReservedSpot();
                 }
                 else {
-                    ViewBag.recomended = "You Don't Have Reservations";
+                    ViewBag.recomended = GetMostReservedSpot();
                 }
 
 
@@ -82,6 +85,21 @@ namespace KeePark.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public ParkingSpot GetMostReservedSpot()
+        {
+            
+            List<ParkingSpot> spots = _KeeParkContext.ParkingSpot.ToList();
+            ParkingSpot most = spots[0];
+            spots.ForEach(spot =>
+            {
+                if (spot.NunOfOrders > most.NunOfOrders) {
+                    most = spot;
+                }
+            });
+            return most;
+
         }
     }
 }
