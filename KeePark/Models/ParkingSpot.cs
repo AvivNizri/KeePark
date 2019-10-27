@@ -13,13 +13,16 @@ namespace KeePark.Models
         [Key]
         public Guid ParkingSpotID { get; set; }
         [Required]
+        [DataType(DataType.Text)]
         [Display(Name = "Parking Name")]
         public string SpotName { get; set; }
         public string OwnerID { get; set; }
         [Required]
+        [DataType(DataType.Text)]
         [Display(Name = "Parking Address")]
         public string Address { get; set; }
         [Required]
+        [DataType(DataType.Currency)]
         [Display(Name = "Price")]
         public int Price { get; set; }
         public int NunOfOrders { get; set; }

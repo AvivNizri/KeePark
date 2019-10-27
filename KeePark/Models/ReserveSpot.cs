@@ -31,6 +31,7 @@ namespace KeePark.Models
         [Range(1, 3,  ErrorMessage = "The value must be greater than 1 an lower than 3")]
         public int Duration { get; set; } //1/2
         [Display(Name = "Car Number")]
+        [StringLength(6, ErrorMessage = "{0} length must be between {2} and {1}", MinimumLength = 8)]
         public string carNumber { get; set; }
     }
 }

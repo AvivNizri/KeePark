@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\AvivNizri\\Source\\Repos\\KeePark\\KeePark\\KeePark.csproj": {}
+    "C:\\Users\\razs9744\\Source\\Repos\\KeePark\\KeePark\\KeePark.csproj": {}
   },
   "projects": {
-    "C:\\Users\\AvivNizri\\Source\\Repos\\KeePark\\KeePark\\KeePark.csproj": {
+    "C:\\Users\\razs9744\\Source\\Repos\\KeePark\\KeePark\\KeePark.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AvivNizri\\Source\\Repos\\KeePark\\KeePark\\KeePark.csproj",
+        "projectUniqueName": "C:\\Users\\razs9744\\Source\\Repos\\KeePark\\KeePark\\KeePark.csproj",
         "projectName": "KeePark",
-        "projectPath": "C:\\Users\\AvivNizri\\Source\\Repos\\KeePark\\KeePark\\KeePark.csproj",
-        "packagesPath": "C:\\Users\\AvivNizri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AvivNizri\\Source\\Repos\\KeePark\\KeePark\\obj\\",
+        "projectPath": "C:\\Users\\razs9744\\Source\\Repos\\KeePark\\KeePark\\KeePark.csproj",
+        "packagesPath": "C:\\Users\\razs9744\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\razs9744\\Source\\Repos\\KeePark\\KeePark\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\AvivNizri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\razs9744\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
