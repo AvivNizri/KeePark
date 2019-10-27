@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KeePark.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20191026092807_Init")]
-    partial class Init
+    [Migration("20191026131929_I")]
+    partial class I
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -265,7 +265,7 @@ using KeePark.Models;
             WriteLiteral("\n        </dd>\n    </dl>\n\n\n    <div>\n        ");
             EndContext();
             BeginContext(1883, 55, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "44a978f5112e4c25b083fe7b59042440", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d66526d3a69f4c6fb1e8578926066c8c", async() => {
                 BeginContext(1930, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -300,7 +300,7 @@ using KeePark.Models;
             WriteLiteral(" |\n        ");
             EndContext();
             BeginContext(1949, 38, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dcd620b8659e4d5aae7e343bedff0afe", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4c2e806c891941da8ce821dd967594ae", async() => {
                 BeginContext(1971, 12, true);
                 WriteLiteral("Back to List");
                 EndContext();

@@ -34,9 +34,9 @@ namespace KeePark.Data
                 new GeneralUser{UserName="toni@toni.com",NormalizedUserName="TONI@TONI.COM",Email="toni@toni.com",NormalizedEmail="TONI@TONI.COM",PhoneNumber="0546783547",UID="310078543",FirstName="Toni",LastName="Stark",
                              CreditCard="747478993",CarNumber="9808778",CarType="porche",Address="New York",Balance=2000},
                 new GeneralUser{UserName="rogers@rogers.com",NormalizedUserName="ROGERS@ROGERS.COM",Email="rogers@rogers.com",NormalizedEmail="ROGERS@ROGERS.COM",PhoneNumber="0534567876",UID="978850654",FirstName="Steve",LastName="Rogers",
-                             CreditCard="45673829",CarNumber="66667882",CarType="lamborgini",Address="New York",Balance=900},
-                new GeneralUser{UserName="peter@peter.com",NormalizedUserName="PETER@PETER.COM",Email="peter@peter.com",NormalizedEmail="PETER@PETER.COM",PhoneNumber="0547654332",UID="326680978",FirstName="Peter",LastName="Parker",
-                             CreditCard="23466783",CarNumber="2367892",CarType="bmw",Address="New York",Balance=900, History="5,5,5,6,8,8,8,10"}
+                             CreditCard="45673829",CarNumber="66667882",CarType="lamborgini",Address="New York",Balance=900}
+              //  new GeneralUser{UserName="peter@peter.com",NormalizedUserName="PETER@PETER.COM",Email="peter@peter.com",NormalizedEmail="PETER@PETER.COM",PhoneNumber="0547654332",UID="326680978",FirstName="Peter",LastName="Parker",
+                //             CreditCard="23466783",CarNumber="2367892",CarType="bmw",Address="New York",Balance=900, History="5,5,5,6,8,8,8,10"}
             };
             foreach (GeneralUser u in users)
             {
@@ -102,7 +102,7 @@ namespace KeePark.Data
                 new ReserveSpot{ReserveSpotID=new Guid(),UserID="144407652",SpotID=spots.Single(n=>n.SpotName=="Regina").ParkingSpotID,CreatedOn=DateTime.Parse("2019-10-26"),ReservationDate=DateTime.Parse("2019-11-11"),ReservationHour=13,Duration=3,carNumber="8765578"},
                 new ReserveSpot{ReserveSpotID=new Guid(),UserID="144407652",SpotID=spots.Single(n=>n.SpotName=="Anita").ParkingSpotID,CreatedOn=DateTime.Parse("2019-10-26"),ReservationDate=DateTime.Parse("2019-11-16"),ReservationHour=21,Duration=1,carNumber="5555555"},
                 new ReserveSpot{ReserveSpotID=new Guid(),UserID="144407652",SpotID=spots.Single(n=>n.SpotName=="Anita").ParkingSpotID,CreatedOn=DateTime.Parse("2019-10-26"),ReservationDate=DateTime.Parse("2019-09-09"),ReservationHour=21,Duration=1,carNumber="5555555"},
-                new ReserveSpot{ReserveSpotID=new Guid(),UserID="326680978",SpotID=spots.Single(n=>n.SpotName=="Segev").ParkingSpotID,CreatedOn=DateTime.Parse("2019-10-26"),ReservationDate=DateTime.Parse("2019-11-01"),ReservationHour=20,Duration=3,carNumber="2367892"},
+                new ReserveSpot{ReserveSpotID=new Guid(),UserID="326680978",SpotID=spots.Single(n=>n.SpotName=="Segev").ParkingSpotID,CreatedOn=DateTime.Parse("2019-10-26"),ReservationDate=DateTime.Parse("2019-09-01"),ReservationHour=20,Duration=3,carNumber="2367892"},
                 new ReserveSpot{ReserveSpotID=new Guid(),UserID="123456789",SpotID=spots.Single(n=>n.SpotName=="Segev").ParkingSpotID,CreatedOn=DateTime.Parse("2019-10-26"),ReservationDate=DateTime.Parse("2019-10-09"),ReservationHour=18,Duration=2,carNumber="1212212"},
                 new ReserveSpot{ReserveSpotID=new Guid(),UserID="676767676",SpotID=spots.Single(n=>n.SpotName=="Segev").ParkingSpotID,CreatedOn=DateTime.Parse("2019-10-26"),ReservationDate=DateTime.Parse("2019-11-12"),ReservationHour=20,Duration=3,carNumber="7777772"}
             };
