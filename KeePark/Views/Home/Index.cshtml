@@ -339,45 +339,50 @@
                 <h4 class="heading-third section-title text-center">Here Is A Recommendation For You</h4>
                 <span id="recoClose" class="close">&times;</span>
             </div>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <script>
+                    // Get the modal
+                    var reco_modal = document.getElementById("recomendationModal");
+                    // Open the modal
+                    reco_modal.style.display = "block";
+                    // Get the <span> element that closes the modal
+                    var span = document.getElementById("recoClose");
+                    // When the user clicks on <span> (x), close the modal
+                    span.onclick = function () {
+                        reco_modal.style.display = "none";
+                    }
+                    // When the user clicks anywhere outside of the modal, close it
+                    window.onclick = function (event) {
+                        if (event.target == reco_modal) {
+                            reco_modal.style.display = "none";
+                        }
+                    }
+                </script>
+            }
+
             @{
-    ParkingSpot spots = ViewBag.recomended;
-                <div class="modal-body">
+                ParkingSpot spots = ViewBag.recomended;
+                if (spots != null)
+                {
+                    <div class="modal-body">
 
 
-                    <img class="card-img-top" src="~/SpotImages/@spots.filePath" asp-append-version="true" height="200" width="50" />
+                        <img class="card-img-top" src="~/SpotImages/@spots.filePath" asp-append-version="true" height="200" width="50" />
 
-                    <p>Address: @spots.Address</p>
-                    <p>@spots.SpotDescription</p>
-                    <p>Price: @spots.Price</p>
-                </div>
+                        <p>Address: @spots.Address</p>
+                        <p>@spots.SpotDescription</p>
+                        <p>Price: @spots.Price</p>
+                    </div>
 
-                <div class="modal-footer">
-                    <a asp-controller="ReserveSpots" asp-action="Create" asp-route-id="@spots.ParkingSpotID" class="btn btn-primary m-1">Create Reservation</a>
-                    <a asp-controller="ParkingSpots" asp-action="Details" asp-route-id="@spots.ParkingSpotID" class="btn btn-primary m-1">View</a>
-                </div>
-    }
-            </div>
+                    <div class="modal-footer">
+                        <a asp-controller="ReserveSpots" asp-action="Create" asp-route-id="@spots.ParkingSpotID" class="btn btn-primary m-1">Create Reservation</a>
+                        <a asp-controller="ParkingSpots" asp-action="Details" asp-route-id="@spots.ParkingSpotID" class="btn btn-primary m-1">View</a>
+                    </div>
+                }}
+        </div>
     </div>
 
-    @if (User.Identity.IsAuthenticated)
-    {
-        <script>
-            // Get the modal
-            var reco_modal = document.getElementById("recomendationModal");
-            // Open the modal
-            reco_modal.style.display = "block";
-            // Get the <span> element that closes the modal
-            var span = document.getElementById("recoClose");
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function () {
-                reco_modal.style.display = "none";
-            }
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function (event) {
-                if (event.target == reco_modal) {
-                    reco_modal.style.display = "none";
-                }
-            }
-        </script>
-    }
+
 </body>

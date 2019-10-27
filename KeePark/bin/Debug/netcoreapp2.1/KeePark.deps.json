@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "4ef299a31f680306cd8a696edd8f2ebe00a0763b"
+    "signature": "2e8a046cbee2464f3efa5bcfaac6978b70e9441a"
   },
   "compilationOptions": {
     "defines": [
@@ -10,7 +10,7 @@
       "NETCOREAPP",
       "NETCOREAPP2_1"
     ],
-    "languageVersion": "",
+    "languageVersion": "7.3",
     "platform": "",
     "allowUnsafe": false,
     "warningsAsErrors": false,
@@ -31,7 +31,7 @@
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.AspNetCore.Razor.Design": "2.1.2",
           "Microsoft.NETCore.App": "2.1.0",
-          "Microsoft.Net.Compilers": "2.8.2",
+          "Microsoft.Net.Compilers": "3.3.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.10",
           "jQuery": "3.4.1",
           "jQuery.UI.Combined": "1.12.1"
@@ -146,7 +146,7 @@
           "lib/netstandard1.3/Microsoft.CodeAnalysis.Workspaces.dll": {}
         }
       },
-      "Microsoft.Net.Compilers/2.8.2": {},
+      "Microsoft.Net.Compilers/3.3.1": {},
       "Microsoft.NETCore.App/2.1.0": {
         "dependencies": {
           "Microsoft.NETCore.DotNetHostPolicy": "2.1.0",
@@ -3600,12 +3600,12 @@
       "path": "microsoft.codeanalysis.workspaces.common/2.8.0",
       "hashPath": "microsoft.codeanalysis.workspaces.common.2.8.0.nupkg.sha512"
     },
-    "Microsoft.Net.Compilers/2.8.2": {
+    "Microsoft.Net.Compilers/3.3.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Nx0dMg9LFNSs4HN1M/eWj+qZGSIm9fT+ZQpDwW8E4DIcUNVTU4PIbe/JkGOAXklyEpY96XUNyQXnuh8ar+6pCQ==",
-      "path": "microsoft.net.compilers/2.8.2",
-      "hashPath": "microsoft.net.compilers.2.8.2.nupkg.sha512"
+      "sha512": "sha512-6ONPqret0xUw+XaMWQycs08IHynA9gO8/jkfDD+LR+v3amGuBTXbfpCGuDu/nADwWPECHIcbS0UWvOYlONwwHw==",
+      "path": "microsoft.net.compilers/3.3.1",
+      "hashPath": "microsoft.net.compilers.3.3.1.nupkg.sha512"
     },
     "Microsoft.NETCore.App/2.1.0": {
       "type": "package",

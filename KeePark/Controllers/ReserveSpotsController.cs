@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using System.Text;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KeePark.Controllers
 {
@@ -30,27 +31,10 @@ namespace KeePark.Controllers
         }
 
 
-        public ActionResult Orders(string datepicker, string employee, string visitor)
-        {
-            var userid = _userManager.GetUserId(HttpContext.User);
-            GeneralUser user = _userManager.FindByIdAsync(userid).Result;
-            var res = (from reservations in _context.ReserveSpot
-                       where reservations.UserID == user.UID
-                       select reservations).Include(r => r.Spot);
-
-
-
-            //filter data to get an filtered list
-
-            return PartialView("_ResultTable", res);
-        }
-
-
         // GET: ReserveSpots
-        public IActionResult Index(string spotsName, DateTime resDate, string carNumber)
+        public async Task<IActionResult> Index(string spotsName, DateTime resDate, string carNumber)
         {
-
-
+               
             var userid = _userManager.GetUserId(HttpContext.User);
             GeneralUser user = _userManager.FindByIdAsync(userid).Result;
             var res = (from reservations in _context.ReserveSpot
@@ -67,16 +51,47 @@ namespace KeePark.Controllers
 
             if (resDate != DateTime.MinValue)
             {
-                reserves = reserves.Where(a => a.ReservationDate == resDate);
+                reserves = reserves.Where(a => a.ReservationDate.Date.Equals(resDate.Date));
             }
 
             if (!String.IsNullOrEmpty(carNumber))
             {
-                reserves = reserves.Where(a => a.carNumber.Contains(carNumber));
+                reserves = reserves.Where(a => a.carNumber.Equals(carNumber));
             }
 
-            return View(reserves.ToList());
+            return View(await reserves.ToListAsync());
         }
+
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> List(string userId, string spotsName, DateTime resDate)
+        {
+
+                var keeParkContext = (from allres in _context.ReserveSpot
+                                     select allres).Include(r => r.Spot);
+                var reserves = from r in keeParkContext select r;
+            // Smart Search
+            if (!String.IsNullOrEmpty(userId))
+            {
+                reserves = reserves.Where(a => a.UserID.Equals(userId));
+            }
+            if (!String.IsNullOrEmpty(spotsName))
+                {
+                reserves = reserves.Where(a => a.Spot.SpotName.Contains(spotsName));
+                }
+
+                if (resDate != DateTime.MinValue)
+                {
+                reserves = reserves.Where(a => a.ReservationDate.Date.Equals(resDate.Date));
+                }
+
+               
+
+
+                return View(await reserves.ToListAsync());
+            
+          
+        }
+
 
         public IActionResult FutureOrders()
         {
@@ -278,6 +293,10 @@ namespace KeePark.Controllers
             }
 
             var reserveSpot = await _context.ReserveSpot.FindAsync(id);
+            if (reserveSpot.ReservationDate.Date < DateTime.Today)
+            {
+                return RedirectToAction(nameof(ReservationAlreadyFullfiled));
+            }
             if (reserveSpot == null)
             {
                 return NotFound();
@@ -301,6 +320,8 @@ namespace KeePark.Controllers
 
             if (ModelState.IsValid)
             {
+                
+         
                 if ((reserveSpot.ReservationDate.Date >= DateTime.Today))
                 {
                     //checks if the reservation hour is valid for today's date
@@ -448,7 +469,10 @@ namespace KeePark.Controllers
         {
             return View();
         }
-
+        public IActionResult ReservationAlreadyFullfiled()
+        {
+            return View();
+        }
 
 
     }

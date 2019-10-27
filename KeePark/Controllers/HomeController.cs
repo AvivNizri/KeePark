@@ -18,7 +18,7 @@ namespace KeePark.Controllers
         private readonly IdentityContext _IdentityContext;
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly MLApriori _mlApriori;
-        
+
 
         public HomeController(IdentityContext db, KeeParkContext kpb, IHostingEnvironment hostingEnvironment)
         {
@@ -28,9 +28,10 @@ namespace KeePark.Controllers
             // init the MLApriori
             _mlApriori = new MLApriori(_IdentityContext, _KeeParkContext);
         }
-            public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index()
         {
-            if (User.Identity.IsAuthenticated) {
+            if (User.Identity.IsAuthenticated)
+            {
                 // finding current user by name
                 var uName = User.Identity.Name;
                 var thisUser = await _IdentityContext.GeneralUser.FirstOrDefaultAsync(u => u.UserName.Equals(uName));
@@ -41,21 +42,22 @@ namespace KeePark.Controllers
 
                 // check if the user has reservations in history
                 var thisUserHistory = thisUser.History;
-                if (thisUserHistory != null){
+                if (thisUserHistory != null)
+                {
                     var recommended = _mlApriori.GetRecommendedSpots(thisUser.History.Split(",").Select(int.Parse).ToArray());
-                    if(recommended.Count !=0)
+                    if (recommended.Count != 0)
                         ViewBag.recomended = recommended[0];
                     else
                         ViewBag.recomended = GetMostReservedSpot();
                 }
-                else {
+                else
+                {
                     ViewBag.recomended = GetMostReservedSpot();
                 }
-
-
             }
             return View();
         }
+
 
         public IActionResult UserProfile() ///////added
         {
@@ -89,12 +91,13 @@ namespace KeePark.Controllers
 
         public ParkingSpot GetMostReservedSpot()
         {
-            
+
             List<ParkingSpot> spots = _KeeParkContext.ParkingSpot.ToList();
             ParkingSpot most = spots[0];
             spots.ForEach(spot =>
             {
-                if (spot.NunOfOrders > most.NunOfOrders) {
+                if (spot.NunOfOrders > most.NunOfOrders)
+                {
                     most = spot;
                 }
             });

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace KeePark.Migrations
+namespace KeePark.Migrations.KeePark
 {
-    public partial class addedHistory : Migration
+    public partial class SecMig : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -106,12 +106,14 @@ namespace KeePark
             var userManager = serviceProvider.GetRequiredService<UserManager<GeneralUser>>();
             Task<IdentityResult> roleResult;
             string email = "keepark@keepark.com";
+            string userEmail = "peter@peter.com";
             GeneralUser user;
+            GeneralUser gUser;
 
             //Check that there is an Administrator role and create if not
-            try
-            {
-                Task<bool> hasAdminRole = roleManager.RoleExistsAsync("Administrator");
+            //   try
+            //  {
+            Task<bool> hasAdminRole = roleManager.RoleExistsAsync("Administrator");
                 hasAdminRole.Wait();
 
                 if (!hasAdminRole.Result)
@@ -126,6 +128,7 @@ namespace KeePark
                 Task<GeneralUser> testUser = userManager.FindByEmailAsync(email);
                 testUser.Wait();
                 user = testUser.Result;
+
                 if (user == null)
                 {
                     user = CreateAdminAsync(email, userManager).Result;
@@ -135,11 +138,21 @@ namespace KeePark
                     Task<IdentityResult> newUserRole = userManager.AddToRoleAsync(user, "Administrator");
                     newUserRole.Wait();
                 }
-            }
-            catch (Exception ex)
-            {
 
-            }
+                 Task<GeneralUser> tUser = userManager.FindByEmailAsync(userEmail);
+                 tUser.Wait();
+                 gUser = testUser.Result;
+                  if (gUser == null)
+                  {
+                     gUser = CreateUserAsync(userEmail, userManager).Result;
+                   }
+
+
+            //   }
+            // catch (Exception ex)
+            // {
+
+            // }
 
         }
 
@@ -149,19 +162,48 @@ namespace KeePark
             {
                 UID = "111111111",
                 FirstName = "Admin",
-                LastName="Admin",
-                PhoneNumber="0524897653",
-                CarNumber="0" ,
-                CarType="Admin",
-                CreditCard="0",
-                Balance=0,
+                LastName = "Admin",
+                PhoneNumber = "0524897653",
+                CarNumber = "0",
+                CarType = "Admin",
+                CreditCard = "0",
+                Balance = 0,
                 ConfirmPassword = "Ad7&Ad",
                 Password = "Ad7&Ad",
                 Email = email,
-                Address="Rishon Lezion"
+                Address = "Rishon Lezion"
             };
-            var user = new GeneralUser { UserName = model.Email, Email = model.Email, Address=model.Address, Balance=model.Balance, CarNumber=model.CarNumber, CarType=model.CarType, CreditCard=model.CreditCard, FirstName=model.FirstName, LastName=model.LastName, UID=model.UID };
-         //var s=new KeePark.
+            var user = new GeneralUser { UserName = model.Email, Email = model.Email, Address = model.Address, Balance = model.Balance, CarNumber = model.CarNumber, CarType = model.CarType, CreditCard = model.CreditCard, FirstName = model.FirstName, LastName = model.LastName, UID = model.UID };
+            //var s=new KeePark.
+            var result = await userManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
+            {
+                return user;
+            }
+            return null;
+
+        }
+
+        private async Task<GeneralUser> CreateUserAsync(string email, UserManager<GeneralUser> userManager)
+        {
+            KeePark.Areas.Identity.Pages.Account.RegisterModel.InputModel model = new KeePark.Areas.Identity.Pages.Account.RegisterModel.InputModel
+            {
+                UID = "326680978",
+                FirstName = "Peter",
+                LastName = "Parker",
+                PhoneNumber = "0547654332",
+                CarNumber = "2367892",
+                CarType = "bmw",
+                CreditCard = "23466783",
+                Balance = 900,
+                ConfirmPassword = "Ad7&Ad",
+                Password = "Ad7&Ad",
+                Email = email,
+                Address = "New York"
+            };
+
+            var user = new GeneralUser { UserName = model.Email, Email = model.Email, Address = model.Address, Balance = model.Balance, CarNumber = model.CarNumber, CarType = model.CarType, CreditCard = model.CreditCard, FirstName = model.FirstName, LastName = model.LastName, UID = model.UID, History= "5,5,5,6,8,8,8,10" };
+            //var s=new KeePark.
             var result = await userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {

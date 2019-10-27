@@ -15,7 +15,7 @@
         <p id="humidity"></p>
 
         <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8r8iey6qgQv9krDBtuiOjER0NHuExrAA&callback=initMap">
         </script>
 
         <script>
@@ -36,7 +36,7 @@
             }
            function weather(lt, lg) {
                 $(document).ready(function () {
-                    $.get("https://api.openweathermap.org/data/2.5/weather?lat=" + lt + "&lon=" + lg + "&APPID=&units=metric", function (response) {
+                    $.get("https://api.openweathermap.org/data/2.5/weather?lat=" + lt + "&lon=" + lg + "&APPID=010276a0143f95cc47608eb8666c4365&units=metric", function (response) {
                         //response
                         console.log(response);
                       $("#name").text("City: "+response.name);
