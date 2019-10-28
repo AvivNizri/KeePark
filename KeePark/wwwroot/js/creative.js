@@ -26,7 +26,7 @@
     offset: 75
   });
 
-  // Collapse Navbar
+  // Collapse Navba@
   var navbarCollapse = function() {
     if ($("#mainNav").offset().top > 100) {
       $("#mainNav").addClass("navbar-scrolled");

@@ -63,7 +63,7 @@ using KeePark.Models;
 #line default
 #line hidden
             BeginContext(127, 51, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5c5d531393cb451ea3359225de3ea656", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d80628e4f97f4dcd8d25cad61f54b4fd", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -285,7 +285,7 @@ using KeePark.Models;
             WriteLiteral("\r\n            </dd>\r\n        </dl>\r\n\r\n\r\n        <div>\r\n            ");
             EndContext();
             BeginContext(3559, 65, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e979a9e9d54b4c8da4c88351a80893b3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "65beb567dda84f2fb2121c65cf4dfa49", async() => {
                 BeginContext(3616, 4, true);
                 WriteLiteral("Edit");
                 EndContext();

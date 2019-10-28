@@ -77,11 +77,13 @@ table {
     border-spacing: 2px;
 }
 
-@media (min-width: 1024px) footer .footer-email-signup {
+@media (min-width: 1024px)
+footer .footer-email-signup {
     padding-top: 60px;
 }
 
-@media (min-width: 767px) footer .footer-email-signup {
+@media (min-width: 767px)
+footer .footer-email-signup {
     padding-bottom: 120px;
 }
 
@@ -129,6 +131,7 @@ footer .footer-email-signup h4 {
     line-height: 0.9;
 }
 
-@media only screen and (min-width: 480px) footer .footer-email-signup h4 {
+@media only screen and (min-width: 480px)
+footer .footer-email-signup h4 {
     line-height: 1;
 }

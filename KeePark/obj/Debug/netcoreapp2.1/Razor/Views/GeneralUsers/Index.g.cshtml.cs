@@ -69,7 +69,7 @@ using KeePark.Models;
             WriteLiteral("\r\n<h2>List Of Users</h2>\r\n\r\n");
             EndContext();
             BeginContext(164, 156, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "22ca015c164d44a0a113e1eddef6ddc7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bedacab80ab342adb956c0860c6ddf23", async() => {
                 BeginContext(212, 101, true);
                 WriteLiteral("\r\n    User\'s ID: <input type=\"text\" name=\"usersID\" />\r\n\r\n    <input type=\"submit\" value=\"search\" />\r\n");
                 EndContext();
@@ -204,7 +204,7 @@ using KeePark.Models;
             WriteLiteral("\r\n                </td>\r\n\r\n                <td>\r\n\r\n                    ");
             EndContext();
             BeginContext(1597, 60, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "782934bcf6804c6baf024ee418eaa795", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "89ccc97cb2d8457a9a803dbc19086952", async() => {
                 BeginContext(1646, 7, true);
                 WriteLiteral("Details");
                 EndContext();
@@ -239,7 +239,7 @@ using KeePark.Models;
             WriteLiteral(" |\r\n                    ");
             EndContext();
             BeginContext(1681, 58, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7949139c9cff42078544f690b90bfa10", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "abc7d470dde64d088a95551c04c36d1e", async() => {
                 BeginContext(1729, 6, true);
                 WriteLiteral("Delete");
                 EndContext();
