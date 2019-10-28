@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Home Page";
 }
 <!-- Navigation -->
@@ -24,7 +23,7 @@
                     <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="/ParkingSpots/ParkingSpotResult">Search</a>
+                    <a id="Searching-button" class="nav-link" href="/ParkingSpots/ParkingSpotResult">Search</a>
                 </li>
                 <partial name="_LoginPartial" />
             </ul>
@@ -43,7 +42,7 @@
                 <hr class="divider my-4">
             </div>
             <div class="col-lg-8 align-self-baseline">
-                <video controls="controls" width="640" height="360">
+                <video controls="controls" autoplay width="640" height="360">
                     <source src="~/video/parkingVideo.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -255,7 +254,18 @@
                     $('#starting-button').prop("href", "/Identity/Account/Login");
                 }
             });
-        });
+    });
+      $(document).ready(function () {
+          $('#Searching-button').on("click", function () {
+                var userAuthorized = @User.Identity.IsAuthenticated.ToString().ToLower();
+                if (userAuthorized) {
+                    $('#Searching-button').prop("href", "/ParkingSpots/ParkingSpotResult");
+                }
+                else {
+                    $('#Searching-button').prop("href", "/Identity/Account/Login");
+                }
+            });
+    });
 </script>
 <!--creating modal which will do 2 things depands if the user logged in or not-->
 <!--if the user logged in than recommendation system will be launched otherwise login panel will pop up-->
@@ -305,12 +315,12 @@
         font-weight: bold;
     }
 
-    .close:hover,
-    .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
 
     .modal-header {
         padding: 2px 16px;

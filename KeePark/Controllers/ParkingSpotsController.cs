@@ -60,7 +60,25 @@ namespace KeePark.Controllers
             return View(parkingSpot);
         }
 
-        public ActionResult ParkingSpotResult(string spotsName, string spotsAddress, string spotsType)
+        public async Task<IActionResult> DetailsFromSearching(int? id)
+        {
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var parkingSpot = await _context.ParkingSpot
+                .FirstOrDefaultAsync(m => m.ParkingSpotID == id);
+            if (parkingSpot == null)
+            {
+                return NotFound();
+            }
+
+            return View(parkingSpot);
+        }
+
+        public ActionResult ParkingSpotResult(string spotsName, string spotsAddress, int spotsPrice)
         {
             var spots = from spot in _context.ParkingSpot select spot;
 
@@ -75,33 +93,14 @@ namespace KeePark.Controllers
                 spots = spots.Where(a => a.Address.Contains(spotsAddress));
             }
 
+            if (spotsPrice != 0)
+            {
+                spots = spots.Where(a => (a.Price <= spotsPrice));
+            }
 
-            //Search by the optionSet 
-
-            //if (desc != null)
-            //{
-            //    movies = movies.Where(a => a.Description.Contains(desc));
-            //}
 
             return View(spots.ToList());
         }
-
-
-        /*
-                        if (String.IsNullOrEmpty(searchingParameter)) { return NotFound(); }
-                        var parkingSpotList = (from parkingSpot in _context.ParkingSpot
-                                               where parkingSpot.Address.Contains(searchingParameter) ||
-                                               parkingSpot.SpotName.Contains(searchingParameter) ||
-                                               ParkingSpotEnums.SiteType.Cinema.ToString().Contains(searchingParameter) ||
-                                               ParkingSpotEnums.SiteType.PrivateParking.ToString().Contains(searchingParameter) ||
-                                               ParkingSpotEnums.SiteType.Resturant.ToString().Contains(searchingParameter) ||
-                                               ParkingSpotEnums.SiteType.Theater.ToString().Contains(searchingParameter)
-                                               orderby parkingSpot.SpotName
-                                               select parkingSpot).ToList();
-                        if (parkingSpotList == null || parkingSpotList.Count == 0) { return NotFound(); }
-                        return View(parkingSpotList);*/
-
-
 
         // GET: ParkingSpots/Create
         public IActionResult Create()
@@ -257,7 +256,7 @@ namespace KeePark.Controllers
         // POST: ParkingSpots/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var parkingSpot = await _context.ParkingSpot.FindAsync(id);
             _context.ParkingSpot.Remove(parkingSpot);

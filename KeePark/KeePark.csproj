@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Accord" Version="3.8.0" />
+    <PackageReference Include="Accord" Version="3.8.2-alpha" />
     <PackageReference Include="Accord.MachineLearning" Version="3.8.0" />
     <PackageReference Include="Accord.Math" Version="3.8.0" />
     <PackageReference Include="Accord.Statistics" Version="3.8.0" />
@@ -36,6 +36,15 @@
 
   <ItemGroup>
     <Content Update="C:\Users\avivn\.nuget\packages\accord\3.8.2-alpha\build\Accord.dll.config" Link="AccordPackage\Accord.dll.config" />
+    <Content Update="Views\ParkingSpots\DetailsFromSearching.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\PageNotWork.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\NotFound.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
   </ItemGroup>
 
 </Project>

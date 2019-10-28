@@ -74,7 +74,7 @@ namespace KeePark
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseStatusCodePagesWithRedirects("/Error/{0}");
             }
             else
             {
@@ -164,9 +164,9 @@ namespace KeePark
                 FirstName = "Admin",
                 LastName = "Admin",
                 PhoneNumber = "0524897653",
-                CarNumber = "0",
+                CarNumber = "7777777",
                 CarType = "Admin",
-                CreditCard = "0",
+                CreditCard = "12341234123456",
                 Balance = 0,
                 ConfirmPassword = "Ad7&Ad",
                 Password = "Ad7&Ad",

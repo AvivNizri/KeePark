@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.1": {
-      "Accord/3.8.0": {
+      "Accord/3.8.2-alpha": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Accord.dll": {}
@@ -4687,14 +4687,14 @@
     }
   },
   "libraries": {
-    "Accord/3.8.0": {
-      "sha512": "7kJrB570dO5ELim+2KWQNozuvWO9/BuZfZspdFy36fcWPNF2CEccblLuILeUlI8QJYd2DlBy0bfK8BlCx/uayA==",
+    "Accord/3.8.2-alpha": {
+      "sha512": "g/EKYGdeMKTMJt7XtB65f+RyVW5ALfU1f1T1dpIGXOqzBtaaNK+OGB6pFY9RFrjKPQNUlnKUWF2jwH5knM+X7A==",
       "type": "package",
-      "path": "accord/3.8.0",
+      "path": "accord/3.8.2-alpha",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "accord.3.8.0.nupkg.sha512",
+        "accord.3.8.2-alpha.nupkg.sha512",
         "accord.nuspec",
         "build/Accord.dll.config",
         "build/Accord.targets",
@@ -12958,7 +12958,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
-      "Accord >= 3.8.0",
+      "Accord >= 3.8.2-alpha",
       "Accord.MachineLearning >= 3.8.0",
       "Accord.Math >= 3.8.0",
       "Accord.Statistics >= 3.8.0",
@@ -13014,7 +13014,7 @@
         "dependencies": {
           "Accord": {
             "target": "Package",
-            "version": "[3.8.0, )"
+            "version": "[3.8.2-alpha, )"
           },
           "Accord.MachineLearning": {
             "target": "Package",

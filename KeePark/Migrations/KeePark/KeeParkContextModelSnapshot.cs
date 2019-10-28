@@ -32,6 +32,8 @@ namespace KeePark.Migrations.KeePark
 
                     b.Property<int>("Price");
 
+                    b.Property<int>("SiteType");
+
                     b.Property<string>("SpotDescription");
 
                     b.Property<string>("SpotName")
@@ -61,7 +63,8 @@ namespace KeePark.Migrations.KeePark
 
                     b.Property<string>("UserID");
 
-                    b.Property<string>("carNumber");
+                    b.Property<string>("carNumber")
+                        .HasMaxLength(8);
 
                     b.HasKey("ReserveSpotID");
 

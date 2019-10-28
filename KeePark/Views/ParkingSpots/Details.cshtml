@@ -78,29 +78,17 @@
     </div>
 </div>
 <div class="center">
-
     <dt>
         @Html.DisplayNameFor(model => model.SpotName): @Html.DisplayFor(model => model.SpotName)
     </dt>
 
-    <dt>
-        @Html.DisplayNameFor(model => model.OwnerID): @Html.DisplayFor(model => model.OwnerID)
-    </dt>
 
     <dt>
         @Html.DisplayNameFor(model => model.Address): @Html.DisplayFor(model => model.Address)
     </dt>
 
     <dt>
-        @Html.DisplayNameFor(model => model.NunOfOrders): @Html.DisplayFor(model => model.NunOfOrders)
-    </dt>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.filePath):  @Html.DisplayFor(model => model.filePath)
-    </dt>
-
-    <dt>
-        Spot ID: @Model.ParkingSpotID
+        Parking Description: @Html.DisplayFor(model => model.SpotDescription)
     </dt>
 
     <dt>
@@ -108,7 +96,7 @@
     </dt>
     <div class="card-footer text-center">
         <a asp-controller="home" asp-action="index" class="btn btn-primary">Back</a>
-        <a asp-controller="ParkingSpots" asp-action="Edit" asp-route-id="@Model.ParkingSpotID" class="btn btn-primary">Edit</a>
+        <a asp-controller="ParkingSpots" asp-action="Edit" asp-route-id="@Model.ParkingSpotID" class="btn btn-success">Edit</a>
         <a asp-controller="ParkingSpots" asp-action="Delete" asp-route-id="@Model.ParkingSpotID" class="btn btn-danger">Delete</a>
         <button onclick="post()" class="btn btn-primary">Share On Facbook</button>
     </div>

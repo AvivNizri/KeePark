@@ -42,7 +42,8 @@ namespace KeePark.Data
             {
                 idcontext.GeneralUser.Add(u);
             }
-            idcontext.SaveChanges();
+            idcontext.SaveChanges(); 
+            
 
 
 
@@ -66,7 +67,7 @@ namespace KeePark.Data
             {
                 context.ParkingSpot.Add(p);
             }
-            context.SaveChanges();
+          context.SaveChanges(); 
 
             var reservations = new ReserveSpot[]
             {
@@ -110,7 +111,8 @@ namespace KeePark.Data
             {
                 context.ReserveSpot.Add(r);
             }
-            context.SaveChanges();
+            try { context.SaveChanges(); } catch { }
+            
 
         }
     }

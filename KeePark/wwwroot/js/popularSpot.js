@@ -1,7 +1,7 @@
 ﻿d3.csv("/Statistics/GetData", function (data) {
     // set the dimensions and margins of the graph
-    var margin = { top: 20, right: 20, bottom: 30, left: 40 },
-        width = 960 - margin.left - margin.right,
+    var margin = { top: 20, right: 20, bottom: 30, left: 60 },
+        width = 900 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
 
     // set the ranges
@@ -32,14 +32,21 @@
     y.domain(data.map(function (d) { return d.name; }));
     //y.domain([0, d3.max(data, function(d) { return d.sales; })]);
 
+    var color = d3.scaleOrdinal()
+        .domain(data)
+        .range(["#FF7F50", "#FF6347", "#FFD700", "#FFA500", "#FF8C00"]);
+
+
     // append the rectangles for the bar chart
     svg.selectAll(".bar")
         .data(data)
         .enter().append("rect")
         .attr("class", "bar")
+        .attr("fill", function (d) { return (color(d.value)) })
         .attr("width", function (d) { return x(d.value); })
         .attr("y", function (d) { return y(d.name); })
         .attr("height", y.bandwidth());
+
 
     // add the x Axis
     svg.append("g")

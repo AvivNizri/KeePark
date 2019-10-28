@@ -43,6 +43,7 @@ namespace KeePark.Areas.Identity.Pages.Account
             [Key]
             [Required]
             [Display(Name = "ID")]
+            [StringLength(9, ErrorMessage = "{0} length must be 9 digits", MinimumLength = 9)]
             public string UID { get; set; }
 
             [DataType(DataType.Text)]
@@ -56,12 +57,14 @@ namespace KeePark.Areas.Identity.Pages.Account
             public string LastName { get; set; }
 
             [Required]
+            [StringLength(19, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 12)]
             [Display(Name = "Credit Card")]
             public string CreditCard { get; set; }
 
             [DataType(DataType.Text)]
             [Required]
             [Display(Name = "Car Number")]
+            [StringLength(8, ErrorMessage = "{0} length must be between {2} and {1}", MinimumLength = 6)]
             public string CarNumber { get; set; }
 
             [DataType(DataType.Text)]
@@ -95,6 +98,7 @@ namespace KeePark.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
 
         }
 

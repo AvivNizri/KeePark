@@ -9,16 +9,18 @@ using KeePark.Models;
 
 using Microsoft.AspNetCore.Authorization;
 using KeePark.Data;
+using System.Security.Claims;
 
 namespace KeePark.Controllers
 {
     public class GeneralUsersController : Controller
     {
         private readonly IdentityContext _context;
+        private readonly KeeParkContext _keeParkContext;
 
-        public GeneralUsersController(IdentityContext context)
+        public GeneralUsersController(IdentityContext context, KeeParkContext keeParkContext)
         {
-
+            _keeParkContext = keeParkContext;
             _context = context;
         }
 
@@ -47,6 +49,10 @@ namespace KeePark.Controllers
         // GET: UserProfile
         public async Task<IActionResult> UserProfile()
         {
+            var currentUser = (from userID in _context.GeneralUser
+                               where userID.Id == User.FindFirstValue(ClaimTypes.NameIdentifier)
+                               select userID.UID).FirstOrDefault();
+
             return View(await _context.GeneralUser.ToListAsync());
         }
 

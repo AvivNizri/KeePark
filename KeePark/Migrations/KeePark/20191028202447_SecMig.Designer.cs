@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KeePark.Migrations.KeePark
 {
     [DbContext(typeof(KeeParkContext))]
-    [Migration("20191027193649_SecMig")]
+    [Migration("20191028202447_SecMig")]
     partial class SecMig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,6 +33,8 @@ namespace KeePark.Migrations.KeePark
                     b.Property<string>("OwnerID");
 
                     b.Property<int>("Price");
+
+                    b.Property<int>("SiteType");
 
                     b.Property<string>("SpotDescription");
 
@@ -63,7 +65,8 @@ namespace KeePark.Migrations.KeePark
 
                     b.Property<string>("UserID");
 
-                    b.Property<string>("carNumber");
+                    b.Property<string>("carNumber")
+                        .HasMaxLength(8);
 
                     b.HasKey("ReserveSpotID");
 

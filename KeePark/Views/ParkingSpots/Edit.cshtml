@@ -26,7 +26,6 @@
 <div class="grid">
     <div class="card">
         <form enctype="multipart/form-data" method="post" asp-action="Edit">
-            <a>Spot ID: @Model.ParkingSpotID</a>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ParkingSpotID" />
             <div class="form-group">
@@ -63,9 +62,6 @@
             <!-- Your share button code -->
 
         </form>
-        <div>
-            <a asp-action="Index">Back to List</a>
-        </div>
     </div>
 
     <div class="card">

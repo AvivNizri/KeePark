@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KeePark.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20191027193614_FirstMig")]
+    [Migration("20191028202418_FirstMig")]
     partial class FirstMig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

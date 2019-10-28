@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -123,7 +123,6 @@ namespace KeePark.Controllers
             return View(reserveSpot);
         }
 
-        //  [Route("ReserveSpots/Create/{parkingSpotID}")]
         public IActionResult Create([FromRoute]int parkingSpotID)
         {
             //getting car number for the view

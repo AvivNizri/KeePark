@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -43,7 +44,6 @@ namespace KeePark.Controllers
 
             Dictionary<string, int> map;
 
-
             map = list.ToList().ToDictionary(a => a.Name, a => a.Count);
             ViewBag.Map = map;
             return View();
@@ -51,15 +51,20 @@ namespace KeePark.Controllers
 
         public IActionResult PopularSpot()
         {
-
-
             return View();
         }
         public string GetData()
         {
-            Dictionary<string, int> map1;
-            var spots = (from s in _context.ParkingSpot
-                         orderby s.NunOfOrders descending
+            var numOfOrders = from parkingSpot in _context.ParkingSpot
+                              join reservtion in _context.ReserveSpot on parkingSpot.ParkingSpotID equals reservtion.SpotID into numOrderGroup
+                              from numorder in numOrderGroup
+                              group numorder by numorder.SpotID into g
+                              from parkingSpotName in _context.ParkingSpot
+                              where parkingSpotName.ParkingSpotID == g.Key
+                              select new { Name = parkingSpotName.SpotName, Count = g.Count() };
+
+            var spots = (from s in numOfOrders
+                         orderby s.Count descending
                          select s).Take(5);
 
 
@@ -68,7 +73,7 @@ namespace KeePark.Controllers
 
             foreach (var item in spots)
             {
-                output.Append(item.SpotName + "," + item.NunOfOrders + "\n");
+                output.Append(item.Name + "," + item.Count + "\n");
             }
 
             return output.ToString();

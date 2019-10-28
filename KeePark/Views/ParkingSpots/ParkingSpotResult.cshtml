@@ -8,7 +8,8 @@
 <form method="get" action="/ParkingSpots/ParkingSpotResult">
     Spot's Name: <input type="text" name="spotsName" />
     Spot's Address: <input type="text" name="spotsAddress" />
-    Spot's Type: <input type="text" name="spotsType" />
+    Spot's Price: <input type="number" min="1" name="spotsPrice" />
+
     <input type="submit" value="search" />
 </form>
 
@@ -22,6 +23,8 @@
 
                 <!--<h3>@spot.ParkingSpotID</h3>-->
                 <h3>Parking Name: @spot.SpotName</h3>
+                <h4>Parking Address: @spot.Address</h4>
+                <h4>Parking Price: @spot.Price</h4>
             </div>
 
             <img class="card-img-top imageThumbnail" src="@photoPath"
@@ -29,6 +32,8 @@
 
             <div class="card-footer text-center position-static">
                 <a asp-controller="ReserveSpots" asp-action="Create" asp-route-id="@spot.ParkingSpotID" class="btn btn-primary m-1">Create Reservation</a>
+                <a asp-controller="ParkingSpots" asp-action="DetailsFromSearching" asp-route-id="@spot.ParkingSpotID" class="btn btn-primary m-1">Details</a>
+
             </div>
         </div>
     }
