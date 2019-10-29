@@ -8,10 +8,18 @@
 <h2>List Of Users</h2>
 
 <form method="get" action="/GeneralUsers/Index">
-    User's ID: <input type="text" name="usersID" />
+<input type="text" class="userSearch" name="usersID" placeholder="User's ID" />
 
     <input type="submit" value="search" />
 </form>
+
+<style>
+      .userSearch{
+        padding-left: 18px;
+        padding-right: 18px;
+   
+    }
+</style>
 
 <table class="table">
     <thead>

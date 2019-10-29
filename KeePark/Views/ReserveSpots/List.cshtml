@@ -8,11 +8,18 @@
 <h2>History Of Reservations</h2>
 
 <form method="get" action="/ReserveSpots/List">
-    User's Id: <input type="text" name="userId" />
-    Spot's Name: <input type="text" name="spotsName" />
-    Reservations's Date: <input type="date" name="resDate" />
+    <input type="text" class="searchReservation" name="userId" placeholder="User's Id" />
+    <input type="text" class="searchReservation" name="spotsName" placeholder="Spot's Name" />
+    <input type="date" class="searchReservation" name="resDate" placeholder="Reservations's Date" />
     <input type="submit" value="search" />
 </form>
+<style>
+     .searchReservation{
+        padding-left: 18px;
+        padding-right: 18px;
+        margin:0px 15px 0 15px;
+    }
+</style>
 
 <table class="table">
     <thead>
