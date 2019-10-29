@@ -72,7 +72,7 @@ using KeePark.Models;
             WriteLiteral("</h1>\r\n");
             EndContext();
             BeginContext(155, 92, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5a32cd898f4b49e1b7c382230b3e6e84", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7eab27d5fd654091896471898e4c5af4", async() => {
                 BeginContext(199, 44, true);
                 WriteLiteral("\r\n    Click here to navigate to home page.\r\n");
                 EndContext();

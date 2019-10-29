@@ -32,7 +32,6 @@
 </nav>
 
 
-
 <!-- Masthead -->
 <header class="masthead">
     <div class="container h-100">
@@ -229,6 +228,7 @@
     </div>
 </section>
 <!-- Footer -->
+
 <footer class="bg-light py-5">
     <div class="container">
         <div class="small text-center text-muted">Copyright &copy; 2019 - KeePark</div>
@@ -388,7 +388,7 @@
 
                     <div class="modal-footer">
                         <a asp-controller="ReserveSpots" asp-action="Create" asp-route-id="@spots.ParkingSpotID" class="btn btn-primary m-1">Create Reservation</a>
-                        <a asp-controller="ParkingSpots" asp-action="Details" asp-route-id="@spots.ParkingSpotID" class="btn btn-primary m-1">View</a>
+                        <a asp-controller="ParkingSpots" asp-action="DetailsFromSearching" asp-route-id="@spots.ParkingSpotID" class="btn btn-primary m-1">View</a>
                     </div>
                 }}
         </div>

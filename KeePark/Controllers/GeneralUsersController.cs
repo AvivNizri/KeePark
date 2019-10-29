@@ -24,6 +24,13 @@ namespace KeePark.Controllers
             _context = context;
         }
 
+        public int AmountOfUsers(string concatText)
+        {
+            if (_context.Users != null)
+                return _context.Users.Count();
+            return 0;
+        }
+
 
         [Authorize(Roles = "Administrator")]
         // GET: GeneralUsers

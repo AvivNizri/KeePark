@@ -65,7 +65,7 @@
 
     /* Style the counter cards */
     .card {
-        height: 390px;
+        height: 450px;
         margin: auto;
         box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.2);
         max-width: 300px;
@@ -103,6 +103,8 @@
                             @{
                                 if (User.IsInRole("Administrator"))
                                 {
+                                    <p></p>
+                                    <p></p>
                                     <a asp-controller="ParkingSpots" asp-action="Delete" asp-route-id="@spot.ParkingSpotID" class="btn btn-danger">Delete</a>
                                 }
                             }
