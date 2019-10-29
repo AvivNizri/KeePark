@@ -74,6 +74,7 @@ namespace KeePark
         {
             if (env.IsDevelopment())
             {
+                app.UseExceptionHandler("/Error");
                 app.UseStatusCodePagesWithRedirects("/Error/{0}");
             }
             else

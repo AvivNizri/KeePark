@@ -1,8 +1,38 @@
 ﻿@model IEnumerable<KeePark.Data.GeneralUser>
+
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "_Layout";
+    ViewData["Title"] = "UserProfile";
 }
+
+<style>
+    .fontuse {
+        text-shadow: 1px 1px #808080;
+    }
+
+    .multiple-columns {
+        padding: 30px;
+        column-count: 3;
+        column-gap: 20px;
+        column-rule-style: solid;
+        font-size: small;
+    }
+
+    #border-radius {
+        border-radius: 15px 15px 50px 50px;
+        background: #EEEEEE;
+        padding: 500px, 300px;
+        width: auto;
+        height: auto;
+    }
+
+    p {
+        font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+
 
 
 <head>
@@ -11,7 +41,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
-<body>
+<body onload="CreateText()">
     <div class="jumbotron text-center">
         <div class="section-title">
             <h1>ADMIN DASHBOARD</h1>
@@ -25,25 +55,59 @@
                 {
                     if (item.UserName == User.Identity.Name)
                     {
-                        <h5 class="name">
+                        <h2 class="name">
                             @Html.DisplayFor(modelItem => item.FirstName)
                             @Html.DisplayFor(modelItem => item.LastName)
-                        </h5>
+                        </h2>
 
 
-                        <p class="email">@User.Identity.Name</p>
-
+                        <p class="email">Email: @User.Identity.Name</p>
+                        <p class="phone">Phone Number: @Html.DisplayFor(modelItem => item.PhoneNumber)</p>
+                        <p class="address">Address: @Html.DisplayFor(modelItem => item.Address)</p>
                     }
                 }
 
-                <a id="list-users" href="Index">List of Users</a>
-                <br />
                 <a id="edit_details" href="/Identity/Account/Manage">Edit Details</a>
-                <br />
-                <a id="list-reservations" href="/ReserveSpots/List">List of Reservations</a>
+
+
+
+
+
+
 
             </div>
             <div class="col-sm-8">
+
+                <script>
+                    var c = document.getElementById("myCanvas");
+                    var ctx = c.getContext("2d");
+
+                    // Create gradient
+                    var grd = ctx.createLinearGradient(0, 0, 900, 0);
+                    grd.addColorStop(0, "#EEEEEE");
+
+                    // Fill with gradient
+                    ctx.fillStyle = grd;
+                    ctx.fillRect(10, 10, 950, 80);
+                </script><br />
+
+
+                <section>
+                    <div class="multiple-columns" id="border-radius">
+                        <a id="list-users" href="Index">
+                            <h2 class="fontuse">LIST OF USERS</h2>
+                            <br />
+                        </a>
+
+                        <a id="list-reservations" href="/ReserveSpots/List">
+                            <h2 class="fontuse">LIST OF RESERVATIONS</h2>
+                            <br />
+                        </a>
+                        <a id="list-spots" href="/ParkingSpots/ParkingSpotResult">
+                            <h2 class="fontuse">LIST OF PARKING SPOTS</h2>                         
+                        </a>
+                    </div>
+                </section>
 
 
 
@@ -51,6 +115,9 @@
         </div>
     </div>
 
+
+
+
     </br>
     </br>
     </br>
@@ -59,14 +126,26 @@
     </br>
     </br>
 
+
+
     <footer>
         <section class="footer-email-signup max-1350">
-            <div class="jumbotron text-center" style="background-color:#ffffff">
-                <div class="warpper">
-                    <h4>DON'T MISS OUT!</h4>
-                </div>
+            <div class="warpper">
+                <canvas id="myCanvas" width="700" height="150"></canvas>
             </div>
         </section>
     </footer>
 
 </body>
+</html>
+<script>
+    function CreateText() {
+        var canvas = document.getElementById("myCanvas");
+        var canvasContext = canvas.getContext("2d");
+        var y = 100;
+        var x = 80;
+        canvasContext.font = 'bold 58pt UniversBoldCondensed';//sets font style, size and type
+        canvasContext.fillStyle = 'Black';//sets font color
+        canvasContext.fillText("Parking For All!", x, y);//sets text to be rendered
+    }
+</script>

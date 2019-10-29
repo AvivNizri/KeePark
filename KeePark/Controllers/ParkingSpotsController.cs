@@ -120,8 +120,16 @@ namespace KeePark.Controllers
                                where userID.Id == User.FindFirstValue(ClaimTypes.NameIdentifier)
                                select userID.UID).FirstOrDefault();
             // with that I am generating the spotID 
-            var numOfSpots = _context.ParkingSpot.Count();
-                              
+            var numOfSpots = 0;
+            if (_context.ParkingSpot.Count() != 0)
+            {
+                numOfSpots = _context.ParkingSpot.Last().ParkingSpotID;
+            }
+            else
+            {
+                numOfSpots = _context.ParkingSpot.Count();
+            }
+                      
             if (ModelState.IsValid)
             {
                 string FileName = null;

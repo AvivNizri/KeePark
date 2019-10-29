@@ -451,7 +451,10 @@ namespace KeePark.Controllers
             spot.NunOfOrders--;
             _context.ReserveSpot.Remove(reserveSpot);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            if(!User.IsInRole("Administrator"))
+             return RedirectToAction(nameof(Index));
+
+            return (RedirectToAction(nameof(List)));
         }
 
         private bool ReserveSpotExists(Guid id)

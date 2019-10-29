@@ -49,18 +49,18 @@ namespace KeePark.Data
 
             var spots = new ParkingSpot[]
             {
-                new ParkingSpot{ParkingSpotID=1,SpotName="Soho",OwnerID="123456789",Address="Rishon Lezion",Price=21,NunOfOrders=3,SpotDescription="foodi" },
-                new ParkingSpot{ParkingSpotID=2,SpotName="TYO",OwnerID="123456789",Address="Rotchild 12, Tel Aviv",Price=25,NunOfOrders=2,SpotDescription="sushi" },
-                new ParkingSpot{ParkingSpotID=3,SpotName="Collman",OwnerID="777777777",Address="eli wisel, Rishon Lezion",Price=5,NunOfOrders=3,SpotDescription="aducation" },
-                new ParkingSpot{ParkingSpotID=4,SpotName="Namos",OwnerID="676767676",Address="Marina Herzeliya",Price=21,NunOfOrders=1,SpotDescription="yammi" },
-                new ParkingSpot{ParkingSpotID=5,SpotName="Ynet",OwnerID="310078543",Address="Noah Moses 1, Rishon LeZion",Price=8,NunOfOrders=4,SpotDescription="news" },
-                new ParkingSpot{ParkingSpotID=6,SpotName="FU",OwnerID="310078543",Address="Dizingoff 22, Tel Aviv",Price=14,NunOfOrders=5,SpotDescription="sushi" },
-                new ParkingSpot{ParkingSpotID=7,SpotName="Turkiz",OwnerID="310078543",Address="Tel Aviv",Price=21,NunOfOrders=0,SpotDescription="food" },
-                new ParkingSpot{ParkingSpotID=8,SpotName="Blumffild",OwnerID="454647483",Address="Jerusalem Boulevard, Jaffa",Price=18,NunOfOrders=4,SpotDescription="football" },
-                new ParkingSpot{ParkingSpotID=9,SpotName="CR7",OwnerID="454647483",Address="Ashdod Port",Price=18,NunOfOrders=1,SpotDescription="clothing" },
-                new ParkingSpot{ParkingSpotID=10,SpotName="Segev",OwnerID="454647483",Address="Hazahav Mall, Rishon Lezion",Price=5,NunOfOrders=3,SpotDescription="food" },
-                new ParkingSpot{ParkingSpotID=11,SpotName="Regina",OwnerID="454647483",Address="Mammilla, Jerusalem",Price=18,NunOfOrders=4,SpotDescription="clothing" },
-                new ParkingSpot{ParkingSpotID=12,SpotName="Anita",OwnerID="454647483",Address="Neve Tzedek, Tel Aviv",Price=12,NunOfOrders=5,SpotDescription="ice cream" }
+                new ParkingSpot{ParkingSpotID=1,SpotName="Soho",OwnerID="123456789",Address="Rishon Lezion",Price=21,NunOfOrders=3,SpotDescription="foodi",filePath="3bdd1af3-ce4c-4a40-9fcd-2f0f44006134_1.jpg" },
+                new ParkingSpot{ParkingSpotID=2,SpotName="TYO",OwnerID="123456789",Address="Rotchild 12, Tel Aviv",Price=25,NunOfOrders=2,SpotDescription="sushi",filePath="c0740792-8da0-4401-b7b9-c2e5bc78af80_2.jpg" },
+                new ParkingSpot{ParkingSpotID=3,SpotName="Collman",OwnerID="777777777",Address="eli wisel, Rishon Lezion",Price=5,NunOfOrders=3,SpotDescription="aducation",filePath="bf51674f-7dee-4af8-a276-1af430a1129d_3.jpg" },
+                new ParkingSpot{ParkingSpotID=4,SpotName="Namos",OwnerID="326680978",Address="Marina Herzeliya",Price=21,NunOfOrders=1,SpotDescription="yammi",filePath="116ebee8-4da4-4700-8ea4-14ee0ecd4d1f_4.jpg"},
+                new ParkingSpot{ParkingSpotID=5,SpotName="Ynet",OwnerID="310078543",Address="Noah Moses 1, Rishon LeZion",Price=8,NunOfOrders=4,SpotDescription="news", filePath="ed1f45d0-1a82-4665-8c89-bdc60ccaca10_5.jpg" },
+                new ParkingSpot{ParkingSpotID=6,SpotName="FU",OwnerID="310078543",Address="Dizingoff 22, Tel Aviv",Price=14,NunOfOrders=5,SpotDescription="sushi", filePath="a07d896c-fc6e-487f-a468-459006a831ac_6.jpg" },
+                new ParkingSpot{ParkingSpotID=7,SpotName="Turkiz",OwnerID="310078543",Address="Tel Aviv",Price=21,NunOfOrders=0,SpotDescription="food",filePath="0c183b35-a957-4da1-a3eb-de1953a2e1d2_7.jpg" },
+                new ParkingSpot{ParkingSpotID=8,SpotName="Blumffild",OwnerID="454647483",Address="Jerusalem Boulevard, Jaffa",Price=18,NunOfOrders=4,SpotDescription="football",filePath="596c163e-0724-4397-b54e-9dc64e104401_8.jpg" },
+                new ParkingSpot{ParkingSpotID=9,SpotName="CR7",OwnerID="454647483",Address="Ashdod Port",Price=18,NunOfOrders=1,SpotDescription="clothing",filePath="23fd7ece-a535-4ebc-9be0-03c198bc12b9_9.jpg" },
+                new ParkingSpot{ParkingSpotID=10,SpotName="Segev",OwnerID="454647483",Address="Hazahav Mall, Rishon Lezion",Price=5,NunOfOrders=3,SpotDescription="food",filePath="05293d23-7df6-4a5f-9326-58740474b774_10.jpg" },
+                new ParkingSpot{ParkingSpotID=11,SpotName="Regina",OwnerID="326680978",Address="Mammilla, Jerusalem",Price=18,NunOfOrders=4,SpotDescription="clothing",filePath="80fbf5eb-9a82-499f-9116-56d2f782d9a6_11.jpg" },
+                new ParkingSpot{ParkingSpotID=12,SpotName="Anita",OwnerID="454647483",Address="Neve Tzedek, Tel Aviv",Price=12,NunOfOrders=5,SpotDescription="ice cream",filePath="eca40f9a-22a7-4079-bb5f-c4ddaf1e2fe6_12.jpg" }
             };
 
             foreach (ParkingSpot p in spots)
