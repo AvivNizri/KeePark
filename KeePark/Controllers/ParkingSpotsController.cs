@@ -34,6 +34,7 @@ namespace KeePark.Controllers
         // GET: ParkingSpots
         public async Task<IActionResult> Index()
         {
+            //get current user and show in the index view his spots
             var userid = UserManager.GetUserId(HttpContext.User);
             GeneralUser user = UserManager.FindByIdAsync(userid).Result;
             var spots = (from spot in _context.ParkingSpot

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "\\\\Mac\\Home\\Documents\\Regina\\KeePark\\KeePark\\KeePark.csproj": {}
+    "C:\\Users\\taliamelikhov\\Talia\\KeePark\\KeePark\\KeePark.csproj": {}
   },
   "projects": {
-    "\\\\Mac\\Home\\Documents\\Regina\\KeePark\\KeePark\\KeePark.csproj": {
+    "C:\\Users\\taliamelikhov\\Talia\\KeePark\\KeePark\\KeePark.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "\\\\Mac\\Home\\Documents\\Regina\\KeePark\\KeePark\\KeePark.csproj",
+        "projectUniqueName": "C:\\Users\\taliamelikhov\\Talia\\KeePark\\KeePark\\KeePark.csproj",
         "projectName": "KeePark",
-        "projectPath": "\\\\Mac\\Home\\Documents\\Regina\\KeePark\\KeePark\\KeePark.csproj",
-        "packagesPath": "C:\\Users\\taliareginamelikhov\\.nuget\\packages\\",
-        "outputPath": "\\\\Mac\\Home\\Documents\\Regina\\KeePark\\KeePark\\obj\\",
+        "projectPath": "C:\\Users\\taliamelikhov\\Talia\\KeePark\\KeePark\\KeePark.csproj",
+        "packagesPath": "C:\\Users\\taliamelikhov\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\taliamelikhov\\Talia\\KeePark\\KeePark\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\taliareginamelikhov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\taliamelikhov\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -69,7 +69,6 @@
               "version": "[2.1.2, )"
             },
             "Microsoft.NETCore.App": {
-              "suppressParent": "All",
               "target": "Package",
               "version": "[2.1.0, )",
               "autoReferenced": true
@@ -94,16 +93,10 @@
             }
           },
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     }

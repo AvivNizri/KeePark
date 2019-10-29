@@ -76,6 +76,7 @@ namespace KeePark
             {
                 app.UseExceptionHandler("/Error");
                 app.UseStatusCodePagesWithRedirects("/Error/{0}");
+                
             }
             else
             {

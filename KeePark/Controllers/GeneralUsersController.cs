@@ -90,7 +90,6 @@ namespace KeePark.Controllers
         {
             if (ModelState.IsValid)
             {
-                //generalUser.Reservations = new List<ReserveSpot>();
                 _context.Add(generalUser);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
