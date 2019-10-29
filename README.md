@@ -16,7 +16,7 @@ and for other who are looking to reserve their parking spots in advance.
 
 KeePark requires [ASP.Net](https://www.asp.net/core/overview/aspnet-vnext) to run.
 
- - open .KeePark/KeePark/Views/ParkingSpots/Details.cshtml and make sure to replace "Your Key" with the relevant API keys.
+ - open .KeePark/KeePark/Views/ParkingSpots/Details.cshtml and make sure to replace the Key with the relevant API keys.
  - open .KeePark/KeePark/Views/ReserveSpots/Details.cshtml add API keys for Google API and OpenWeather.
  - open the sln file on the main folder with Visual Studio 2019, and type the following command in the NuGet console
 
@@ -40,3 +40,5 @@ Standard user credentials:
         user: peter@peter.com
     password: Ad7&Ad
 ```
+
+## Pictures
