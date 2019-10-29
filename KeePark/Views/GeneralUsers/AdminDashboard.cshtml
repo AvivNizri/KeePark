@@ -25,8 +25,7 @@
         padding: 500px, 300px;
         width: auto;
         height: auto;
-                text-decoration: none;
-
+        text-decoration: none;
     }
 
     p {
@@ -75,6 +74,24 @@
 
 
 
+                @section Scripts {
+                    <script>
+                        $(document).ready(function () {
+                            $('#changer').click(changeMe);
+                        });
+
+                        function changeMe() {
+                            var concatText = $('#concat').val();
+                            console.log(concatText);
+                            $.get('/GeneralUsers/AmountOfUsers', {}, function (data, status) {
+                                console.log(status);
+                                $('#changer').html(data);
+                            });
+                            $('#changer').attr("disabled", true);
+
+                        }
+                    </script>
+                }
 
 
 
@@ -99,8 +116,12 @@
                     <div class="multiple-columns" id="border-radius">
                         <a id="list-users" href="Index">
                             <h2 class="fontuse">LIST OF USERS</h2>
-                            <br />
                         </a>
+                        <div>
+                            <p>Amount of users: </p> <button id="changer" class="btn">Calculate</button>
+                        </div>
+             
+
 
                         <a id="list-reservations" href="/ReserveSpots/List">
                             <h2 class="fontuse">LIST OF RESERVATIONS</h2>
