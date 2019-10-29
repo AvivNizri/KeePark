@@ -26,10 +26,11 @@ namespace KeePark.Controllers
         //Counter of orders by user
         public IActionResult UserStat()
         {
+            //getting reservation of the curreny year
             var t = from u in _context.ReserveSpot
                     where u.CreatedOn.Year == System.DateTime.Today.Year
                     select u;
-
+            //grouping orders by users 
             var groupJoinQuery =
             from orders in t
             join users in _context.ReserveSpot on orders.UserID equals users.UserID into uorderGroup
@@ -37,14 +38,16 @@ namespace KeePark.Controllers
             group uorder by uorder.UserID into g
             select new { Name = g.Key, Count = g.Count() };
 
-
+            //from the groupjoin we ordery by count ant take first 5
             var list = (from mygroup in groupJoinQuery
                         orderby mygroup.Count descending
                         select mygroup).Take(5);
 
             Dictionary<string, int> map;
-
+            //name=uid, count=num of orders
             map = list.ToList().ToDictionary(a => a.Name, a => a.Count);
+            //viewbag is a way to pass data from controller to view, we want to pass a map(key& value)
+            //its a dynamic property
             ViewBag.Map = map;
             return View();
         }

@@ -69,7 +69,7 @@ using KeePark.Models;
             WriteLiteral("\r\n<h2>History Of Reservations</h2>\r\n\r\n");
             EndContext();
             BeginContext(176, 272, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4a5c41ed4ab4aa6a400ee906a748755", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cdd9489ebcf6414b9738ccb5f05a9fc4", async() => {
                 BeginContext(223, 218, true);
                 WriteLiteral("\r\n    User\'s Id: <input type=\"text\" name=\"userId\" />\r\n    Spot\'s Name: <input type=\"text\" name=\"spotsName\" />\r\n    Reservations\'s Date: <input type=\"date\" name=\"resDate\" />\r\n    <input type=\"submit\" value=\"search\" />\r\n");
                 EndContext();
@@ -246,7 +246,7 @@ using KeePark.Models;
             WriteLiteral("\r\n                </td>\r\n                <td>\r\n\r\n                    ");
             EndContext();
             BeginContext(2192, 70, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "df7c6c1437d641f68534e36f72990455", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ca65d892b5aa4937900fadfca8983c72", async() => {
                 BeginContext(2251, 7, true);
                 WriteLiteral("Details");
                 EndContext();
@@ -281,7 +281,7 @@ using KeePark.Models;
             WriteLiteral(" |\r\n                    ");
             EndContext();
             BeginContext(2286, 68, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aea97de1cfcd45ee8ca278b3a3ce0211", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2e0710b6dfe84076b1692eded0be135b", async() => {
                 BeginContext(2344, 6, true);
                 WriteLiteral("Delete");
                 EndContext();

@@ -76,7 +76,7 @@ using KeePark.Models;
             WriteLiteral("\n");
             EndContext();
             BeginContext(145, 298, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0264c4e3a2cb4c49981274d0e85a26b8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ae967739744e4e16834c6e73a42b5664", async() => {
                 BeginContext(205, 231, true);
                 WriteLiteral("\n    Spot\'s Name: <input type=\"text\" name=\"spotsName\" />\n    Spot\'s Address: <input type=\"text\" name=\"spotsAddress\" />\n    Spot\'s Price: <input type=\"number\" min=\"1\" name=\"spotsPrice\" />\n\n    <input type=\"submit\" value=\"search\" />\n");
                 EndContext();
@@ -151,7 +151,7 @@ using KeePark.Models;
             WriteLiteral("</h4>\n            </div>\n\n            ");
             EndContext();
             BeginContext(944, 128, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "e890a516ea294d3dbf5dd00fd080b761", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "7195e83079f34bfd93b0cb7694ea29e5", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_ImageTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ImageTagHelper>();
@@ -186,7 +186,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ImageTagHelper.AppendVersion = true;
             WriteLiteral("\n\n            <div class=\"card-footer text-center position-static\">\n                ");
             EndContext();
             BeginContext(1156, 138, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "af56309bd46c46d39c2271e49d2902d5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "81d7342ad1c348d3bb3de791c7652a89", async() => {
                 BeginContext(1272, 18, true);
                 WriteLiteral("Create Reservation");
                 EndContext();
@@ -224,7 +224,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ImageTagHelper.AppendVersion = true;
             WriteLiteral("\n                ");
             EndContext();
             BeginContext(1311, 141, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "22eb7e920db942e6b5fb7d9e8b7bb6e1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "56aaba9346694036a5425721931d1354", async() => {
                 BeginContext(1441, 7, true);
                 WriteLiteral("Details");
                 EndContext();

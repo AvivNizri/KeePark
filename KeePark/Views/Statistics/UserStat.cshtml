@@ -3,20 +3,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<!--D3.js is a JavaScript library for producing dynamic, interactive data visualizations in web browsers  -->
+    <div class="default-font">
+        <p> <h3>Most Active users</h3> </p>
+        <!-- Load d3.js -->
+        <script src="https://d3js.org/d3.v5.js"></script>
+        <!-- Create a div where the graph will take place -->
+        <div id="pieGraph"></div>
 
-<div class="default-font">
-    <p> <h3>Most Active users</h3> </p>
-    <script src="https://d3js.org/d3.v5.js"></script>
-    <div id="pieGraph"></div>
+ 
+ <script>
 
-
-
-    <script>
-
-            // margin
+ // setting margin
 var margin = { top: 20, right: 20, bottom: 20, left: 20 },
     width = 500 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
+
 //pie chart
 (function pieChart() {
     // set the dimensions and margins of the graph
@@ -25,15 +27,20 @@ var margin = { top: 20, right: 20, bottom: 20, left: 20 },
     margin = 20
     // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
     var radius = width / 2.1;
-    // appending svg object to the div #pieGraph
-    //defining svg- we want to group similar elements together, and then translate this svg to center point
+
+   //SVG stands for Scalable Vector Graphics.
+   //SVG is an XML-based vector graphics format. It provides options to draw different shapes such as Lines, Rectangles, Circles, Ellipses, etc. Hence, designing visualizations with SVG gives you more power and flexibility.
+   // appending svg object to the div #pieGraph
+  //defining svg- we want to group similar elements together, and then translate this svg to center point
+    //attr-get or set attribute
     var svg = d3.select("#pieGraph")
         .append("svg")
         .attr("width", width)
         .attr("height", height)
         .append("g")
         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-           // get data
+
+   // get data via viewbag
     var data = {
                                     @foreach(var item in ViewBag.Map)
     {
@@ -41,18 +48,26 @@ var margin = { top: 20, right: 20, bottom: 20, left: 20 },
     }
 }
 
-                // set color scale
-                var color = d3.scaleOrdinal()
+   // set color scale
+   //scaleOrdinal()-Constructs a new ordinal scale with an empty domain and an empty range
+    var color = d3.scaleOrdinal()
     .domain(data)
     .range(["#FF7F50", "#FF6347", "#FFD700", "#FFA500", "#FF8C00"]);
+
 // Compute the position of each group on the pie
+//d3.pie - create a new pie generator.
 var pie = d3.pie()
-    .value(function (d) { return d.value; })
-var mydata = pie(d3.entries(data))
+        .value(function (d) { return d.value; })
+
+//The d3.entries() function in D3.js is used to return an array containing the property names
+//property values of the specified object or an associative array.
+    var mydata = pie(d3.entries(data))
+
 //arc generator-Circular or annular sectors, as in a pie or donut chart
 var arc = d3.arc()
     .innerRadius(0)
-    .outerRadius(radius)
+        .outerRadius(radius)
+
 // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
 //svg selects all the elements with the class arc, it creates g elemnts (slices)
 svg
@@ -76,7 +91,7 @@ svg
     .style("text-anchor", "middle")
     .style("font-size", 12)
             }());
-    </script>
+        </script>
 
 
-</div>
+    </div>

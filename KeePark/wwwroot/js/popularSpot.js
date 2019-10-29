@@ -22,7 +22,7 @@
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-    // format the data
+   // format the data
     data.forEach(function (d) {
         d.value = +d.value;
     });
