@@ -54,10 +54,7 @@ namespace KeePark.Areas.Identity.Pages.Account.Manage
         public async Task<IActionResult> OnGetAsync()
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
+
 
             var hasPassword = await _userManager.HasPasswordAsync(user);
             if (!hasPassword)
@@ -76,10 +73,7 @@ namespace KeePark.Areas.Identity.Pages.Account.Manage
             }
 
             var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
+
 
             var changePasswordResult = await _userManager.ChangePasswordAsync(user, Input.OldPassword, Input.NewPassword);
             if (!changePasswordResult.Succeeded)

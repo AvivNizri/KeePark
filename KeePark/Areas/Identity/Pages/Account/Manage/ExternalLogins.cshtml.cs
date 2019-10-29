@@ -35,10 +35,7 @@ namespace KeePark.Areas.Identity.Pages.Account.Manage
         public async Task<IActionResult> OnGetAsync()
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
+
 
             CurrentLogins = await _userManager.GetLoginsAsync(user);
             OtherLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync())
@@ -51,10 +48,7 @@ namespace KeePark.Areas.Identity.Pages.Account.Manage
         public async Task<IActionResult> OnPostRemoveLoginAsync(string loginProvider, string providerKey)
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
+
 
             var result = await _userManager.RemoveLoginAsync(user, loginProvider, providerKey);
             if (!result.Succeeded)
@@ -82,10 +76,6 @@ namespace KeePark.Areas.Identity.Pages.Account.Manage
         public async Task<IActionResult> OnGetLinkLoginCallbackAsync()
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
 
             var info = await _signInManager.GetExternalLoginInfoAsync(await _userManager.GetUserIdAsync(user));
             if (info == null)
