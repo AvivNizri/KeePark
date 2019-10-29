@@ -14,7 +14,7 @@ and for other who are looking to reserve their parking spots in advance.
 
 ## Installation
 
-KeePark requires [ASP.Net](https://www.asp.net/core/overview/aspnet-vnext)
+KeePark requires [ASP.Net](https://www.asp.net/core/overview/aspnet-vnext) to run.
 
  - open .KeePark/KeePark/Views/ParkingSpots/Details.cshtml and make sure to replace "Your Key" with the relevant API keys.
  - open .KeePark/KeePark/Views/ReserveSpots/Details.cshtml add API keys for Google API and OpenWeather.
@@ -23,6 +23,13 @@ KeePark requires [ASP.Net](https://www.asp.net/core/overview/aspnet-vnext)
 ```sh
 $ Update-Database -context KeeParkContext
 $ Update-Database -context IdentityContext
+```
+Another package installation is required for the ML algo
+```sh
+pm> Install-Package Accord -Version 3.8.2
+pm> Install-Package Accord.MachineLearning
+pm> Install-Package Accord.Math -Version 3.8.0
+pm> Install-Package Accord.Statistics -Version 3.8.0
 ```
 By Starting the project an initialization function is executing to generate fake data into the project.
 ```
