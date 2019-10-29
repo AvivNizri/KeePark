@@ -42,10 +42,11 @@
         .data(data)
         .enter().append("rect")
         .attr("class", "bar")
-        .attr("fill", function (d) { return (color(d.value)) })
+        .attr('fill', function (d) { return (color(d.value)) })
         .attr("width", function (d) { return x(d.value); })
         .attr("y", function (d) { return y(d.name); })
         .attr("height", y.bandwidth());
+
 
 
     // add the x Axis
