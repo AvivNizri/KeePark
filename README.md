@@ -41,4 +41,7 @@ Standard user credentials:
     password: Ad7&Ad
 ```
 
-## Pictures
+## Project Owners
+Talia Melikhov
+Raz Sardas
+Aviv Nizri
