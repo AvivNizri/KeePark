@@ -42,6 +42,6 @@ Standard user credentials:
 ```
 
 ## Project Owners
-Talia Melikhov
-Raz Sardas
+Talia Melikhov |
+Raz Sardas |
 Aviv Nizri
