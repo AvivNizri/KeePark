@@ -222,7 +222,7 @@
             </div>
             <div class="col-lg-4 mr-auto text-center">
                 <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
-                <p>contact@KeePark.com</p>
+                <p>keepark@keepark.com</p>
             </div>
         </div>
     </div>
@@ -232,6 +232,7 @@
 <footer class="bg-light py-5">
     <div class="container">
         <div class="small text-center text-muted">Copyright &copy; 2019 - KeePark</div>
+        <div class="small text-center text-muted">All Rights Reserve to - Talia Melikhov | Raz Sardas | Aviv Nizri</div>
     </div>
 </footer>
 <!-- Bootstrap core JavaScript -->
@@ -298,7 +299,7 @@
         margin: auto;
         padding: 0;
         border: 1px solid #888;
-        width: 40%;
+        width: 30%;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
         -webkit-animation-name: animatetop;
         -webkit-animation-duration: 0.4s;
@@ -306,7 +307,11 @@
         animation-duration: 0.4s
     }
 
-
+    #Spoty{
+        font-weight:bold;
+        font-size:28px;
+        text-align-last:center;
+    }
     /* The Close Button */
     .close {
         color: white;
@@ -376,15 +381,15 @@
                 ParkingSpot spots = ViewBag.recomended;
                 if (spots != null)
                 {
-                    <div class="modal-body">
+                        <div class="modal-body">
 
 
-                        <img class="card-img-top" src="~/SpotImages/@spots.filePath" asp-append-version="true" height="200" width="50" />
+                            <img class="card-img-top" src="~/SpotImages/@spots.filePath" asp-append-version="true" height="200" width="50" />
+                            <p id="Spoty">@spots.SpotName</p>
+                            <p>Address: @spots.Address</p>
 
-                        <p>Address: @spots.Address</p>
-                        <p>@spots.SpotDescription</p>
-                        <p>Price: @spots.Price</p>
-                    </div>
+                            <p>Price: @spots.Price₪</p>
+                        </div>
 
                     <div class="modal-footer">
                         <a asp-controller="ReserveSpots" asp-action="Create" asp-route-id="@spots.ParkingSpotID" class="btn btn-primary m-1">Create Reservation</a>
